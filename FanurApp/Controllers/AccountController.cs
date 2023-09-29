@@ -15,7 +15,9 @@ namespace FanurApp.Controllers
         }
         public IActionResult Register()
         {
-            return View();
+            RegisterVM viewModel = new RegisterVM();
+            viewModel.ErrorMessage = string.Empty;
+            return View(viewModel);
         }
         [HttpPost]
         public IActionResult Register(RegisterVM viewModel)
@@ -23,18 +25,23 @@ namespace FanurApp.Controllers
             try
             {
                 var result = repository.RegisterUser(viewModel);
-
-                return RedirectToAction("Index", "Home", null);
+                if (result != null)
+                {
+                    return RedirectToAction("Index", "Home", null);
+                }
             }
             catch (AccountException ex)
             {
                 Console.WriteLine(ex.Message);
+                viewModel.ErrorMessage = "Bu foydalanuvchi davno ro'yxatdan o'tgan ekanku";
             }
             return View(viewModel);
         }
         public IActionResult Login()
         {
-            return View();
+            LoginVM viewModel = new LoginVM();
+            viewModel.ErrorMessage = string.Empty;
+            return View(viewModel);
         }
         [HttpPost]
         public IActionResult Login(LoginVM viewModel)
@@ -45,7 +52,11 @@ namespace FanurApp.Controllers
                 {
                     var result = repository.LoginUser(viewModel);
 
-                    return RedirectToAction("Index", "Home", null);
+                    if (result != null)
+                    {
+                        return RedirectToAction("Index", "Home", null);
+                    }
+                    viewModel.ErrorMessage = "Parol yoki emailni xato kiritdingku";
                 }
             }
             catch (AccountException ex)

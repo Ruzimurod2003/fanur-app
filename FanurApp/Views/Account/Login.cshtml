@@ -4,6 +4,12 @@
     <h1 class="fs-4 card-title fw-bold mb-4">Login qilish sahifasi</h1>
     <form class="needs-validation" method="post" asp-controller="Account" asp-action="Login"
           novalidate="" autocomplete="off">
+        @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+        {
+            <div class="alert alert-danger" role="alert">
+                @Model.ErrorMessage
+            </div>
+        }
         <div class="mb-3">
             <label class="mb-2 text-muted" for="email">Emailni kiritasan... </label>
             <input class="form-control" type="email" asp-for="Email" type="email" required autofocus>
