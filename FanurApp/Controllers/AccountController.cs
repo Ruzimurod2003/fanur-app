@@ -1,4 +1,5 @@
-﻿using FanurApp.Repositories;
+﻿using FanurApp.Exceptions;
+using FanurApp.Repositories;
 using FanurApp.ViewModels.Account;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,7 +20,16 @@ namespace FanurApp.Controllers
         [HttpPost]
         public IActionResult Register(RegisterVM viewModel)
         {
+            try
+            {
+                var result = repository.RegisterUser(viewModel);
 
+                return RedirectToAction("Index", "Home", null);
+            }
+            catch (AccountException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             return View(viewModel);
         }
         public IActionResult Login()
@@ -29,7 +39,19 @@ namespace FanurApp.Controllers
         [HttpPost]
         public IActionResult Login(LoginVM viewModel)
         {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var result = repository.LoginUser(viewModel);
 
+                    return RedirectToAction("Index", "Home", null);
+                }
+            }
+            catch (AccountException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             return View(viewModel);
         }
         public IActionResult Forget()

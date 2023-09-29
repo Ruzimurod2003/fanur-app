@@ -1,4 +1,5 @@
 ﻿using FanurApp.Data;
+using FanurApp.Exceptions;
 using FanurApp.Models;
 using FanurApp.ViewModels.Account;
 
@@ -27,12 +28,47 @@ public class AccountRepository : IAccountRepository
 
     public User LoginUser(LoginVM viewModel)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var user = context.Users.FirstOrDefault(i => i.Email == viewModel.Email && i.Password == viewModel.Password);
+            if (user != null)
+            {
+                return user;
+            }
+            return null;
+        }
+        catch (Exception ex)
+        {
+            throw new AccountException(ex.Message);
+        }
     }
 
     public User RegisterUser(RegisterVM viewModel)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var userExists = context.Users.FirstOrDefault(i => i.Email == viewModel.Email);
+            if (userExists != null)
+            {
+                throw new Exception("Allaqchon bu foydalanuvchi tizimda bor.");
+            }
+
+            var user = new User
+            {
+                Email = viewModel.Email,
+                Password = viewModel.Password,
+                Name = viewModel.Name
+            };
+
+            context.Users.Add(user);
+            context.SaveChanges();
+
+            return user;
+        }
+        catch (Exception ex)
+        {
+            throw new AccountException(ex.Message);
+        }
     }
 
     public User ResetUser(ResetVM viewModel)
