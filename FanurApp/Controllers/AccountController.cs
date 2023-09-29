@@ -13,7 +13,7 @@ namespace FanurApp.Controllers
         public IActionResult Register(RegisterVM viewModel)
         {
 
-            return View();
+            return View(viewModel);
         }
         public IActionResult Login()
         {
@@ -23,7 +23,7 @@ namespace FanurApp.Controllers
         public IActionResult Login(LoginVM viewModel)
         {
 
-            return View();
+            return View(viewModel);
         }
         public IActionResult Forget()
         {
@@ -33,7 +33,7 @@ namespace FanurApp.Controllers
         public IActionResult Forget(ForgetVM viewModel)
         {
 
-            return View();
+            return View(viewModel);
         }
         public IActionResult Reset()
         {
@@ -43,7 +43,7 @@ namespace FanurApp.Controllers
         public IActionResult Reset(ResetVM viewModel)
         {
 
-            return View();
+            return View(viewModel);
         }
     }
 }
