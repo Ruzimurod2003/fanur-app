@@ -1,10 +1,17 @@
-﻿using FanurApp.ViewModels.Account;
+﻿using FanurApp.Repositories;
+using FanurApp.ViewModels.Account;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FanurApp.Controllers
 {
     public class AccountController : Controller
     {
+        private readonly IAccountRepository repository;
+
+        public AccountController(IAccountRepository _repository)
+        {
+            repository = _repository;
+        }
         public IActionResult Register()
         {
             return View();
