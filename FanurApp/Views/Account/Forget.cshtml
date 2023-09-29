@@ -1,7 +1,8 @@
 ﻿@model ForgetVM
 <div class="card-body p-5">
     <h1 class="fs-4 card-title fw-bold mb-4">Parolini bilolmayotganlar uchun yordamchi</h1>
-    <form method="post" asp-controller="Account" asp-action="Forget">
+    <form class="needs-validation" method="post" asp-controller="Account" asp-action="Forget"
+          novalidate="" autocomplete="off">
         <div class="mb-3">
             <label class="mb-2 text-muted" asp-for="Email">Emailni kiritasan bo'tga</label>
             <input class="form-control" type="email" asp-for="Email" required autofocus>
