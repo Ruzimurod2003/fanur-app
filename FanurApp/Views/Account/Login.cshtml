@@ -1,0 +1,43 @@
+﻿@model LoginVM
+
+<div class="card-body p-5">
+	<h1 class="fs-4 card-title fw-bold mb-4">Login qilish sahifasi</h1>
+	<form method="post" asp-controller="Account" asp-action="Login">
+		<div class="mb-3">
+			<label class="mb-2 text-muted" for="email">Emailni kiritasan... </label>
+            <input class="form-control" type="email" asp-for="Email" type="email" required autofocus>
+			<div class="invalid-feedback">
+				Email to'g'ri emas
+			</div>
+		</div>
+
+		<div class="mb-3">
+			<div class="mb-2 w-100">
+				<label class="text-muted" asp-for="Password">Parolni kiritasan...</label>
+                <a class="float-end" asp-controller="Account" asp-action="Forget">
+					Parolni bilmaysanmi?
+				</a>
+			</div>
+            <input class ="form-control" asp-for="Password" type="password" required>
+			<div class="invalid-feedback">
+				Password to'g'ri emas
+			</div>
+		</div>
+
+		<div class="d-flex align-items-center">
+			<div class="form-check">
+                <input class="form-check-input" type="checkbox" asp-for="RememberMe">
+                <label class="form-check-label" asp-for="RememberMe">Eslab qolasanmi</label>
+			</div>
+            <button class="btn btn-primary ms-auto" type="submit">
+				Login tugmasi
+			</button>
+		</div>
+	</form>
+</div>
+<div class="card-footer py-3 border-0">
+	<div class="text-center">
+		Akkounting bormi o'zi?
+        <a class="text-dark" asp-controller="Account" asp-action="Register">Akkountni yaratib ol avval</a>
+	</div>
+</div>

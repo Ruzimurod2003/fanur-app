@@ -1,0 +1,24 @@
+﻿@model ForgetVM
+<div class="card-body p-5">
+    <h1 class="fs-4 card-title fw-bold mb-4">Parolini bilolmayotganlar uchun yordamchi</h1>
+    <form method="post" asp-controller="Account" asp-action="Forget">
+        <div class="mb-3">
+            <label class="mb-2 text-muted" asp-for="Email">Emailni kiritasan bo'tga</label>
+            <input class="form-control" type="email" asp-for="Email" required autofocus>
+            <div class="invalid-feedback">
+                Emailni to'g'ri kiritseng bo'lmaydimi
+            </div>
+        </div>
+
+        <div class="d-flex align-items-center">
+            <button class="btn btn-primary ms-auto" type="submit">
+                Emailimga nimanidir jo'nat
+            </button>
+        </div>
+    </form>
+</div>
+<div class="card-footer py-3 border-0">
+    <div class="text-center">
+        Parol esinga tushib ketdimi? <a class="text-dark" asp-controller="Account" asp-action="Login">Login sahifasiga bor</a>
+    </div>
+</div>

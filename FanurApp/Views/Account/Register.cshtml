@@ -1,0 +1,45 @@
+﻿@model RegisterVM
+
+<div class="card-body p-5">
+    <h1 class="fs-4 card-title fw-bold mb-4">Registratsiya sahifasi</h1>
+    <form method="post" asp-controller="Account" asp-action="Register">
+        <div class="mb-3">
+            <label class="mb-2 text-muted" asp-for="Name">Ismingni kiritasan...</label>
+            <input class="form-control" type="text" asp-for="Name" required autofocus>
+            <div class="invalid-feedback">
+                Isming xato ekanku
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="mb-2 text-muted" asp-for="Email">Emailingni kiritasan...</label>
+            <input class="form-control" type="email" asp-for="Email" required>
+            <div class="invalid-feedback">
+                Emailing xato ekanku
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="mb-2 text-muted" asp-for="Password">Parolingni kiritasan...</label>
+            <input class="form-control" type="password" asp-for="Password" required>
+            <div class="invalid-feedback">
+                Paroling xato ekanku
+            </div>
+        </div>
+
+        <p class="form-text text-muted mb-3">
+            Registartsiyada konkret ma'lumotlarini kiritishingni talab qilaman
+        </p>
+
+        <div class="align-items-center d-flex">
+            <button class="btn btn-primary ms-auto" type="submit">
+                Registratsiya knopkasi
+            </button>
+        </div>
+    </form>
+</div>
+<div class="card-footer py-3 border-0">
+    <div class="text-center">
+        avval yaratgan akkounting bormi? <a class="text-dark" asp-controller="Account" asp-action="Login">Login sahifasiga jo'na</a>
+    </div>
+</div>
