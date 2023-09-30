@@ -1,4 +1,5 @@
 ﻿using FanurApp.Data;
+using FanurApp.Enums;
 using FanurApp.Exceptions;
 using FanurApp.Models;
 using FanurApp.ViewModels.Account;
@@ -57,7 +58,8 @@ public class AccountRepository : IAccountRepository
             {
                 Email = viewModel.Email,
                 Password = viewModel.Password,
-                Name = viewModel.Name
+                Name = viewModel.Name,
+                RoleId = (int)RolesEnum.User
             };
 
             context.Users.Add(user);
