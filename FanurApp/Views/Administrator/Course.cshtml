@@ -1,0 +1,33 @@
+﻿@using FanurApp.Enums;
+@model CourseVM
+
+<form method="post" asp-controller="Administrator" asp-action="Course">
+    <partial name="~/Views/PartialComponents/_AlertMessage.cshtml" model="Model.ErrorMessage" />
+    <div class="mb-3">
+        <input class="form-control" asp-for="Id" type="hidden">
+    </div>
+    <div class="mb-3">
+        <label class="mb-2 text-muted" asp-for="Name">Kursni nomini kiritasan... </label>
+        <input class="form-control" asp-for="Name" type="text" required autofocus>
+        <div class="invalid-feedback">
+            Kurs nomi to'g'ri emas
+        </div>
+    </div>
+    <div class="mb-3">
+        <label class="mb-2 text-muted" asp-for="Author">Muallifni nomini kiritasan... </label>
+        <input class="form-control" asp-for="Author" type="text" required autofocus>
+        <div class="invalid-feedback">
+            Muallif nomi to'g'ri emas
+        </div>
+    </div>
+    <div class="mb-3">
+        <label class="mb-2 text-muted" asp-for="Description">Nima uchun bu kursni o'rganish kere?</label>
+        <input class="form-control" asp-for="Description" type="text" required autofocus>
+        <div class="invalid-feedback">
+            Nima uchun bu kursni o'rganish kere
+        </div>
+    </div>
+    <div class="mb-3">
+        <input class="btn btn-primary" type="submit" value="Saqlash" />
+    </div>
+</form>

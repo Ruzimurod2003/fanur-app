@@ -11,6 +11,8 @@ builder.Services.AddDbContext<ApplicationContext>(options =>
 
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 
+builder.Services.AddScoped<IAdministratorRepository, AdministratorRepository>();
+
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())

@@ -1,0 +1,34 @@
+﻿@using FanurApp.Enums;
+@model MessageVM;
+
+@if (Model != null)
+{
+    if (Model.MessageType == (int)MessageTypesEnum.None)
+    {
+        
+    }
+    else if (Model.MessageType == (int)MessageTypesEnum.Danger)
+    {
+        <div class="alert alert-danger" role="alert">
+            @Model.MessageText
+        </div>
+    }
+    else if (Model.MessageType == (int)MessageTypesEnum.Success)
+    {
+        <div class="alert alert-success" role="alert">
+            @Model.MessageText
+        </div>
+    }
+    else if (Model.MessageType == (int)MessageTypesEnum.Information)
+    {
+        <div class="alert alert-info" role="alert">
+            @Model.MessageText
+        </div>
+    }
+    else if (Model.MessageType == (int)MessageTypesEnum.Warning)
+    {
+        <div class="alert alert-warning" role="alert">
+            @Model.MessageText
+        </div>
+    }
+}
