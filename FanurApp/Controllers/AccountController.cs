@@ -2,16 +2,19 @@
 using FanurApp.Repositories;
 using FanurApp.ViewModels.Account;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 
 namespace FanurApp.Controllers
 {
     public class AccountController : Controller
     {
         private readonly IAccountRepository repository;
+        private readonly IStringLocalizer localizer;
 
-        public AccountController(IAccountRepository _repository)
+        public AccountController(IAccountRepository _repository, IStringLocalizer _localizer)
         {
             repository = _repository;
+            localizer = _localizer;
         }
         public IActionResult Register()
         {
@@ -33,7 +36,7 @@ namespace FanurApp.Controllers
             catch (AccountException ex)
             {
                 Console.WriteLine(ex.Message);
-                viewModel.ErrorMessage = "Bu foydalanuvchi davno ro'yxatdan o'tgan ekanku";
+                viewModel.ErrorMessage = localizer["this_user_is_already_registered"];
             }
             return View(viewModel);
         }
@@ -56,7 +59,7 @@ namespace FanurApp.Controllers
                     {
                         return RedirectToAction("Index", "Home", null);
                     }
-                    viewModel.ErrorMessage = "Parol yoki emailni xato kiritdingku";
+                    viewModel.ErrorMessage = localizer["you_entered_the_wrong_password_or_email"];
                 }
             }
             catch (AccountException ex)

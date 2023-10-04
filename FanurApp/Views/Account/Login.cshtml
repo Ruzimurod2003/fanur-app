@@ -1,7 +1,7 @@
 ﻿@model LoginVM
 
 <div class="card-body p-5">
-    <h1 class="fs-4 card-title fw-bold mb-4">Login qilish sahifasi</h1>
+    <h1 class="fs-4 card-title fw-bold mb-4">@Localizer["the_login_page"]</h1>
     <form class="needs-validation" method="post" asp-controller="Account" asp-action="Login"
           novalidate="" autocomplete="off">
         @if (!string.IsNullOrEmpty(Model.ErrorMessage))
@@ -11,40 +11,40 @@
             </div>
         }
         <div class="mb-3">
-            <label class="mb-2 text-muted" for="email">Emailni kiritasan... </label>
+            <label class="mb-2 text-muted" for="email">@Localizer["enter_your_email"]</label>
             <input class="form-control" type="email" asp-for="Email" type="email" required autofocus>
             <div class="invalid-feedback">
-                Email to'g'ri emas
+                @Localizer["email_is_not_like_that"]
             </div>
         </div>
 
         <div class="mb-3">
             <div class="mb-2 w-100">
-                <label class="text-muted" asp-for="Password">Parolni kiritasan...</label>
+                <label class="text-muted" asp-for="Password">@Localizer["enter_your_password"]</label>
                 <a class="float-end" asp-controller="Account" asp-action="Forget">
-                    Parolni bilmaysanmi?
+                    @Localizer["have_you_forgotten_your_password"]
                 </a>
             </div>
             <input class="form-control" asp-for="Password" type="password" required>
             <div class="invalid-feedback">
-                Password to'g'ri emas
+                @Localizer["password_is_not_like_that"]
             </div>
         </div>
 
         <div class="d-flex align-items-center">
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" asp-for="RememberMe">
-                <label class="form-check-label" asp-for="RememberMe">Eslab qolasanmi</label>
+                <label class="form-check-label" asp-for="RememberMe">@Localizer["do_you_remember"]</label>
             </div>
             <button class="btn btn-primary ms-auto" type="submit">
-                Login tugmasi
+                @Localizer["login_button"]
             </button>
         </div>
     </form>
 </div>
 <div class="card-footer py-3 border-0">
     <div class="text-center">
-        Akkounting bormi o'zi?
-        <a class="text-dark" asp-controller="Account" asp-action="Register">Akkountni yaratib ol avval</a>
+        @Localizer["is_there_an_account"]
+        <a class="text-dark" asp-controller="Account" asp-action="Register">@Localizer["to_the_account_registration_page"]</a>
     </div>
 </div>

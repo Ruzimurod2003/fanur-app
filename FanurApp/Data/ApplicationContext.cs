@@ -11,6 +11,8 @@ public class ApplicationContext : DbContext
     public DbSet<Role> Roles { get; set; }
     public DbSet<Course> Courses { get; set; }
     public DbSet<Topic> Topics { get; set; }
+    public DbSet<Culture> Cultures { get; set; }
+    public DbSet<Resource> Resources { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Role>().HasData(
