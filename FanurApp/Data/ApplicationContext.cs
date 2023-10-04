@@ -10,6 +10,7 @@ public class ApplicationContext : DbContext
     public DbSet<User> Users { get; set; }
     public DbSet<Role> Roles { get; set; }
     public DbSet<Course> Courses { get; set; }
+    public DbSet<Topic> Topics { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Role>().HasData(
@@ -51,6 +52,31 @@ public class ApplicationContext : DbContext
                     Password = "parol2003",
                     RoleId = (int)RolesEnum.Teacher
                 }
+            }
+        );
+        modelBuilder.Entity<Topic>().HasData(
+            new List<Topic>
+            {
+                new Topic
+                {
+                    Id = 1,
+                    CourseId = 1,
+                    Name = "Beginner kursiga kirish",
+                    Description = "Bu kurs ingliz tilini o'rganuvchilar uchun",
+                    CreatedDate = DateTime.Now,
+                    UpdatedDate = DateTime.Now,
+                    Author = "Ruzimurod Abdunazarov"
+                },
+                new Topic
+                {
+                    Id = 2,
+                    CourseId = 1,
+                    Name = "'To be' fe'li",
+                    Description = "Bu kurs ingliz tilini o'rganuvchilar uchun",
+                    CreatedDate = DateTime.Now,
+                    UpdatedDate = DateTime.Now,
+                    Author = "Ruzimurod Abdunazarov"
+                },
             }
         );
         modelBuilder.Entity<Course>().HasData(

@@ -4,6 +4,7 @@ using FanurApp.Repositories;
 using FanurApp.ViewModels;
 using FanurApp.ViewModels.Administrator;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FanurApp.Controllers
 {
@@ -21,6 +22,7 @@ namespace FanurApp.Controllers
         {
             return View();
         }
+        #region Courses
         [HttpGet]
         public IActionResult CourseIndex(MessageVM message)
         {
@@ -149,5 +151,165 @@ namespace FanurApp.Controllers
                 });
             }
         }
+        #endregion
+
+        #region Topics
+        [HttpGet]
+        public IActionResult TopicIndex(MessageVM message)
+        {
+            var topics = repository.GetAllTopics();
+            var courses = repository.GetAllCourses();
+
+            var viewModel = new TopicIndexVM()
+            {
+                Topics = topics.Select(i => new TopicVM()
+                {
+                    Id = i.Id,
+                    Author = i.Author,
+                    CourseId = i.CourseId,
+                    CourseName = i.Course.Name,
+                    Name = i.Name,
+                    CreatedDate = i.CreatedDate,
+                    Description = i.Description,
+                    UpdatedDate = i.UpdatedDate,
+                    Courses = courses.Select(i => new SelectListItem()
+                    {
+                        Value = i.Id.ToString(),
+                        Text = i.Name
+                    }).ToList()
+                }).ToList()
+            };
+
+            if (message != null)
+            {
+                viewModel.Message = message;
+            }
+
+            return View(viewModel);
+        }
+        [HttpGet]
+        public IActionResult Topic(int? id)
+        {
+            var viewModel = new TopicVM();
+            var courses = repository.GetAllCourses();
+
+            viewModel.ErrorMessage = new MessageVM
+            {
+                MessageType = (int)MessageTypesEnum.None,
+                MessageText = string.Empty
+            };
+            viewModel.Courses = courses
+                .Select(i => new SelectListItem()
+                {
+                    Value = i.Id.ToString(),
+                    Text = i.Name
+                }).ToList();
+
+            if (id != 0 && id.HasValue)
+            {
+                var topic = repository.GetTopicById(id.Value);
+                viewModel.Id = id.Value;
+                viewModel.Name = topic.Name;
+                viewModel.CourseId = topic.CourseId;
+                viewModel.Description = topic.Description;
+                viewModel.Author = topic.Author;
+                viewModel.CreatedDate = topic.CreatedDate;
+                viewModel.UpdatedDate = topic.UpdatedDate;
+            }
+
+            return View(viewModel);
+        }
+        [HttpPost]
+        public IActionResult Topic(TopicVM viewModel)
+        {
+            var courses = repository.GetAllCourses();
+            viewModel.Courses = courses
+                .Select(i => new SelectListItem()
+                {
+                    Value = i.Id.ToString(),
+                    Text = i.Name
+                }).ToList();
+
+            if (ModelState.IsValid)
+            {
+                if (viewModel.Id != 0)
+                {
+                    var topic = new Topic();
+                    topic.Author = viewModel.Author;
+                    topic.Name = viewModel.Name;
+                    topic.CourseId = viewModel.CourseId;
+                    topic.Description = viewModel.Description;
+                    var resultUpdate = repository.UpdateTopic(viewModel.Id, topic);
+                    if (resultUpdate)
+                    {
+                        return RedirectToAction("TopcIndex", "Administrator", new MessageVM()
+                        {
+                            MessageType = (int)MessageTypesEnum.Success,
+                            MessageText = "Mavzular muvofaqiyatli o'zgartirildi"
+                        });
+                    }
+                    else
+                    {
+                        viewModel.ErrorMessage = new MessageVM
+                        {
+                            MessageType = (int)MessageTypesEnum.Danger,
+                            MessageText = "Mavzuni o'zgartirib bo'lmaydi"
+                        };
+                    }
+                }
+                else
+                {
+                    var topic = new Topic();
+                    topic.Author = viewModel.Author;
+                    topic.Name = viewModel.Name;
+                    topic.CourseId = viewModel.CourseId;
+                    topic.Description = viewModel.Description;
+                    topic.CreatedDate = DateTime.Now;
+                    topic.UpdatedDate = DateTime.Now;
+                    var resultAdd = repository.AddTopic(topic);
+                    if (resultAdd)
+                    {
+                        return RedirectToAction("TopicIndex", "Administrator", new MessageVM()
+                        {
+                            MessageType = (int)MessageTypesEnum.Success,
+                            MessageText = "Mavzular muvofaqiyatli yaratildi"
+                        });
+                    }
+                    else
+                    {
+                        viewModel.ErrorMessage = new MessageVM
+                        {
+                            MessageType = (int)MessageTypesEnum.Danger,
+                            MessageText = "Mavzuni yaratib bo'lmaydi"
+                        };
+                    }
+                }
+            }
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteTopic(int id)
+        {
+            var result = repository.DeleteTopic(id);
+            if (result)
+            {
+                return RedirectToAction("TopicIndex", "Administrator", new MessageVM()
+                {
+                    MessageType = (int)MessageTypesEnum.Success,
+                    MessageText = "Mavzular muvofaqiyatli o'chirildi"
+                });
+            }
+            else
+            {
+
+                return RedirectToAction("TopicIndex", "Administrator", new MessageVM()
+                {
+                    MessageType = (int)MessageTypesEnum.Danger,
+                    MessageText = "Mavzularni o'chirilishi bilan problema bor"
+                });
+            }
+        }
+        #endregion
     }
 }
