@@ -311,5 +311,162 @@ namespace FanurApp.Controllers
             }
         }
         #endregion
+
+
+        #region Resources
+        [HttpGet]
+        public IActionResult ResourceIndex(MessageVM message)
+        {
+            var resources = repository.GetAllResources();
+            var cultures = repository.GetAllCultures();
+
+            var viewModel = new ResourceIndexVM()
+            {
+                Resources = resources.Select(i => new ResourceVM()
+                {
+                    Id = i.Id,
+                    Key = i.Key,
+                    Value = i.Value,
+                    CultureId = i.CultureId,
+                    CultureName = i.Culture.Name,
+                    CreatedDate = i.CreatedDate,
+                    UpdatedDate = i.UpdatedDate,
+                    Cultures = cultures.Select(i => new SelectListItem()
+                    {
+                        Value = i.Id.ToString(),
+                        Text = i.Name
+                    }).ToList()
+                }).ToList()
+            };
+
+            if (message != null)
+            {
+                viewModel.Message = message;
+            }
+
+            return View(viewModel);
+        }
+        [HttpGet]
+        public IActionResult Resource(int? id)
+        {
+            var viewModel = new ResourceVM();
+            var cultures = repository.GetAllCultures();
+
+            viewModel.ErrorMessage = new MessageVM
+            {
+                MessageType = (int)MessageTypesEnum.None,
+                MessageText = string.Empty
+            };
+            viewModel.Cultures = cultures
+                .Select(i => new SelectListItem()
+                {
+                    Value = i.Id.ToString(),
+                    Text = i.Name
+                }).ToList();
+
+            if (id != 0 && id.HasValue)
+            {
+                var resource = repository.GetResourceById(id.Value);
+                viewModel.Id = id.Value;
+                viewModel.Key = resource.Key;
+                viewModel.Value = resource.Value;
+                viewModel.CultureId = resource.CultureId;
+                viewModel.CreatedDate = resource.CreatedDate;
+                viewModel.UpdatedDate = resource.UpdatedDate;
+            }
+
+            return View(viewModel);
+        }
+        [HttpPost]
+        public IActionResult Resource(ResourceVM viewModel)
+        {
+
+            var cultures = repository.GetAllCultures();
+            viewModel.Cultures = cultures
+                .Select(i => new SelectListItem()
+                {
+                    Value = i.Id.ToString(),
+                    Text = i.Name
+                }).ToList();
+
+            if (ModelState.IsValid)
+            {
+                if (viewModel.Id != 0)
+                {
+                    var resource = new Resource();
+                    resource.Key = viewModel.Key;
+                    resource.Value = viewModel.Value;
+                    resource.CultureId = viewModel.CultureId;
+                    var resultUpdate = repository.UpdateResource(viewModel.Id, resource);
+                    if (resultUpdate)
+                    {
+                        return RedirectToAction("ResourceIndex", "Administrator", new MessageVM()
+                        {
+                            MessageType = (int)MessageTypesEnum.Success,
+                            MessageText = "Tillar muvofaqiyatli o'zgartirildi"
+                        });
+                    }
+                    else
+                    {
+                        viewModel.ErrorMessage = new MessageVM
+                        {
+                            MessageType = (int)MessageTypesEnum.Danger,
+                            MessageText = "Tilni o'zgartirib bo'lmaydi"
+                        };
+                    }
+                }
+                else
+                {
+                    var resource = new Resource();
+                    resource.Key = viewModel.Key;
+                    resource.Value = viewModel.Value;
+                    resource.CultureId = viewModel.CultureId;
+                    resource.CreatedDate = DateTime.Now;
+                    resource.UpdatedDate = DateTime.Now;
+                    var resultAdd = repository.AddResource(resource);
+                    if (resultAdd)
+                    {
+                        return RedirectToAction("ResourceIndex", "Administrator", new MessageVM()
+                        {
+                            MessageType = (int)MessageTypesEnum.Success,
+                            MessageText = "Tillar muvofaqiyatli yaratildi"
+                        });
+                    }
+                    else
+                    {
+                        viewModel.ErrorMessage = new MessageVM
+                        {
+                            MessageType = (int)MessageTypesEnum.Danger,
+                            MessageText = "Tilni yaratib bo'lmaydi"
+                        };
+                    }
+                }
+            }
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteResource(int id)
+        {
+            var result = repository.DeleteResource(id);
+            if (result)
+            {
+                return RedirectToAction("ResourceIndex", "Administrator", new MessageVM()
+                {
+                    MessageType = (int)MessageTypesEnum.Success,
+                    MessageText = "Tillar muvofaqiyatli o'chirildi"
+                });
+            }
+            else
+            {
+
+                return RedirectToAction("ResourceIndex", "Administrator", new MessageVM()
+                {
+                    MessageType = (int)MessageTypesEnum.Danger,
+                    MessageText = "Tillar o'chirilishi bilan problema bor"
+                });
+            }
+        }
+        #endregion
     }
 }

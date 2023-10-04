@@ -1,23 +1,21 @@
 ﻿using FanurApp.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FanurApp.ViewModels.Administrator;
-public class TopicVM
+
+public class ResourceVM
 {
     public int Id { get; set; }
     [Required]
-    public string Name { get; set; }
+    public string Key { get; set; }
     [Required]
-    public string Description { get; set; }
+    public string Value { get; set; }
     [Required]
-    public int CourseId { get; set; }
-    public string CourseName { get; set; }
-    public List<SelectListItem> Courses { get; set; }
+    public int CultureId { get; set; }
+    public string CultureName { get; set; }
     public DateTime CreatedDate { get; set; }
     public DateTime UpdatedDate { get; set; }
-    [Required]
-    public string Author { get; set; }
+    public List<SelectListItem> Cultures { get; set; }
     public MessageVM ErrorMessage { get; set; }
 }

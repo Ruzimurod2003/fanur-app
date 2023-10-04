@@ -1,0 +1,34 @@
+﻿@using FanurApp.Enums;
+@model ResourceVM
+
+<form class="needs-validation" method="post" asp-controller="Administrator" asp-action="Resource" novalidate="" autocomplete="off">
+    <partial name="~/Views/PartialComponents/_AlertMessage.cshtml" model="Model.ErrorMessage" />
+    <div class="mb-3">
+        <input class="form-control" asp-for="Id" type="hidden">
+    </div>
+    <div class="mb-3">
+        <label class="mb-2 text-muted" asp-for="CultureId">Qaysi tilda ekanligini kiritasan... </label>
+        <select class="form-select" asp-for="CultureId" asp-items="Model.Cultures" required autofocus>
+        </select>
+        <div class="invalid-feedback">
+            Til nomi to'g'ri emas
+        </div>
+    </div>
+    <div class="mb-3">
+        <label class="mb-2 text-muted" asp-for="Key">Kalitni kiritasan... </label>
+        <input class="form-control" asp-for="Key" type="text" required autofocus>
+        <div class="invalid-feedback">
+            Kalit nomi to'g'ri emas
+        </div>
+    </div>
+    <div class="mb-3">
+        <label class="mb-2 text-muted" asp-for="Value">Qiymatini kiritasan... </label>
+        <input class="form-control" asp-for="Value" type="text" required autofocus>
+        <div class="invalid-feedback">
+            Qiymatini nomi to'g'ri emas
+        </div>
+    </div>
+    <div class="mb-3">
+        <input class="btn btn-primary" type="submit" value="Saqlash" />
+    </div>
+</form>

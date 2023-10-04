@@ -20,6 +20,15 @@ public interface IAdministratorRepository
     bool UpdateTopic(int topicId, Topic newTopic);
     bool DeleteTopic(int topicId);
     #endregion
+
+    #region Resources
+    List<Resource> GetAllResources();
+    List<Culture> GetAllCultures();
+    Resource GetResourceById(int id);
+    bool AddResource(Resource resource);
+    bool UpdateResource(int resourceId, Resource newResource);
+    bool DeleteResource(int resourceId);
+    #endregion
 }
 public class AdministratorRepository : IAdministratorRepository
 {
@@ -181,6 +190,85 @@ public class AdministratorRepository : IAdministratorRepository
             .Where(i => i.Description == topic.Description)
             .Where(i => i.CourseId == topic.CourseId)
             .Any();
+    }
+    #endregion
+
+    #region Resources
+    public List<Resource> GetAllResources()
+    {
+        return context.Resources.Include(i => i.Culture).ToList();
+    }
+
+    public Resource GetResourceById(int id)
+    {
+        var resource = context.Resources.Include(i => i.Culture).FirstOrDefault(i => i.Id == id);
+        return resource;
+    }
+
+    public bool AddResource(Resource resource)
+    {
+        if (IsDublicateResource(resource))
+        {
+            return false;
+        }
+        context.Resources.Add(resource);
+        context.SaveChanges();
+        return true;
+    }
+
+    public bool UpdateResource(int resourceId, Resource newResource)
+    {
+        if (!IsExistResource(resourceId))
+        {
+            return false;
+        }
+        if (IsDublicateResource(newResource))
+        {
+            return false;
+        }
+
+        var resource = context.Resources.Include(i => i.Culture).FirstOrDefault(c => c.Id == resourceId);
+        if (resource != null)
+        {
+            resource.Key = newResource.Key;
+            resource.Value = newResource.Value;
+            resource.CultureId = newResource.CultureId;
+            resource.UpdatedDate = DateTime.Now;
+        }
+        context.SaveChanges();
+        return true;
+    }
+
+    public bool DeleteResource(int resourceId)
+    {
+        if (!IsExistResource(resourceId))
+        {
+            return false;
+        }
+        var resource = context.Resources.Include(i => i.Culture).FirstOrDefault(c => c.Id == resourceId);
+        if (resource != null)
+        {
+            context.Resources.Remove(resource);
+        }
+        context.SaveChanges();
+        return true;
+    }
+    private bool IsExistResource(int resourceId)
+    {
+        return context.Resources.Where(i => i.Id == resourceId).Any();
+    }
+    private bool IsDublicateResource(Resource resource)
+    {
+        return context.Resources
+            .Where(i => i.Key == resource.Key)
+            .Where(i => i.Value == resource.Value)
+            .Where(i => i.CultureId == resource.CultureId)
+            .Any();
+    }
+
+    public List<Culture> GetAllCultures()
+    {
+        return context.Cultures.ToList();
     }
     #endregion
 }
