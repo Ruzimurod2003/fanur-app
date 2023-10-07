@@ -15,7 +15,8 @@
             <th>Muallifi</th>
             <th>Yaratilgan vaqti</th>
             <th>O'zgartirilgan vaqti</th>
-            <th>Harakatlar</th>
+            <th>Tahrirlash</th>
+            <th>O'chirish</th>
         </tr>
     </thead>
     <tbody>
@@ -29,11 +30,17 @@
                 <th>@course.CreatedDate</th>
                 <th>@course.UpdatedDate</th>
                 <th>
-                    <a class="btn btn-info" asp-controller="Administrator" asp-action="Course"
-                       asp-route-id="@course.Id">Tahrirlash</a>
+                    <a class="btn btn-warning" asp-controller="Administrator" asp-action="Course"
+                       asp-route-id="@course.Id">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                </th>
+                <th>
                     <form method="post" asp-controller="Administrator" asp-action="DeleteCourse"
                           asp-route-id="@course.Id">
-                        <input type="submit" value="O'chirish" class="btn btn-danger" />
+                        <button type="submit" class="btn btn-danger">
+                            <i class="bi bi-trash3"></i>
+                        </button>
                     </form>
                 </th>
             </tr>

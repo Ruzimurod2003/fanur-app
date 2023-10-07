@@ -16,7 +16,8 @@
             <th>Muallifi</th>
             <th>Yaratilgan vaqti</th>
             <th>O'zgartirilgan vaqti</th>
-            <th>Harakatlar</th>
+            <th>Tahrirlash</th>
+            <th>O'chirish</th>
         </tr>
     </thead>
     <tbody>
@@ -31,11 +32,17 @@
                 <th>@video.CreatedDate</th>
                 <th>@video.UpdatedDate</th>
                 <th>
-                    <a class="btn btn-info" asp-controller="Administrator" asp-action="Video"
-                       asp-route-id="@video.Id">Tahrirlash</a>
+                    <a class="btn btn-warning" asp-controller="Administrator" asp-action="Video"
+                       asp-route-id="@video.Id">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                </th>
+                <th>
                     <form method="post" asp-controller="Administrator" asp-action="DeleteVideo"
                           asp-route-id="@video.Id">
-                        <input type="submit" value="O'chirish" class="btn btn-danger" />
+                        <button type="submit" class="btn btn-danger">
+                            <i class="bi bi-layout-text-sidebar-reverse"></i>
+                        </button>
                     </form>
                 </th>
             </tr>
