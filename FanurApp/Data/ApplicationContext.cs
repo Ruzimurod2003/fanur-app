@@ -138,7 +138,7 @@ public class ApplicationContext : DbContext
                 {
                     Id = 1,
                     TopicId = 1,
-                    HMTLText = "<p>Hello World, asosiy <b>test</b> </p>",
+                    HMTLText = "<p style=\"color:red;\"> qalesila</p> Hello World, asosiy <b>test</b>",
                     CreatedDate = DateTime.Now,
                     UpdatedDate = DateTime.Now,
                     Author = "Ruzimurod Abdunazarov"
@@ -147,7 +147,7 @@ public class ApplicationContext : DbContext
                 {
                     Id = 2,
                     TopicId = 2,
-                    HMTLText = "<p>Hello World</p>",
+                    HMTLText = "Hello World <i> yana bitta qiyshayadigan narsa </i> <b> yana qalin shifr</b>",
                     CreatedDate = DateTime.Now,
                     UpdatedDate = DateTime.Now,
                     Author = "Ruzimurod Abdunazarov"
