@@ -14,6 +14,7 @@ public class ApplicationContext : DbContext
     public DbSet<Topic> Topics { get; set; }
     public DbSet<Culture> Cultures { get; set; }
     public DbSet<Resource> Resources { get; set; }
+    public DbSet<Definition> Definitions { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Role>().HasData(
@@ -121,9 +122,32 @@ public class ApplicationContext : DbContext
                 new Video
                 {
                     Id = 2,
-                    TopicId = 1,
+                    TopicId = 2,
                     URLName = "https://www.youtube.com/embed/qgInM6FH8Lk?rel=0",
                     Caption = "Bu video ingliz tilini o'rganuvchilar uchun",
+                    CreatedDate = DateTime.Now,
+                    UpdatedDate = DateTime.Now,
+                    Author = "Ruzimurod Abdunazarov"
+                },
+            }
+        );
+        modelBuilder.Entity<Definition>().HasData(
+            new List<Definition>
+            {
+                new Definition
+                {
+                    Id = 1,
+                    TopicId = 1,
+                    HMTLText = "<p>Hello World, asosiy <b>test</b> </p>",
+                    CreatedDate = DateTime.Now,
+                    UpdatedDate = DateTime.Now,
+                    Author = "Ruzimurod Abdunazarov"
+                },
+                new Definition
+                {
+                    Id = 2,
+                    TopicId = 2,
+                    HMTLText = "<p>Hello World</p>",
                     CreatedDate = DateTime.Now,
                     UpdatedDate = DateTime.Now,
                     Author = "Ruzimurod Abdunazarov"

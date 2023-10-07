@@ -1,17 +1,16 @@
 ﻿@using FanurApp.Enums;
-@model VideoIndexVM;
+@model DefinitionIndexVM;
 
 <partial name="~/Views/PartialComponents/_AlertMessage.cshtml" model="Model.Message" />
 
-<a class="btn btn-info" asp-controller="Administrator" asp-action="Video" asp-route-id="0">Yangi videoni yaratish</a>
+<a class="btn btn-info" asp-controller="Administrator" asp-action="Definition" asp-route-id="0">Yangi definitionni yaratish</a>
 
 <table class="table">
     <thead>
         <tr>
             <th>Id</th>
-            <th>Manzili</th>
+            <th>Html ko'rinishi</th>
             <th>Qaysi mavzuga tegishli</th>
-            <th>Captioni</th>
             <th>Muallifi</th>
             <th>Yaratilgan vaqti</th>
             <th>O'zgartirilgan vaqti</th>
@@ -19,21 +18,20 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var video in Model.Videos)
+        @foreach (var definition in Model.Definitions)
         {
             <tr>
-                <th>@video.Id</th>
-                <th>@video.URLName</th>
-                <th>@video.TopicName</th>
-                <th>@video.Caption</th>
-                <th>@video.Author</th>
-                <th>@video.CreatedDate</th>
-                <th>@video.UpdatedDate</th>
+                <th>@definition.Id</th>
+                <th>@definition.HMTLText</th>
+                <th>@definition.TopicName</th>
+                <th>@definition.Author</th>
+                <th>@definition.CreatedDate</th>
+                <th>@definition.UpdatedDate</th>
                 <th>
                     <a class="btn btn-info" asp-controller="Administrator" asp-action="Video"
-                       asp-route-id="@video.Id">Tahrirlash</a>
+                       asp-route-id="@definition.Id">Tahrirlash</a>
                     <form method="post" asp-controller="Administrator" asp-action="DeleteVideo"
-                          asp-route-id="@video.Id">
+                          asp-route-id="@definition.Id">
                         <input type="submit" value="O'chirish" class="btn btn-danger" />
                     </form>
                 </th>

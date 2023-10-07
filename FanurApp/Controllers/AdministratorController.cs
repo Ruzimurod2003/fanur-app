@@ -471,6 +471,161 @@ namespace FanurApp.Controllers
         }
         #endregion
 
+        #region Definitions
+        [HttpGet]
+        public IActionResult DefinitionIndex(MessageVM message)
+        {
+            var definitions = repository.GetAllDefinitions();
+            var topics = repository.GetAllTopics();
+
+            var viewModel = new DefinitionIndexVM()
+            {
+                Definitions = definitions.Select(i => new DefinitionVM()
+                {
+                    Id = i.Id,
+                    Author = i.Author,
+                    TopicId = i.TopicId,
+                    HMTLText = i.HMTLText,
+                    TopicName = i.Topic.Name,
+                    CreatedDate = i.CreatedDate,
+                    UpdatedDate = i.UpdatedDate,
+                    Topics = topics.Select(i => new SelectListItem()
+                    {
+                        Value = i.Id.ToString(),
+                        Text = i.Name
+                    }).ToList()
+                }).ToList()
+            };
+
+            if (message != null)
+            {
+                viewModel.Message = message;
+            }
+
+            return View(viewModel);
+        }
+        [HttpGet]
+        public IActionResult Definition(int? id)
+        {
+            var viewModel = new DefinitionVM();
+            var topics = repository.GetAllTopics();
+
+            viewModel.ErrorMessage = new MessageVM
+            {
+                MessageType = (int)MessageTypesEnum.None,
+                MessageText = string.Empty
+            };
+            viewModel.Topics = topics
+                .Select(i => new SelectListItem()
+                {
+                    Value = i.Id.ToString(),
+                    Text = i.Name
+                }).ToList();
+
+            if (id != 0 && id.HasValue)
+            {
+                var video = repository.GetDefinitionById(id.Value);
+                viewModel.Id = id.Value;
+                viewModel.HMTLText = video.HMTLText;
+                viewModel.TopicId = video.TopicId;
+                viewModel.Author = video.Author;
+                viewModel.CreatedDate = video.CreatedDate;
+                viewModel.UpdatedDate = video.UpdatedDate;
+            }
+
+            return View(viewModel);
+        }
+        [HttpPost]
+        public IActionResult Definition(DefinitionVM viewModel)
+        {
+            var topics = repository.GetAllTopics();
+            viewModel.Topics = topics
+                .Select(i => new SelectListItem()
+                {
+                    Value = i.Id.ToString(),
+                    Text = i.Name
+                }).ToList();
+
+            if (ModelState.IsValid)
+            {
+                if (viewModel.Id != 0)
+                {
+                    var definition = new Definition();
+                    definition.Author = viewModel.Author;
+                    definition.HMTLText = viewModel.HMTLText;
+                    definition.TopicId = viewModel.TopicId;
+                    var resultUpdate = repository.UpdateDefinition(viewModel.Id, definition);
+                    if (resultUpdate)
+                    {
+                        return RedirectToAction("DefinitionIndex", "Administrator", new MessageVM()
+                        {
+                            MessageType = (int)MessageTypesEnum.Success,
+                            MessageText = "Definitionlar muvofaqiyatli o'zgartirildi"
+                        });
+                    }
+                    else
+                    {
+                        viewModel.ErrorMessage = new MessageVM
+                        {
+                            MessageType = (int)MessageTypesEnum.Danger,
+                            MessageText = "Definitionni o'zgartirib bo'lmaydi"
+                        };
+                    }
+                }
+                else
+                {
+                    var definition = new Definition();
+                    definition.Author = viewModel.Author;
+                    definition.HMTLText = viewModel.HMTLText;
+                    definition.TopicId = viewModel.TopicId;
+                    definition.CreatedDate = DateTime.Now;
+                    definition.UpdatedDate = DateTime.Now;
+                    var resultAdd = repository.AddDefinition(definition);
+                    if (resultAdd)
+                    {
+                        return RedirectToAction("DefinitionIndex", "Administrator", new MessageVM()
+                        {
+                            MessageType = (int)MessageTypesEnum.Success,
+                            MessageText = "Definitionlar muvofaqiyatli yaratildi"
+                        });
+                    }
+                    else
+                    {
+                        viewModel.ErrorMessage = new MessageVM
+                        {
+                            MessageType = (int)MessageTypesEnum.Danger,
+                            MessageText = "Definitionni yaratib bo'lmaydi"
+                        };
+                    }
+                }
+            }
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteDefinition(int id)
+        {
+            var result = repository.DeleteDefinition(id);
+            if (result)
+            {
+                return RedirectToAction("DefinitionIndex", "Administrator", new MessageVM()
+                {
+                    MessageType = (int)MessageTypesEnum.Success,
+                    MessageText = "Definition muvofaqiyatli o'chirildi"
+                });
+            }
+            else
+            {
+
+                return RedirectToAction("DefinitionIndex", "Administrator", new MessageVM()
+                {
+                    MessageType = (int)MessageTypesEnum.Danger,
+                    MessageText = "Definitionlarni o'chirilishi bilan problema bor"
+                });
+            }
+        }
+        #endregion
+
         #region Resources
         [HttpGet]
         public IActionResult ResourceIndex(MessageVM message)

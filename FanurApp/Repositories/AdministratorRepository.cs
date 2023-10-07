@@ -29,6 +29,14 @@ public interface IAdministratorRepository
     bool DeleteVideo(int videoId);
     #endregion
 
+    #region Definitions
+    List<Definition> GetAllDefinitions();
+    Definition GetDefinitionById(int id);
+    bool AddDefinition(Definition definition);
+    bool UpdateDefinition(int definitionId, Definition newDefinition);
+    bool DeleteDefinition(int definitionId);
+    #endregion
+
     #region Resources
     List<Resource> GetAllResources();
     List<Culture> GetAllCultures();
@@ -281,6 +289,80 @@ public class AdministratorRepository : IAdministratorRepository
             .Where(i => i.Author == video.Author)
             .Where(i => i.Caption == video.Caption)
             .Where(i => i.TopicId == video.TopicId)
+            .Any();
+    }
+    #endregion
+
+    #region Definitions
+    public List<Definition> GetAllDefinitions()
+    {
+        return context.Definitions.Include(i => i.Topic).ToList();
+    }
+
+    public Definition GetDefinitionById(int id)
+    {
+        var definition = context.Definitions.Include(i => i.Topic).FirstOrDefault(i => i.Id == id);
+        return definition;
+    }
+
+    public bool AddDefinition(Definition definition)
+    {
+        if (IsDublicateDefinition(definition))
+        {
+            return false;
+        }
+        context.Definitions.Add(definition);
+        context.SaveChanges();
+        return true;
+    }
+
+    public bool UpdateDefinition(int definitionId, Definition newDefinition)
+    {
+        if (!IsExistDefinition(definitionId))
+        {
+            return false;
+        }
+        if (IsDublicateDefinition(newDefinition))
+        {
+            return false;
+        }
+
+        var definition = context.Definitions.Include(i => i.Topic).FirstOrDefault(c => c.Id == definitionId);
+        if (definition != null)
+        {
+            definition.Author = newDefinition.Author;
+            definition.TopicId = newDefinition.TopicId;
+            definition.HMTLText = newDefinition.HMTLText;
+            definition.UpdatedDate = DateTime.Now;
+        }
+        context.SaveChanges();
+        return true;
+    }
+
+    public bool DeleteDefinition(int definitionId)
+    {
+        if (!IsExistDefinition(definitionId))
+        {
+            return false;
+        }
+        var definition = context.Definitions.Include(i => i.Topic).FirstOrDefault(c => c.Id == definitionId);
+        if (definition != null)
+        {
+            context.Definitions.Remove(definition);
+        }
+        context.SaveChanges();
+        return true;
+    }
+    private bool IsExistDefinition(int definitionId)
+    {
+        return context.Definitions.Where(i => i.Id == definitionId).Any();
+    }
+    private bool IsDublicateDefinition(Definition definition)
+    {
+        return context.Definitions
+            .Where(i => i.HMTLText == definition.HMTLText)
+            .Where(i => i.Author == definition.Author)
+            .Where(i => i.TopicId == definition.TopicId)
             .Any();
     }
     #endregion
