@@ -312,6 +312,164 @@ namespace FanurApp.Controllers
         }
         #endregion
 
+        #region Videos
+        [HttpGet]
+        public IActionResult VideoIndex(MessageVM message)
+        {
+            var videos = repository.GetAllVideos();
+            var topics = repository.GetAllTopics();
+
+            var viewModel = new VideoIndexVM()
+            {
+                Videos = videos.Select(i => new VideoVM()
+                {
+                    Id = i.Id,
+                    Author = i.Author,
+                    TopicId = i.TopicId,
+                    URLName = i.URLName,
+                    TopicName = i.Topic.Name,
+                    CreatedDate = i.CreatedDate,
+                    Caption = i.Caption,
+                    UpdatedDate = i.UpdatedDate,
+                    Topics = topics.Select(i => new SelectListItem()
+                    {
+                        Value = i.Id.ToString(),
+                        Text = i.Name
+                    }).ToList()
+                }).ToList()
+            };
+
+            if (message != null)
+            {
+                viewModel.Message = message;
+            }
+
+            return View(viewModel);
+        }
+        [HttpGet]
+        public IActionResult Video(int? id)
+        {
+            var viewModel = new VideoVM();
+            var topics = repository.GetAllTopics();
+
+            viewModel.ErrorMessage = new MessageVM
+            {
+                MessageType = (int)MessageTypesEnum.None,
+                MessageText = string.Empty
+            };
+            viewModel.Topics = topics
+                .Select(i => new SelectListItem()
+                {
+                    Value = i.Id.ToString(),
+                    Text = i.Name
+                }).ToList();
+
+            if (id != 0 && id.HasValue)
+            {
+                var video = repository.GetVideoById(id.Value);
+                viewModel.Id = id.Value;
+                viewModel.URLName = video.URLName;
+                viewModel.TopicId = video.TopicId;
+                viewModel.Caption = video.Caption;
+                viewModel.Author = video.Author;
+                viewModel.CreatedDate = video.CreatedDate;
+                viewModel.UpdatedDate = video.UpdatedDate;
+            }
+
+            return View(viewModel);
+        }
+        [HttpPost]
+        public IActionResult Video(VideoVM viewModel)
+        {
+            var topics = repository.GetAllTopics();
+            viewModel.Topics = topics
+                .Select(i => new SelectListItem()
+                {
+                    Value = i.Id.ToString(),
+                    Text = i.Name
+                }).ToList();
+
+            if (ModelState.IsValid)
+            {
+                if (viewModel.Id != 0)
+                {
+                    var video = new Video();
+                    video.Author = viewModel.Author;
+                    video.URLName = viewModel.URLName;
+                    video.TopicId = viewModel.TopicId;
+                    video.Caption = viewModel.Caption;
+                    var resultUpdate = repository.UpdateVideo(viewModel.Id, video);
+                    if (resultUpdate)
+                    {
+                        return RedirectToAction("VideoIndex", "Administrator", new MessageVM()
+                        {
+                            MessageType = (int)MessageTypesEnum.Success,
+                            MessageText = "Videolar muvofaqiyatli o'zgartirildi"
+                        });
+                    }
+                    else
+                    {
+                        viewModel.ErrorMessage = new MessageVM
+                        {
+                            MessageType = (int)MessageTypesEnum.Danger,
+                            MessageText = "Videoni o'zgartirib bo'lmaydi"
+                        };
+                    }
+                }
+                else
+                {
+                    var video = new Video();
+                    video.Author = viewModel.Author;
+                    video.URLName = viewModel.URLName;
+                    video.TopicId = viewModel.TopicId;
+                    video.Caption = viewModel.Caption;
+                    video.CreatedDate = DateTime.Now;
+                    video.UpdatedDate = DateTime.Now;
+                    var resultAdd = repository.AddVideo(video);
+                    if (resultAdd)
+                    {
+                        return RedirectToAction("VideoIndex", "Administrator", new MessageVM()
+                        {
+                            MessageType = (int)MessageTypesEnum.Success,
+                            MessageText = "Videolar muvofaqiyatli yaratildi"
+                        });
+                    }
+                    else
+                    {
+                        viewModel.ErrorMessage = new MessageVM
+                        {
+                            MessageType = (int)MessageTypesEnum.Danger,
+                            MessageText = "Videoni yaratib bo'lmaydi"
+                        };
+                    }
+                }
+            }
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteVideo(int id)
+        {
+            var result = repository.DeleteVideo(id);
+            if (result)
+            {
+                return RedirectToAction("VideoIndex", "Administrator", new MessageVM()
+                {
+                    MessageType = (int)MessageTypesEnum.Success,
+                    MessageText = "Video muvofaqiyatli o'chirildi"
+                });
+            }
+            else
+            {
+
+                return RedirectToAction("TopicIndex", "Administrator", new MessageVM()
+                {
+                    MessageType = (int)MessageTypesEnum.Danger,
+                    MessageText = "Videolarni o'chirilishi bilan problema bor"
+                });
+            }
+        }
+        #endregion
 
         #region Resources
         [HttpGet]

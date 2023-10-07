@@ -1,0 +1,43 @@
+﻿@using FanurApp.Enums;
+@model VideoIndexVM;
+
+<partial name="~/Views/PartialComponents/_AlertMessage.cshtml" model="Model.Message" />
+
+<a class="btn btn-info" asp-controller="Administrator" asp-action="Video" asp-route-id="0">Yangi videoni yaratish</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Manzili</th>
+            <th>Qaysi mavzuga tegishli</th>
+            <th>Captioni</th>
+            <th>Muallifi</th>
+            <th>Yaratilgan vaqti</th>
+            <th>O'zgartirilgan vaqti</th>
+            <th>Harakatlar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var topic in Model.Videos)
+        {
+            <tr>
+                <th>@topic.Id</th>
+                <th>@topic.URLName</th>
+                <th>@topic.TopicName</th>
+                <th>@topic.Caption</th>
+                <th>@topic.Author</th>
+                <th>@topic.CreatedDate</th>
+                <th>@topic.UpdatedDate</th>
+                <th>
+                    <a class="btn btn-info" asp-controller="Administrator" asp-action="Video"
+                       asp-route-id="@topic.Id">Tahrirlash</a>
+                    <form method="post" asp-controller="Administrator" asp-action="DeleteVideo"
+                          asp-route-id="@topic.Id">
+                        <input type="submit" value="O'chirish" class="btn btn-danger" />
+                    </form>
+                </th>
+            </tr>
+        }
+    </tbody>
+</table> 

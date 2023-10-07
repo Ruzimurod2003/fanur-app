@@ -21,6 +21,14 @@ public interface IAdministratorRepository
     bool DeleteTopic(int topicId);
     #endregion
 
+    #region Videos
+    List<Video> GetAllVideos();
+    Video GetVideoById(int id);
+    bool AddVideo(Video video);
+    bool UpdateVideo(int videoId, Video newVideo);
+    bool DeleteVideo(int videoId);
+    #endregion
+
     #region Resources
     List<Resource> GetAllResources();
     List<Culture> GetAllCultures();
@@ -170,6 +178,10 @@ public class AdministratorRepository : IAdministratorRepository
         {
             return false;
         }
+        if (IsExistTopicVideo(topicId))
+        {
+            return false;
+        }
         var topic = context.Topics.Include(i => i.Course).FirstOrDefault(c => c.Id == topicId);
         if (topic != null)
         {
@@ -182,6 +194,10 @@ public class AdministratorRepository : IAdministratorRepository
     {
         return context.Topics.Where(i => i.Id == topicId).Any();
     }
+    private bool IsExistTopicVideo(int topicId)
+    {
+        return context.Videos.Where(i => i.TopicId == topicId).Any();
+    }
     private bool IsDublicateTopic(Topic topic)
     {
         return context.Topics
@@ -189,6 +205,82 @@ public class AdministratorRepository : IAdministratorRepository
             .Where(i => i.Author == topic.Author)
             .Where(i => i.Description == topic.Description)
             .Where(i => i.CourseId == topic.CourseId)
+            .Any();
+    }
+    #endregion
+
+    #region Videos
+    public List<Video> GetAllVideos()
+    {
+        return context.Videos.Include(i => i.Topic).ToList();
+    }
+
+    public Video GetVideoById(int id)
+    {
+        var video = context.Videos.Include(i => i.Topic).FirstOrDefault(i => i.Id == id);
+        return video;
+    }
+
+    public bool AddVideo(Video video)
+    {
+        if (IsDublicateVideo(video))
+        {
+            return false;
+        }
+        context.Videos.Add(video);
+        context.SaveChanges();
+        return true;
+    }
+
+    public bool UpdateVideo(int videoId, Video newVideo)
+    {
+        if (!IsExistVideo(videoId))
+        {
+            return false;
+        }
+        if (IsDublicateVideo(newVideo))
+        {
+            return false;
+        }
+
+        var video = context.Videos.Include(i => i.Topic).FirstOrDefault(c => c.Id == videoId);
+        if (video != null)
+        {
+            video.Author = newVideo.Author;
+            video.TopicId = newVideo.TopicId;
+            video.Caption = newVideo.Caption;
+            video.URLName = newVideo.URLName;
+            video.UpdatedDate = DateTime.Now;
+        }
+        context.SaveChanges();
+        return true;
+    }
+
+    public bool DeleteVideo(int videoId)
+    {
+        if (!IsExistVideo(videoId))
+        {
+            return false;
+        }
+        var video = context.Videos.Include(i => i.Topic).FirstOrDefault(c => c.Id == videoId);
+        if (video != null)
+        {
+            context.Videos.Remove(video);
+        }
+        context.SaveChanges();
+        return true;
+    }
+    private bool IsExistVideo(int videoId)
+    {
+        return context.Videos.Where(i => i.Id == videoId).Any();
+    }
+    private bool IsDublicateVideo(Video video)
+    {
+        return context.Videos
+            .Where(i => i.URLName == video.URLName)
+            .Where(i => i.Author == video.Author)
+            .Where(i => i.Caption == video.Caption)
+            .Where(i => i.TopicId == video.TopicId)
             .Any();
     }
     #endregion

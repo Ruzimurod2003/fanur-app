@@ -9,6 +9,7 @@ public class ApplicationContext : DbContext
     public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options) { }
     public DbSet<User> Users { get; set; }
     public DbSet<Role> Roles { get; set; }
+    public DbSet<Video> Videos { get; set; }
     public DbSet<Course> Courses { get; set; }
     public DbSet<Topic> Topics { get; set; }
     public DbSet<Culture> Cultures { get; set; }
@@ -56,6 +57,29 @@ public class ApplicationContext : DbContext
                 }
             }
         );
+        modelBuilder.Entity<Course>().HasData(
+            new List<Course>
+            {
+                new Course
+                {
+                    Id = 1,
+                    Name = "Beginner kursi",
+                    Description = "Bu kurs ingliz tilini o'rganuvchilar uchun",
+                    CreatedDate = DateTime.Now,
+                    UpdatedDate = DateTime.Now,
+                    Author = "Ruzimurod Abdunazarov"
+                },
+                new Course
+                {
+                    Id = 2,
+                    Name = "Elementary kursi",
+                    Description = "Bu kurs ingliz tilini o'rganuvchilar uchun",
+                    CreatedDate = DateTime.Now,
+                    UpdatedDate = DateTime.Now,
+                    Author = "Ruzimurod Abdunazarov"
+                },
+            }
+        );
         modelBuilder.Entity<Topic>().HasData(
             new List<Topic>
             {
@@ -81,23 +105,25 @@ public class ApplicationContext : DbContext
                 },
             }
         );
-        modelBuilder.Entity<Course>().HasData(
-            new List<Course>
+        modelBuilder.Entity<Video>().HasData(
+            new List<Video>
             {
-                new Course
+                new Video
                 {
                     Id = 1,
-                    Name = "Beginner kursi",
-                    Description = "Bu kurs ingliz tilini o'rganuvchilar uchun",
+                    TopicId = 1,
+                    URLName = "https://www.youtube.com/embed/qgInM6FH8Lk?rel=0",
+                    Caption = "Bu video ingliz tilini o'rganuvchilar uchun",
                     CreatedDate = DateTime.Now,
                     UpdatedDate = DateTime.Now,
                     Author = "Ruzimurod Abdunazarov"
                 },
-                new Course
+                new Video
                 {
                     Id = 2,
-                    Name = "Elementary kursi",
-                    Description = "Bu kurs ingliz tilini o'rganuvchilar uchun",
+                    TopicId = 1,
+                    URLName = "https://www.youtube.com/embed/qgInM6FH8Lk?rel=0",
+                    Caption = "Bu video ingliz tilini o'rganuvchilar uchun",
                     CreatedDate = DateTime.Now,
                     UpdatedDate = DateTime.Now,
                     Author = "Ruzimurod Abdunazarov"
