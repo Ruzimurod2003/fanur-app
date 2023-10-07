@@ -781,5 +781,122 @@ namespace FanurApp.Controllers
             }
         }
         #endregion
+
+        #region Roles
+        [HttpGet]
+        public IActionResult RoleIndex(MessageVM message)
+        {
+            var roles = repository.GetAllRoles();
+
+            var viewModel = new RoleIndexVM()
+            {
+                Roles = roles.Select(i => new RoleVM()
+                {
+                    Id = i.Id,
+                    Name = i.Name,
+                }).ToList()
+            };
+
+            if (message != null)
+            {
+                viewModel.Message = message;
+            }
+
+            return View(viewModel);
+        }
+        [HttpGet]
+        public IActionResult Role(int? id)
+        {
+            var viewModel = new RoleVM();
+            viewModel.ErrorMessage = new MessageVM
+            {
+                MessageType = (int)MessageTypesEnum.None,
+                MessageText = string.Empty
+            };
+            if (id != 0 && id.HasValue)
+            {
+                var role = repository.GetRoleById(id.Value);
+                viewModel.Id = id.Value;
+                viewModel.Name = role.Name;
+            }
+
+            return View(viewModel);
+        }
+        [HttpPost]
+        public IActionResult Role(RoleVM viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                if (viewModel.Id != 0)
+                {
+                    var role = new Role();
+                    role.Name = viewModel.Name;
+                    var resultUpdate = repository.UpdateRole(viewModel.Id, role);
+                    if (resultUpdate)
+                    {
+                        return RedirectToAction("RoleIndex", "Administrator", new MessageVM()
+                        {
+                            MessageType = (int)MessageTypesEnum.Success,
+                            MessageText = "Rollar muvofaqiyatli o'zgartirildi"
+                        });
+                    }
+                    else
+                    {
+                        viewModel.ErrorMessage = new MessageVM
+                        {
+                            MessageType = (int)MessageTypesEnum.Danger,
+                            MessageText = "Rolni o'zgartirib bo'lmaydi"
+                        };
+                    }
+                }
+                else
+                {
+                    var role = new Role();
+                    role.Name = viewModel.Name;
+                    var resultAdd = repository.AddRole(role);
+                    if (resultAdd)
+                    {
+                        return RedirectToAction("RoleIndex", "Administrator", new MessageVM()
+                        {
+                            MessageType = (int)MessageTypesEnum.Success,
+                            MessageText = "Rolelar muvofaqiyatli yaratildi"
+                        });
+                    }
+                    else
+                    {
+                        viewModel.ErrorMessage = new MessageVM
+                        {
+                            MessageType = (int)MessageTypesEnum.Danger,
+                            MessageText = "Roleni yaratib bo'lmaydi"
+                        };
+                    }
+                }
+            }
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteRole(int id)
+        {
+            var result = repository.DeleteRole(id);
+            if (result)
+            {
+                return RedirectToAction("RoleIndex", "Administrator", new MessageVM()
+                {
+                    MessageType = (int)MessageTypesEnum.Success,
+                    MessageText = "Rolelar muvofaqiyatli o'chirildi"
+                });
+            }
+            else
+            {
+
+                return RedirectToAction("RoleIndex", "Administrator", new MessageVM()
+                {
+                    MessageType = (int)MessageTypesEnum.Danger,
+                    MessageText = "Rolelar o'chirilishi bilan problema bor"
+                });
+            }
+        }
+        #endregion
     }
 }

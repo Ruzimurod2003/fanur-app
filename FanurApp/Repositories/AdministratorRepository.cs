@@ -45,6 +45,15 @@ public interface IAdministratorRepository
     bool UpdateResource(int resourceId, Resource newResource);
     bool DeleteResource(int resourceId);
     #endregion
+
+    #region Roles
+    List<Role> GetAllRoles();
+    Role GetRoleById(int id);
+    bool AddRole(Role role);
+    bool UpdateRole(int roleId, Role newRole);
+    bool DeleteRole(int roleId);
+
+    #endregion
 }
 public class AdministratorRepository : IAdministratorRepository
 {
@@ -126,9 +135,9 @@ public class AdministratorRepository : IAdministratorRepository
     private bool IsDublicateCourse(Course course)
     {
         return context.Courses
-            .Where(i => i.Name == course.Name)
-            .Where(i => i.Author == course.Author)
-            .Where(i => i.Description == course.Description)
+            .Where(i => i.Name.ToLower() == course.Name.ToLower())
+            .Where(i => i.Author.ToLower() == course.Author.ToLower())
+            .Where(i => i.Description.ToLower() == course.Description.ToLower())
             .Any();
     }
     #endregion
@@ -209,9 +218,9 @@ public class AdministratorRepository : IAdministratorRepository
     private bool IsDublicateTopic(Topic topic)
     {
         return context.Topics
-            .Where(i => i.Name == topic.Name)
-            .Where(i => i.Author == topic.Author)
-            .Where(i => i.Description == topic.Description)
+            .Where(i => i.Name.ToLower() == topic.Name.ToLower())
+            .Where(i => i.Author.ToLower() == topic.Author.ToLower())
+            .Where(i => i.Description.ToLower() == topic.Description.ToLower())
             .Where(i => i.CourseId == topic.CourseId)
             .Any();
     }
@@ -285,9 +294,9 @@ public class AdministratorRepository : IAdministratorRepository
     private bool IsDublicateVideo(Video video)
     {
         return context.Videos
-            .Where(i => i.URLName == video.URLName)
-            .Where(i => i.Author == video.Author)
-            .Where(i => i.Caption == video.Caption)
+            .Where(i => i.URLName.ToLower() == video.URLName.ToLower())
+            .Where(i => i.Author.ToLower() == video.Author.ToLower())
+            .Where(i => i.Caption.ToLower() == video.Caption.ToLower())
             .Where(i => i.TopicId == video.TopicId)
             .Any();
     }
@@ -360,8 +369,8 @@ public class AdministratorRepository : IAdministratorRepository
     private bool IsDublicateDefinition(Definition definition)
     {
         return context.Definitions
-            .Where(i => i.HMTLText == definition.HMTLText)
-            .Where(i => i.Author == definition.Author)
+            .Where(i => i.HMTLText.ToLower() == definition.HMTLText.ToLower())
+            .Where(i => i.Author.ToLower() == definition.Author.ToLower())
             .Where(i => i.TopicId == definition.TopicId)
             .Any();
     }
@@ -434,8 +443,8 @@ public class AdministratorRepository : IAdministratorRepository
     private bool IsDublicateResource(Resource resource)
     {
         return context.Resources
-            .Where(i => i.Key == resource.Key)
-            .Where(i => i.Value == resource.Value)
+            .Where(i => i.Key.ToLower() == resource.Key.ToLower())
+            .Where(i => i.Value.ToLower() == resource.Value.ToLower())
             .Where(i => i.CultureId == resource.CultureId)
             .Any();
     }
@@ -443,6 +452,78 @@ public class AdministratorRepository : IAdministratorRepository
     public List<Culture> GetAllCultures()
     {
         return context.Cultures.ToList();
+    }
+    #endregion
+
+    #region Roles
+    public List<Role> GetAllRoles()
+    {
+        return context.Roles.ToList();
+    }
+
+    public Role GetRoleById(int id)
+    {
+        return context.Roles.FirstOrDefault(r => r.Id == id);
+    }
+
+    public bool AddRole(Role role)
+    {
+        if (IsDublicateRole(role))
+        {
+            return false;
+        }
+        context.Roles.Add(role);
+        context.SaveChanges();
+        return true;
+    }
+
+    public bool UpdateRole(int roleId, Role newRole)
+    {
+        if (!IsExistRole(roleId))
+        {
+            return false;
+        }
+        if (IsDublicateRole(newRole))
+        {
+            return false;
+        }
+
+        var role = context.Roles.FirstOrDefault(c => c.Id == roleId);
+        if (role != null)
+        {
+            role.Name = newRole.Name;
+        }
+        context.SaveChanges();
+        return true;
+    }
+
+    public bool DeleteRole(int roleId)
+    {
+        if (!IsExistRole(roleId) || IsExistRoleUser(roleId))
+        {
+            return false;
+        }
+        var course = context.Courses.FirstOrDefault(c => c.Id == roleId);
+        if (course != null)
+        {
+            context.Courses.Remove(course);
+        }
+        context.SaveChanges();
+        return true;
+    }
+    private bool IsExistRoleUser(int roleId)
+    {
+        return context.Users.Where(i => i.RoleId == roleId).Any();
+    }
+    private bool IsExistRole(int roleId)
+    {
+        return context.Roles.Where(i => i.Id == roleId).Any();
+    }
+    private bool IsDublicateRole(Role course)
+    {
+        return context.Roles
+            .Where(i => i.Name.ToLower() == course.Name.ToLower())
+            .Any();
     }
     #endregion
 }
