@@ -1,5 +1,4 @@
-﻿@using FanurApp.Enums;
-@model ResourceVM
+﻿@model ResourceVM
 
 <form class="needs-validation" method="post" asp-controller="Administrator" asp-action="Resource" novalidate="" autocomplete="off">
     <partial name="~/Views/PartialComponents/_AlertMessage.cshtml" model="Model.ErrorMessage" />
@@ -8,7 +7,7 @@
     </div>
     <div class="mb-3">
         <label class="mb-2 text-muted" asp-for="CultureId">Qaysi tilda ekanligini kiritasan... </label>
-        <select class="form-select" asp-for="CultureId" asp-items="Model.Cultures" required autofocus>
+        <select class="form-select" asp-for="CultureId" asp-items="Model.Cultures.Select(i=>new SelectListItem(){Value = i.Id.ToString(), Text = i.Name})" required autofocus>
         </select>
         <div class="invalid-feedback">
             Til nomi to'g'ri emas

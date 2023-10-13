@@ -1,18 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace FanurApp.ViewModels.Administrator;
-public class VideoVM
+public class DefinitionVM
 {
     public int Id { get; set; }
     [Required]
-    public string URLName { get; set; }
-    [Required]
-    public string Caption { get; set; }
+    public string HMTLText { get; set; }
     [Required]
     public int TopicId { get; set; }
     public string TopicName { get; set; }
-    public List<SelectListItem> Topics { get; set; }
+    public List<TopicVM> Topics { get; set; }
     public DateTime CreatedDate { get; set; }
     public DateTime UpdatedDate { get; set; }
     [Required]

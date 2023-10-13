@@ -1,12 +1,10 @@
-﻿using FanurApp.Enums;
-using FanurApp.Models;
+﻿using FanurApp.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace FanurApp.Data;
 
 public class ApplicationContext : DbContext
 {
-    public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options) { }
     public DbSet<User> Users { get; set; }
     public DbSet<Role> Roles { get; set; }
     public DbSet<Video> Videos { get; set; }
@@ -46,7 +44,7 @@ public class ApplicationContext : DbContext
                     Email = "ruzimurodabdunazarov2003@mail.ru",
                     Name = "Ruzimurod Abdunazarov",
                     Password = "parol2003",
-                    RoleId = (int)RolesEnum.Administrator
+                    RoleId = 1
                 },
                 new User
                 {
@@ -54,7 +52,7 @@ public class ApplicationContext : DbContext
                     Email = "eldoraxmedov2003@mail.ru",
                     Name = "Eldorbek Axmedov",
                     Password = "parol2003",
-                    RoleId = (int)RolesEnum.Teacher
+                    RoleId = 2
                 }
             }
         );
@@ -154,5 +152,9 @@ public class ApplicationContext : DbContext
                 },
             }
         );
+    }
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.UseSqlite("Data Source = FanurDB.db");
     }
 }

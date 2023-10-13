@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using System.Globalization;
 
-namespace FanurApp.Configurations;
+namespace FanurApp.Localizers;
 
 public class EFStringLocalizer : IStringLocalizer
 {

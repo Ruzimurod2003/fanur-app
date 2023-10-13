@@ -1,6 +1,4 @@
-﻿using FanurApp.Models;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace FanurApp.ViewModels.Administrator;
 
@@ -16,6 +14,6 @@ public class ResourceVM
     public string CultureName { get; set; }
     public DateTime CreatedDate { get; set; }
     public DateTime UpdatedDate { get; set; }
-    public List<SelectListItem> Cultures { get; set; }
+    public List<CultureVM> Cultures { get; set; }
     public MessageVM ErrorMessage { get; set; }
 }

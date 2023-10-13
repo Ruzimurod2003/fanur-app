@@ -1,5 +1,4 @@
-﻿using FanurApp.Exceptions;
-using FanurApp.Repositories;
+﻿using FanurApp.Repositories;
 using FanurApp.ViewModels.Account;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
@@ -25,17 +24,13 @@ namespace FanurApp.Controllers
         [HttpPost]
         public IActionResult Register(RegisterVM viewModel)
         {
-            try
+            if (ModelState.IsValid)
             {
                 var result = repository.RegisterUser(viewModel);
                 if (result != null)
                 {
                     return RedirectToAction("Index", "Home", null);
                 }
-            }
-            catch (AccountException ex)
-            {
-                Console.WriteLine(ex.Message);
                 viewModel.ErrorMessage = localizer["this_user_is_already_registered"];
             }
             return View(viewModel);
@@ -49,22 +44,15 @@ namespace FanurApp.Controllers
         [HttpPost]
         public IActionResult Login(LoginVM viewModel)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    var result = repository.LoginUser(viewModel);
+                var result = repository.LoginUser(viewModel);
 
-                    if (result != null)
-                    {
-                        return RedirectToAction("Index", "Home", null);
-                    }
-                    viewModel.ErrorMessage = localizer["you_entered_the_wrong_password_or_email"];
+                if (result != null)
+                {
+                    return RedirectToAction("Index", "Home", null);
                 }
-            }
-            catch (AccountException ex)
-            {
-                Console.WriteLine(ex.Message);
+                viewModel.ErrorMessage = localizer["you_entered_the_wrong_password_or_email"];
             }
             return View(viewModel);
         }

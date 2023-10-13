@@ -1,8 +1,7 @@
-using FanurApp.Configurations;
 using FanurApp.Data;
+using FanurApp.Localizers;
 using FanurApp.Repositories;
 using Microsoft.AspNetCore.Localization;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using System.Globalization;
 
@@ -10,8 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddTransient<IStringLocalizer, EFStringLocalizer>();
 
-builder.Services.AddSingleton<IStringLocalizerFactory>(new EFStringLocalizerFactory(
-    builder.Configuration.GetConnectionString("FanurConnection")));
+builder.Services.AddSingleton<IStringLocalizerFactory>(new EFStringLocalizerFactory());
 
 builder.Services.AddControllersWithViews().AddDataAnnotationsLocalization(options =>
 {
@@ -20,8 +18,7 @@ builder.Services.AddControllersWithViews().AddDataAnnotationsLocalization(option
 })
 .AddViewLocalization().AddRazorRuntimeCompilation();
 
-builder.Services.AddDbContext<ApplicationContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("FanurConnection")));
+builder.Services.AddDbContext<ApplicationContext>();
 
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 

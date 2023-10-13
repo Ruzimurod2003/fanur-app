@@ -1,5 +1,4 @@
-﻿@using FanurApp.Enums;
-@model TopicVM
+﻿@model TopicVM
 
 <form class="needs-validation" method="post" asp-controller="Administrator" asp-action="Topic" novalidate="" autocomplete="off">
     <partial name="~/Views/PartialComponents/_AlertMessage.cshtml" model="Model.ErrorMessage" />
@@ -8,7 +7,7 @@
     </div>
     <div class="mb-3">
         <label class="mb-2 text-muted" asp-for="CourseId">Kursni nomini kiritasan... </label>
-        <select class="form-select" asp-for="CourseId" asp-items="Model.Courses" required autofocus>
+        <select class="form-select" asp-for="CourseId" asp-items="Model.Courses.Select(i=>new SelectListItem(){Value = i.Id.ToString(), Text = i.Name})" required autofocus>
         </select>
         <div class="invalid-feedback">
             Kurs nomi to'g'ri emas

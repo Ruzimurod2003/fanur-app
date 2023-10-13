@@ -1,7 +1,4 @@
-﻿using FanurApp.Models;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace FanurApp.ViewModels.Administrator;
 public class TopicVM
@@ -14,7 +11,7 @@ public class TopicVM
     [Required]
     public int CourseId { get; set; }
     public string CourseName { get; set; }
-    public List<SelectListItem> Courses { get; set; }
+    public List<CourseVM> Courses { get; set; }
     public DateTime CreatedDate { get; set; }
     public DateTime UpdatedDate { get; set; }
     [Required]

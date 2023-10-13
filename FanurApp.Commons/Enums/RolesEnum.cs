@@ -1,4 +1,4 @@
-﻿namespace FanurApp.Enums;
+﻿namespace FanurApp.Commons.Enums;
 public enum RolesEnum
 {
     None = 0, 

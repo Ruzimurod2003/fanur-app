@@ -82,6 +82,9 @@ public class AdministratorRepository : IAdministratorRepository
         {
             return false;
         }
+        course.CreatedDate = DateTime.Now;
+        course.UpdatedDate = DateTime.Now;
+
         context.Courses.Add(course);
         context.SaveChanges();
         return true;
@@ -160,6 +163,9 @@ public class AdministratorRepository : IAdministratorRepository
         {
             return false;
         }
+        topic.CreatedDate = DateTime.Now;
+        topic.UpdatedDate = DateTime.Now;
+
         context.Topics.Add(topic);
         context.SaveChanges();
         return true;
@@ -244,6 +250,9 @@ public class AdministratorRepository : IAdministratorRepository
         {
             return false;
         }
+        video.CreatedDate = DateTime.Now;
+        video.UpdatedDate = DateTime.Now;
+
         context.Videos.Add(video);
         context.SaveChanges();
         return true;
@@ -320,6 +329,9 @@ public class AdministratorRepository : IAdministratorRepository
         {
             return false;
         }
+        definition.CreatedDate = DateTime.Now;
+        definition.UpdatedDate = DateTime.Now;
+
         context.Definitions.Add(definition);
         context.SaveChanges();
         return true;
@@ -394,6 +406,9 @@ public class AdministratorRepository : IAdministratorRepository
         {
             return false;
         }
+        resource.CreatedDate = DateTime.Now;
+        resource.UpdatedDate = DateTime.Now;
+
         context.Resources.Add(resource);
         context.SaveChanges();
         return true;

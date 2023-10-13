@@ -3,16 +3,10 @@ using FanurApp.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 
-namespace FanurApp.Configurations;
+namespace FanurApp.Localizers;
 
 public class EFStringLocalizerFactory : IStringLocalizerFactory
 {
-    string _connectionString;
-    public EFStringLocalizerFactory(string connection)
-    {
-        _connectionString = connection;
-    }
-
     public IStringLocalizer Create(Type resourceSource)
     {
         return CreateStringLocalizer();
@@ -25,10 +19,7 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
 
     private IStringLocalizer CreateStringLocalizer()
     {
-        ApplicationContext _db = new ApplicationContext(
-            new DbContextOptionsBuilder<ApplicationContext>()
-                .UseSqlite(_connectionString)
-                .Options);
+        ApplicationContext _db = new ApplicationContext();
         
         // инициализация базы данных
         if (!_db.Cultures.Any())
