@@ -217,7 +217,7 @@ namespace FanurApp.Controllers
                 var configCourseVM = new MapperConfiguration(cfg => cfg.CreateMap<Course, CourseVM>());
                 var mapperCourseVM = new Mapper(configCourseVM);
 
-                var configTopicVM = new MapperConfiguration(cfg => cfg.CreateMap<TopicVM, Topic>());
+                var configTopicVM = new MapperConfiguration(cfg => cfg.CreateMap<Topic, TopicVM>());
                 var mapperTopicVM = new Mapper(configCourseVM);
 
                 viewModel.Courses = courses.Select(i => mapperCourseVM.Map<CourseVM>(i)).ToList();

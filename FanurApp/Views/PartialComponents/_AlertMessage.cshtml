@@ -5,30 +5,49 @@
 {
     if (Model.MessageType == (int)MessageTypesEnum.None)
     {
-        
+
     }
     else if (Model.MessageType == (int)MessageTypesEnum.Danger)
     {
+        <div class="flex items-center p-3.5 rounded text-danger bg-danger-light dark:bg-danger-dark-light">
+            <span class="ltr:pr-2 rtl:pl-2">
+                <strong class="ltr:mr-1 rtl:ml-1">
+                    @Model.MessageText
+                </strong>
+            </span>
+        </div>
         <div class="alert alert-danger" role="alert">
             @Model.MessageText
         </div>
     }
     else if (Model.MessageType == (int)MessageTypesEnum.Success)
     {
-        <div class="alert alert-success" role="alert">
-            @Model.MessageText
+        <div class="flex items-center p-3.5 rounded text-success bg-success-light dark:bg-success-dark-light">
+            <span class="ltr:pr-2 rtl:pl-2">
+                <strong class="ltr:mr-1 rtl:ml-1">
+                    @Model.MessageText
+                </strong>
+            </span>
         </div>
     }
     else if (Model.MessageType == (int)MessageTypesEnum.Information)
     {
-        <div class="alert alert-info" role="alert">
-            @Model.MessageText
+        <div class="flex items-center p-3.5 rounded text-info bg-info-light dark:bg-info-dark-light">
+            <span class="ltr:pr-2 rtl:pl-2">
+                <strong class="ltr:mr-1 rtl:ml-1">
+                    @Model.MessageText
+                </strong>
+            </span>
         </div>
     }
     else if (Model.MessageType == (int)MessageTypesEnum.Warning)
     {
-        <div class="alert alert-warning" role="alert">
-            @Model.MessageText
+        <div class="flex items-center p-3.5 rounded text-warning bg-warning-light dark:bg-warning-dark-light">
+            <span class="ltr:pr-2 rtl:pl-2">
+                <strong class="ltr:mr-1 rtl:ml-1">
+                    @Model.MessageText
+                </strong>
+            </span>
         </div>
     }
 }

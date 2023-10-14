@@ -1,38 +1,30 @@
 ﻿@model TopicVM
 
-<form class="needs-validation" method="post" asp-controller="Administrator" asp-action="Topic" novalidate="" autocomplete="off">
+<form class="space-y-5" method="post" asp-controller="Administrator" asp-action="Topic">
     <partial name="~/Views/PartialComponents/_AlertMessage.cshtml" model="Model.ErrorMessage" />
     <div class="mb-3">
-        <input class="form-control" asp-for="Id" type="hidden">
+        <input class="form-input" asp-for="Id" type="hidden">
     </div>
     <div class="mb-3">
         <label class="mb-2 text-muted" asp-for="CourseId">Kursni nomini kiritasan... </label>
-        <select class="form-select" asp-for="CourseId" asp-items="Model.Courses.Select(i=>new SelectListItem(){Value = i.Id.ToString(), Text = i.Name})" required autofocus>
+        <select class="form-select" asp-for="CourseId" asp-items="Model.Courses.Select(i=>new SelectListItem(){Value = i.Id.ToString(), Text = i.Name})">
         </select>
-        <div class="invalid-feedback">
-            Kurs nomi to'g'ri emas
-        </div>
+        <span class="text-danger" asp-validation-for="CourseId"></span>
     </div>
     <div class="mb-3">
         <label class="mb-2 text-muted" asp-for="Name">Mavzuni nomini kiritasan... </label>
-        <input class="form-control" asp-for="Name" type="text" required autofocus>
-        <div class="invalid-feedback">
-            Mavzu nomi to'g'ri emas
-        </div>
+        <input class="form-input" asp-for="Name" type="text">
+        <span class="text-danger" asp-validation-for="Name"></span>
     </div>
     <div class="mb-3">
         <label class="mb-2 text-muted" asp-for="Author">Muallifni nomini kiritasan... </label>
-        <input class="form-control" asp-for="Author" type="text" required autofocus>
-        <div class="invalid-feedback">
-            Muallif nomi to'g'ri emas
-        </div>
+        <input class="form-input" asp-for="Author" type="text">
+        <span class="text-danger" asp-validation-for="Author"></span>
     </div>
     <div class="mb-3">
         <label class="mb-2 text-muted" asp-for="Description">Nima uchun bu kursni o'rganish kere?</label>
-        <input class="form-control" asp-for="Description" type="text" required autofocus>
-        <div class="invalid-feedback">
-            Nima uchun bu kursni o'rganish kere
-        </div>
+        <input class="form-input" asp-for="Description" type="text">
+        <span class="text-danger" asp-validation-for="Description"></span>
     </div>
     <div class="mb-3">
         <input class="btn btn-primary" type="submit" value="Saqlash" />
