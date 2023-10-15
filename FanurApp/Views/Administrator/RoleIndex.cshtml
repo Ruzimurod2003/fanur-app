@@ -2,8 +2,10 @@
 
 <partial name="~/Views/PartialComponents/_AlertMessage.cshtml" model="Model.Message" />
 
-<a class="btn btn-info" asp-controller="Administrator" asp-action="Role" asp-route-id="0">Yangi role yaratish</a>
-<a class="btn btn-success" asp-controller="Administrator" asp-action="RoleIndex">Sahifani yangilash</a>
+<div class="mb-5 flex items-center gap-2">
+    <a class="btn btn-info" asp-controller="Administrator" asp-action="Role" asp-route-id="0">Yangi role yaratish</a>
+    <a class="btn btn-success" asp-controller="Administrator" asp-action="RoleIndex">Sahifani yangilash</a>
+</div>
 
 <table class="table">
     <thead>

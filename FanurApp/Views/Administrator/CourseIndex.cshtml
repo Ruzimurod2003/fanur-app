@@ -2,8 +2,10 @@
 
 <partial name="~/Views/PartialComponents/_AlertMessage.cshtml" model="Model.Message" />
 
-<a class="btn btn-info" asp-controller="Administrator" asp-action="Course" asp-route-id="0">Yangi kurs yaratish</a>
-<a class="btn btn-success" asp-controller="Administrator" asp-action="CourseIndex">Sahifani yangilash</a>
+<div class="mb-5 flex items-center gap-2">
+    <a class="btn btn-info gap-2" asp-controller="Administrator" asp-action="Course" asp-route-id="0">Yangi kurs yaratish</a>
+    <a class="btn btn-success gap-2" asp-controller="Administrator" asp-action="CourseIndex">Sahifani yangilash</a>
+</div>
 
 <table class="table">
     <thead>
@@ -29,14 +31,12 @@
                 <th>@course.CreatedDate</th>
                 <th>@course.UpdatedDate</th>
                 <th>
-                    <a class="btn btn-warning" asp-controller="Administrator" asp-action="Course"
-                       asp-route-id="@course.Id">
+                    <a class="btn btn-warning" asp-controller="Administrator" asp-action="Course" asp-route-id="@course.Id">
                         <i class="bi bi-pencil-square"></i>
                     </a>
                 </th>
                 <th>
-                    <form method="post" asp-controller="Administrator" asp-action="DeleteCourse"
-                          asp-route-id="@course.Id">
+                    <form method="post" asp-controller="Administrator" asp-action="DeleteCourse" asp-route-id="@course.Id">
                         <button type="submit" class="btn btn-danger">
                             <i class="bi bi-trash3"></i>
                         </button>
@@ -45,4 +45,4 @@
             </tr>
         }
     </tbody>
-</table> 
+</table>
