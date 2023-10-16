@@ -162,6 +162,41 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                             Value = "USER SETTINGS",
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "language_settings",
+                            Value = "Language settings",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "additional_settings",
+                            Value = "Additional settings",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "access_denied",
+                            Value = "Access denied",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "you_dont_have_permission_to_view_this_site",
+                            Value = "You dont have permission to view this site",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "go_to_home",
+                            Value = "Go to home",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
                         }
                     }
                 },
@@ -302,6 +337,41 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                             Value = "ПОЛЬЗОВАТЕЛЬСКИЕ НАСТРОЙКИ",
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "language_settings",
+                            Value = "Языковые настройки",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "additional_settings",
+                            Value = "Дополнительные настройки",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "access_denied",
+                            Value = "Доступ запрещен",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "you_dont_have_permission_to_view_this_site",
+                            Value = "У вас нет разрешения на просмотр этого сайта",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "go_to_home",
+                            Value = "Иди домой",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
                         }
                     }
                 },
@@ -440,6 +510,41 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                         {
                             Key = "user_settings",
                             Value = "FOYDALANUVCHI SOZLAMALARI",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "language_settings",
+                            Value = "Til sozlamalari",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "additional_settings",
+                            Value = "Additional settings",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "access_denied",
+                            Value = "Ruxsat berilmadi",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "you_dont_have_permission_to_view_this_site",
+                            Value = "Sizda bu saytni ko'rish uchun ruxsat yo'q",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "go_to_home",
+                            Value = "Bosh sahifaga qaytish",
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         }

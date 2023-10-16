@@ -3,7 +3,6 @@
 @using Microsoft.AspNetCore.Mvc.Localization
 @using Microsoft.Extensions.Options
 
-@inject IViewLocalizer Localizer
 @inject IOptions<RequestLocalizationOptions> LocOptions
 
 @{    
@@ -110,7 +109,7 @@
                         x-data="{ activeDropdown: 'dashboard' }">
 
                         <h2 class="-mx-4 mb-1 flex items-center bg-white-light/30 px-7 py-3 font-extrabold uppercase dark:bg-dark dark:bg-opacity-[0.08]">
-                            <span>Kurslarning sozlamalari</span>
+                            <span>@Localizer["course_settings"]</span>
                         </h2>
 
                         <li class="nav-item">
@@ -119,7 +118,7 @@
                                     <a class="group" asp-controller="Administrator" asp-action="CourseIndex">
                                         <div class="flex items-center">
                                             <span class="me-2"><i class="bi bi-book"></i></span>
-                                            <span class="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">Kurslar</span>
+                                            <span class="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">@Localizer["courses"]</span>
                                         </div>
                                     </a>
                                 </li>
@@ -127,7 +126,7 @@
                                     <a class="group" asp-controller="Administrator" asp-action="TopicIndex">
                                         <div class="flex items-center">
                                             <span class="me-2"><i class="bi bi-journals"></i></span>
-                                            <span class="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">Mavzular</span>
+                                            <span class="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">@Localizer["topics"]</span>
                                         </div>
                                     </a>
                                 </li>
@@ -143,7 +142,7 @@
                                     <a class="group" asp-action="VideoIndex" asp-controller="Administrator">
                                         <div class="flex items-center">
                                             <span class="me-2"><i class="bi bi-camera-video"></i></span>
-                                            <span class="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">Videolar</span>
+                                            <span class="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">@Localizer["videos"]</span>
                                         </div>
                                     </a>
                                 </li>
@@ -151,7 +150,7 @@
                                     <a class="group" asp-action="DefinitionIndex" asp-controller="Administrator">
                                         <div class="flex items-center">
                                             <span class="me-2"><i class="bi bi-textarea"></i></span>
-                                            <span class="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">Tafsilotlar</span>
+                                            <span class="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">@Localizer["descriptions"]</span>
                                         </div>
                                     </a>
                                 </li>
@@ -159,7 +158,7 @@
                         </li>
 
                         <h2 class="-mx-4 mb-1 flex items-center bg-white-light/30 px-7 py-3 font-extrabold uppercase dark:bg-dark dark:bg-opacity-[0.08]">
-                            <span>Foydalanuvchi sozlamalari</span>
+                            <span>@Localizer["user_settings"]</span>
                         </h2>
 
                         <li class="nav-item">
@@ -184,7 +183,7 @@
                                     <a class="group" asp-action="RoleIndex" asp-controller="Administrator">
                                         <div class="flex items-center">
                                             <span class="me-2"><i class="bi bi-list-task"></i></span>
-                                            <span class="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">Rollar</span>
+                                            <span class="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">@Localizer["roles"]</span>
                                         </div>
                                     </a>
                                 </li>
@@ -200,7 +199,7 @@
                         </li>
 
                         <h2 class="-mx-4 mb-1 flex items-center bg-white-light/30 px-7 py-3 font-extrabold uppercase dark:bg-dark dark:bg-opacity-[0.08]">
-                            <span>Qo'shimcha sozlamalar</span>
+                            <span>@Localizer["additional_settings"]</span>
                         </h2>
 
                         <li class="nav-item">
@@ -225,7 +224,7 @@
                                     <a class="group" asp-action="ResourceIndex" asp-controller="Administrator">
                                         <div class="flex items-center">
                                             <span class="me-2"><i class="bi bi-list-task"></i></span>
-                                            <span class="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">Til sozlamalari</span>
+                                            <span class="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">@Localizer["language_settings"]</span>
                                         </div>
                                     </a>
                                 </li>
