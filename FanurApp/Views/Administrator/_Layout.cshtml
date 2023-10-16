@@ -1,4 +1,20 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
+
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+
+@{    
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    
+    var cultureItems = LocOptions.Value.SupportedUICultures
+        .Select(c => new SelectListItem { Value = c.Name, Text = c.NativeName })
+        .ToList();
+}
+
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
 
 <head>
@@ -311,7 +327,7 @@
                                 <a href="javascript:;"
                                    class="block rounded-full bg-white-light/40 p-2 hover:bg-white-light/90 hover:text-primary dark:bg-dark/40 dark:hover:bg-dark/60"
                                    @@click="toggle">
-                                    <img :src="`/lib/tailwind/assets/images/flags/${$store.app.locale.toUpperCase()}.svg`"
+                                    <img :src="`/lib/tailwind/assets/images/flags/@{@requestCulture.RequestCulture.Culture.Name}.svg`"
                                          alt="image"
                                          class="h-5 w-5 rounded-full object-cover" />
                                 </a>
@@ -320,19 +336,36 @@
                                     x-transition
                                     x-transition.duration.300ms
                                     class="top-11 grid w-[280px] grid-cols-1 gap-y-2 !px-2 font-semibold text-dark ltr:-right-14 rtl:-left-14 dark:text-white-dark dark:text-white-light/90 sm:ltr:-right-2 sm:rtl:-left-2">
-                                    <template x-for="item in languages">
-                                        <li>
-                                            <a href="javascript:;"
-                                               class="hover:text-primary"
-                                               @@click="$store.app.toggleLocale(item.value),toggle()"
-                                               :class="{'bg-primary/10 text-primary' : $store.app.locale == item.value}">
-                                                <img class="h-5 w-5 rounded-full object-cover"
-                                                     :src="`/lib/tailwind/assets/images/flags/${item.value.toUpperCase()}.svg`"
-                                                     alt="image" />
-                                                <span class="ltr:ml-3 rtl:mr-3" x-text="item.key"></span>
-                                            </a>
-                                        </li>
-                                    </template>
+                                    <li>
+                                        <a class="hover:text-primary @(@requestCulture.RequestCulture.Culture.Name == "uz" ? "bg-primary/10 text-primary" : "")"
+                                           asp-action="SetLanguage" asp-controller="Home"
+                                           asp-route-returnurl="@Context.Request.Path" asp-route-culture="uz">
+                                            <img class="h-5 w-5 rounded-full object-cover"
+                                                 :src="`/lib/tailwind/assets/images/flags/uz.svg`"
+                                                 alt="image" />
+                                            <span class="ltr:ml-3 rtl:mr-3">O'zbekcha</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="hover:text-primary @(@requestCulture.RequestCulture.Culture.Name == "ru" ? "bg-primary/10 text-primary" : "")" 
+                                        asp-action="SetLanguage" asp-controller="Home"
+                                           asp-route-returnurl="@Context.Request.Path" asp-route-culture="ru">
+                                            <img class="h-5 w-5 rounded-full object-cover"
+                                                 :src="`/lib/tailwind/assets/images/flags/ru.svg`"
+                                                 alt="image" />
+                                            <span class="ltr:ml-3 rtl:mr-3">Русский</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="hover:text-primary @(@requestCulture.RequestCulture.Culture.Name == "en" ? "bg-primary/10 text-primary" : "")" 
+                                        asp-action="SetLanguage" asp-controller="Home"
+                                           asp-route-returnurl="@Context.Request.Path" asp-route-culture="en">
+                                            <img class="h-5 w-5 rounded-full object-cover"
+                                                 :src="`/lib/tailwind/assets/images/flags/en.svg`"
+                                                 alt="image" />
+                                            <span class="ltr:ml-3 rtl:mr-3">English</span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
 
@@ -650,24 +683,6 @@
                         profile: 'profile-16.jpeg',
                         message: '<strong class="text-sm mr-1">Anna Morgan</strong>Upload a file',
                         time: '9h Ago',
-                    },
-                ],
-
-                languages: [
-                    {
-                        id: 1,
-                        key: 'O\'zbekcha',
-                        value: 'uz',
-                    },
-                    {
-                        id: 2,
-                        key: 'Русский',
-                        value: 'ru',
-                    },
-                    {
-                        id: 3,
-                        key: 'English',
-                        value: 'en',
                     },
                 ],
 

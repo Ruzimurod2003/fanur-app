@@ -29,7 +29,7 @@ public class HomeController : Controller
     {
         return View(new ErrorVM { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
-    [HttpPost]
+    [HttpGet]
     public IActionResult SetLanguage(string culture, string returnUrl)
     {
         Response.Cookies.Append(

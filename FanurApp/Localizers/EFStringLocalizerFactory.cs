@@ -113,6 +113,55 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                             Value = "You entered the wrong password or email",
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
+                        },
+                        new Resource 
+                        {
+                            Key = "course_settings", 
+                            Value = "COURSE SETTINGS",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource 
+                        {
+                            Key = "courses", 
+                            Value = "Courses",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource 
+                        {
+                            Key = "topics", 
+                            Value = "Topics",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource 
+                        {
+                            Key = "videos", 
+                            Value = "Videos",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "descriptions",
+                            Value = "Descriptions",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "roles",
+                            Value = "Roles",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "user_settings",
+                            Value = "USER SETTINGS",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
                         }
                     }
                 },
@@ -202,6 +251,55 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                         {
                             Key = "you_entered_the_wrong_password_or_email", 
                             Value = "Вы ввели неверный пароль или адрес электронной почты",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource 
+                        {
+                            Key = "course_settings", 
+                            Value = "НАСТРОЙКИ КУРСА",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "courses",
+                            Value = "Курсы",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "topics",
+                            Value = "Темы",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "videos",
+                            Value = "Ролики",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "descriptions",
+                            Value = "Детали",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "roles",
+                            Value = "Роли",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "user_settings",
+                            Value = "ПОЛЬЗОВАТЕЛЬСКИЕ НАСТРОЙКИ",
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         }
@@ -294,6 +392,55 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                             Key = "you_entered_the_wrong_password_or_email", 
                             Value = "Siz noto'g'ri parol yoki elektron pochta manzilini kiritdingiz", 
                             CreatedDate = DateTime.Now, 
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "course_settings",
+                            Value = "KURSLARNING SOZLAMALARI",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "courses",
+                            Value = "Kurslar",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "topics",
+                            Value = "Mavzular",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "videos",
+                            Value = "Videolar",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "descriptions",
+                            Value = "Tafsilotlar",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "roles",
+                            Value = "Rollar",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "user_settings",
+                            Value = "FOYDALANUVCHI SOZLAMALARI",
+                            CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         }
                     }
