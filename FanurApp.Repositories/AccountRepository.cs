@@ -3,6 +3,7 @@ using FanurApp.Data;
 using FanurApp.Commons.Enums;
 using FanurApp.Models;
 using FanurApp.ViewModels.Account;
+using Microsoft.EntityFrameworkCore;
 
 namespace FanurApp.Repositories;
 
@@ -30,6 +31,7 @@ public class AccountRepository : IAccountRepository
     public User LoginUser(LoginVM viewModel)
     {
         var users = context.Users
+            .Include(i => i.Role)
             .Where(i => i.Email == viewModel.Email)
             .Where(i => i.Password == viewModel.Password);
 

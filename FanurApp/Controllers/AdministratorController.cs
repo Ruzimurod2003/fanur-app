@@ -4,10 +4,12 @@ using FanurApp.Models;
 using FanurApp.Repositories;
 using FanurApp.ViewModels;
 using FanurApp.ViewModels.Administrator;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FanurApp.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class AdministratorController : Controller
     {
         private readonly IAdministratorRepository repository;

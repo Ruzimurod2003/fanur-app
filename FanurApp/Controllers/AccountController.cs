@@ -1,7 +1,12 @@
 ﻿using FanurApp.Repositories;
 using FanurApp.ViewModels.Account;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
+using System.Security.Claims;
+using FanurApp.Models;
+using FanurApp.Commons.Enums;
 
 namespace FanurApp.Controllers
 {
@@ -22,6 +27,7 @@ namespace FanurApp.Controllers
             return View(viewModel);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Register(RegisterVM viewModel)
         {
             if (ModelState.IsValid)
@@ -42,7 +48,8 @@ namespace FanurApp.Controllers
             return View(viewModel);
         }
         [HttpPost]
-        public IActionResult Login(LoginVM viewModel)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(LoginVM viewModel)
         {
             if (ModelState.IsValid)
             {
@@ -50,7 +57,14 @@ namespace FanurApp.Controllers
 
                 if (result != null)
                 {
-                    return RedirectToAction("Index", "Home", null);
+                    await Authenticate(result);
+
+                    if (result.RoleId == (int)RolesEnum.Administrator)
+                        return RedirectToAction("Index", "Administrator", null);
+                    else if (result.RoleId == (int)RolesEnum.Teacher)
+                        return RedirectToAction("Index", "Home");
+                    else
+                        return RedirectToAction("Index", "Home");
                 }
                 viewModel.ErrorMessage = localizer["you_entered_the_wrong_password_or_email"];
             }
@@ -61,6 +75,7 @@ namespace FanurApp.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Forget(ForgetVM viewModel)
         {
 
@@ -71,10 +86,36 @@ namespace FanurApp.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Reset(ResetVM viewModel)
         {
 
             return View(viewModel);
+        }
+        private async Task Authenticate(User user)
+        {
+            // создаем один claim
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimsIdentity.DefaultNameClaimType, user.Email),
+                new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role.Name),
+                new Claim("Full_Name", user.Name)
+            };
+            // создаем объект ClaimsIdentity
+            ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
+            // установка аутентификационных куки
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login", "Account");
+        }
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
     }
 }
