@@ -7,7 +7,8 @@
     </div>
     <div class="mb-3">
         <label class="mb-2 text-muted" asp-for="TopicId">Definitionni nomini kiritasan... </label>
-        <select class="form-select" asp-for="TopicId" asp-items="Model.Topics.Select(i=>new SelectListItem(){Value = i.Id.ToString(), Text = i.Name})" required autofocus>
+        <select class="form-select" asp-for="TopicId" asp-items="
+            Model.Topics.Select(i=>new SelectListItem(){Value = i.Id.ToString(), Text = i.Name})">
         </select>
         <span class="text-danger" asp-validation-for="TopicId"></span>
     </div>
