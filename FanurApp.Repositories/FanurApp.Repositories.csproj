@@ -6,10 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="12.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\FanurApp.Commons\FanurApp.Commons.csproj" />
     <ProjectReference Include="..\FanurApp.Data\FanurApp.Data.csproj" />
     <ProjectReference Include="..\FanurApp.ViewModels\FanurApp.ViewModels.csproj" />

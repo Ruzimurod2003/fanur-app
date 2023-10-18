@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using FanurApp.Data;
+﻿using FanurApp.Data;
 using FanurApp.Commons.Enums;
 using FanurApp.Models;
 using FanurApp.ViewModels.Account;
@@ -52,9 +51,12 @@ public class AccountRepository : IAccountRepository
             return null;
         }
 
-        var config = new MapperConfiguration(cfg => cfg.CreateMap<RegisterVM, User>());
-        var mapper = new Mapper(config);
-        var user = mapper.Map<User>(viewModel);
+        var user = new User()
+        {
+            Email = viewModel.Email,
+            Password = viewModel.Password,
+            Name = viewModel.Name
+        };
 
         user.RoleId = (int)RolesEnum.User;
 

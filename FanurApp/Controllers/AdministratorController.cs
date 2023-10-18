@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using FanurApp.Commons.Enums;
+﻿using FanurApp.Commons.Enums;
 using FanurApp.Models;
 using FanurApp.Repositories;
 using FanurApp.ViewModels;
@@ -30,12 +29,17 @@ namespace FanurApp.Controllers
         {
             var courses = repository.GetAllCourses();
 
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<Course, CourseVM>());
-            var mapper = new Mapper(config);
-
             var viewModel = new CourseIndexVM()
             {
-                Courses = courses.Select(i => mapper.Map<CourseVM>(i)).ToList()
+                Courses = courses.Select(i => new CourseVM()
+                {
+                    Id = i.Id,
+                    Name = i.Name,
+                    Author = i.Author,
+                    CreatedDate = i.CreatedDate,
+                    Description = i.Description,
+                    UpdatedDate = i.UpdatedDate
+                }).ToList()
             };
 
             if (message != null)
@@ -54,10 +58,15 @@ namespace FanurApp.Controllers
             {
                 var course = repository.GetCourseById(id.Value);
 
-                var config = new MapperConfiguration(cfg => cfg.CreateMap<Course, CourseVM>());
-                var mapper = new Mapper(config);
-
-                viewModel = mapper.Map<CourseVM>(course);
+                viewModel = new CourseVM()
+                {
+                    Id = id.Value,
+                    Name = course.Name,
+                    Author = course.Author,
+                    CreatedDate = course.CreatedDate,
+                    Description = course.Description,
+                    UpdatedDate = course.UpdatedDate
+                };
             }
 
             viewModel.ErrorMessage = new MessageVM
@@ -75,9 +84,15 @@ namespace FanurApp.Controllers
             {
                 if (viewModel.Id != 0)
                 {
-                    var config = new MapperConfiguration(cfg => cfg.CreateMap<CourseVM, Course>());
-                    var mapper = new Mapper(config);
-                    var course = mapper.Map<Course>(viewModel);
+                    var course = new Course()
+                    {
+                        Id = viewModel.Id,
+                        Name = viewModel.Name,
+                        Author = viewModel.Author,
+                        CreatedDate = viewModel.CreatedDate,
+                        Description = viewModel.Description,
+                        UpdatedDate = viewModel.UpdatedDate
+                    };
 
                     var resultUpdate = repository.UpdateCourse(viewModel.Id, course);
                     if (resultUpdate)
@@ -99,9 +114,14 @@ namespace FanurApp.Controllers
                 }
                 else
                 {
-                    var config = new MapperConfiguration(cfg => cfg.CreateMap<CourseVM, Course>());
-                    var mapper = new Mapper(config);
-                    var course = mapper.Map<Course>(viewModel);
+                    var course = new Course()
+                    {
+                        Name = viewModel.Name,
+                        Author = viewModel.Author,
+                        CreatedDate = viewModel.CreatedDate,
+                        Description = viewModel.Description,
+                        UpdatedDate = viewModel.UpdatedDate
+                    };
 
                     var resultAdd = repository.AddCourse(course);
                     if (resultAdd)
@@ -156,9 +176,6 @@ namespace FanurApp.Controllers
             var topics = repository.GetAllTopics();
             var courses = repository.GetAllCourses();
 
-            var configCourseVM = new MapperConfiguration(cfg => cfg.CreateMap<Course, CourseVM>());
-            var mapperCourseVM = new Mapper(configCourseVM);
-
             var viewModel = new TopicIndexVM()
             {
                 Topics = topics.Select(i => new TopicVM()
@@ -170,7 +187,15 @@ namespace FanurApp.Controllers
                     CreatedDate = i.CreatedDate,
                     Description = i.Description,
                     UpdatedDate = i.UpdatedDate,
-                    Courses = courses.Select(i => mapperCourseVM.Map<CourseVM>(i)).ToList(),
+                    Courses = courses.Select(i => new CourseVM()
+                    {
+                        Id = i.Id,
+                        Name = i.Name,
+                        Description = i.Description,
+                        Author = i.Author,
+                        CreatedDate = i.CreatedDate,
+                        UpdatedDate = i.UpdatedDate
+                    }).ToList(),
                     CourseName = i.Course.Name,
                 }).ToList()
             };
@@ -188,16 +213,20 @@ namespace FanurApp.Controllers
             var viewModel = new TopicVM();
             var courses = repository.GetAllCourses();
 
-            var configCourseVM = new MapperConfiguration(cfg => cfg.CreateMap<Course, CourseVM>());
-            var mapperCourseVM = new Mapper(configCourseVM);
-
-            var configTopicVM = new MapperConfiguration(cfg => cfg.CreateMap<Topic, TopicVM>());
-            var mapperTopicVM = new Mapper(configCourseVM);
-
             if (id != 0 && id.HasValue)
             {
                 var topic = repository.GetTopicById(id.Value);
-                viewModel = mapperTopicVM.Map<TopicVM>(topic);
+                viewModel = new TopicVM()
+                {
+                    Id = id.Value,
+                    Name = topic.Name,
+                    Description = topic.Description,
+                    Author = topic.Author,
+                    CreatedDate = topic.CreatedDate,
+                    UpdatedDate = topic.UpdatedDate,
+                    CourseId = topic.Course.Id,
+                    CourseName = topic.Course.Name
+                };
             }
 
             viewModel.ErrorMessage = new MessageVM
@@ -205,7 +234,15 @@ namespace FanurApp.Controllers
                 MessageType = (int)MessageTypesEnum.None,
                 MessageText = string.Empty
             };
-            viewModel.Courses = courses.Select(i => mapperCourseVM.Map<CourseVM>(i)).ToList();
+            viewModel.Courses = courses.Select(i => new CourseVM()
+            {
+                Id = i.Id,
+                Name = i.Name,
+                Description = i.Description,
+                Author = i.Author,
+                CreatedDate = i.CreatedDate,
+                UpdatedDate = i.UpdatedDate
+            }).ToList();
 
             return View(viewModel);
         }
@@ -216,17 +253,28 @@ namespace FanurApp.Controllers
             {
                 var courses = repository.GetAllCourses();
 
-                var configCourseVM = new MapperConfiguration(cfg => cfg.CreateMap<Course, CourseVM>());
-                var mapperCourseVM = new Mapper(configCourseVM);
-
-                var configTopicVM = new MapperConfiguration(cfg => cfg.CreateMap<Topic, TopicVM>());
-                var mapperTopicVM = new Mapper(configCourseVM);
-
-                viewModel.Courses = courses.Select(i => mapperCourseVM.Map<CourseVM>(i)).ToList();
+                viewModel.Courses = courses.Select(i => new CourseVM()
+                {
+                    Id = i.Id,
+                    Name = i.Name,
+                    Description = i.Description,
+                    Author = i.Author,
+                    CreatedDate = i.CreatedDate,
+                    UpdatedDate = i.UpdatedDate
+                }).ToList();
 
                 if (viewModel.Id != 0)
                 {
-                    var topic = mapperTopicVM.Map<Topic>(viewModel);
+                    var topic = new Topic()
+                    {
+                        Id = viewModel.Id,
+                        Name = viewModel.Name,
+                        Description = viewModel.Description,
+                        Author = viewModel.Author,
+                        CourseId = viewModel.CourseId,
+                        CreatedDate = viewModel.CreatedDate,
+                        UpdatedDate = viewModel.UpdatedDate
+                    };
 
                     var resultUpdate = repository.UpdateTopic(viewModel.Id, topic);
                     if (resultUpdate)
@@ -248,7 +296,16 @@ namespace FanurApp.Controllers
                 }
                 else
                 {
-                    var topic = mapperTopicVM.Map<Topic>(viewModel);
+                    var topic = new Topic()
+                    {
+                        Id = viewModel.Id,
+                        Name = viewModel.Name,
+                        Description = viewModel.Description,
+                        Author = viewModel.Author,
+                        CourseId = viewModel.CourseId,
+                        CreatedDate = viewModel.CreatedDate,
+                        UpdatedDate = viewModel.UpdatedDate
+                    };
 
                     var resultAdd = repository.AddTopic(topic);
                     if (resultAdd)
@@ -300,9 +357,6 @@ namespace FanurApp.Controllers
         [HttpGet]
         public IActionResult VideoIndex(MessageVM message)
         {
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<Topic, TopicVM>());
-            var mapper = new Mapper(config);
-
             var videos = repository.GetAllVideos();
             var topics = repository.GetAllTopics();
 
@@ -318,7 +372,16 @@ namespace FanurApp.Controllers
                     CreatedDate = i.CreatedDate,
                     Caption = i.Caption,
                     UpdatedDate = i.UpdatedDate,
-                    Topics = topics.Select(i => mapper.Map<TopicVM>(i)).ToList()
+                    Topics = topics.Select(i => new TopicVM()
+                    {
+                        Id = i.Id,
+                        Name = i.Name,
+                        Description = i.Description,
+                        Author = i.Author,
+                        CreatedDate = i.CreatedDate,
+                        CourseId = i.CourseId,
+                        UpdatedDate = i.UpdatedDate,
+                    }).ToList()
                 }).ToList()
             };
 
@@ -332,19 +395,23 @@ namespace FanurApp.Controllers
         [HttpGet]
         public IActionResult Video(int? id)
         {
-            var configTopicVM = new MapperConfiguration(cfg => cfg.CreateMap<Topic, TopicVM>());
-            var mapperTopicVM = new Mapper(configTopicVM);
-
-            var configVideoVM = new MapperConfiguration(cfg => cfg.CreateMap<Video, VideoVM>());
-            var mapperVideoVM = new Mapper(configVideoVM);
-
             var viewModel = new VideoVM();
             var topics = repository.GetAllTopics();
 
             if (id != 0 && id.HasValue)
             {
                 var video = repository.GetVideoById(id.Value);
-                viewModel = mapperVideoVM.Map<VideoVM>(video);
+                viewModel = new VideoVM()
+                {
+                    Id = video.Id,
+                    URLName = video.URLName,
+                    UpdatedDate = video.UpdatedDate,
+                    Caption = video.Caption,
+                    CreatedDate = video.CreatedDate,
+                    Author = video.Author,
+                    TopicId = video.TopicId,
+                    TopicName = video.Topic.Name,
+                };
             }
 
             viewModel.ErrorMessage = new MessageVM
@@ -352,7 +419,17 @@ namespace FanurApp.Controllers
                 MessageType = (int)MessageTypesEnum.None,
                 MessageText = string.Empty
             };
-            viewModel.Topics = topics.Select(i => mapperTopicVM.Map<TopicVM>(i)).ToList();
+            viewModel.Topics = topics.Select(i => new TopicVM()
+            {
+                Id = i.Id,
+                Name = i.Name,
+                Author = i.Author,
+                CreatedDate = i.CreatedDate,
+                UpdatedDate = i.UpdatedDate,
+                CourseId = i.CourseId,
+                Description = i.Description,
+                CourseName = i.Course.Name
+            }).ToList();
 
             return View(viewModel);
         }
@@ -361,18 +438,31 @@ namespace FanurApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                var configTopicVM = new MapperConfiguration(cfg => cfg.CreateMap<Topic, TopicVM>());
-                var mapperTopicVM = new Mapper(configTopicVM);
-
-                var configVideoVM = new MapperConfiguration(cfg => cfg.CreateMap<VideoVM, Video>());
-                var mapperVideoVM = new Mapper(configVideoVM);
-
                 var topics = repository.GetAllTopics();
-                viewModel.Topics = topics.Select(i => mapperTopicVM.Map<TopicVM>(i)).ToList();
+                viewModel.Topics = topics.Select(i => new TopicVM()
+                {
+                    Id = i.Id,
+                    Name = i.Name,
+                    Author = i.Author,
+                    CreatedDate = i.CreatedDate,
+                    UpdatedDate = i.UpdatedDate,
+                    CourseId = i.CourseId,
+                    Description = i.Description,
+                    CourseName = i.Course.Name
+                }).ToList();
 
                 if (viewModel.Id != 0)
                 {
-                    var video = mapperVideoVM.Map<Video>(viewModel);
+                    var video = new Video()
+                    {
+                        Id = viewModel.Id,
+                        URLName = viewModel.URLName,
+                        UpdatedDate = viewModel.UpdatedDate,
+                        CreatedDate = viewModel.CreatedDate,
+                        Author = viewModel.Author,
+                        Caption = viewModel.Caption,
+                        TopicId = viewModel.TopicId
+                    };
 
                     var resultUpdate = repository.UpdateVideo(viewModel.Id, video);
 
@@ -395,7 +485,15 @@ namespace FanurApp.Controllers
                 }
                 else
                 {
-                    var video = mapperVideoVM.Map<Video>(viewModel);
+                    var video = new Video()
+                    {
+                        TopicId = viewModel.TopicId,
+                        URLName = viewModel.URLName,
+                        Caption = viewModel.Caption,
+                        Author = viewModel.Author,
+                        CreatedDate = viewModel.CreatedDate,
+                        UpdatedDate = viewModel.UpdatedDate
+                    };
 
                     var resultAdd = repository.AddVideo(video);
 
@@ -448,9 +546,6 @@ namespace FanurApp.Controllers
         [HttpGet]
         public IActionResult DefinitionIndex(MessageVM message)
         {
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<Topic, TopicVM>());
-            var mapper = new Mapper(config);
-
             var definitions = repository.GetAllDefinitions();
             var topics = repository.GetAllTopics();
 
@@ -465,7 +560,17 @@ namespace FanurApp.Controllers
                     TopicName = i.Topic.Name,
                     CreatedDate = i.CreatedDate,
                     UpdatedDate = i.UpdatedDate,
-                    Topics = topics.Select(i => mapper.Map<TopicVM>(i)).ToList()
+                    Topics = topics.Select(i => new TopicVM()
+                    {
+                        Id = i.Id,
+                        Name = i.Name,
+                        Author = i.Author,
+                        Description = i.Description,
+                        UpdatedDate = i.UpdatedDate,
+                        CreatedDate = i.CreatedDate,
+                        CourseId = i.CourseId,
+                        CourseName = i.Course.Name
+                    }).ToList()
                 }).ToList()
             };
 
@@ -479,19 +584,22 @@ namespace FanurApp.Controllers
         [HttpGet]
         public IActionResult Definition(int? id)
         {
-            var configTopicVM = new MapperConfiguration(cfg => cfg.CreateMap<Topic, TopicVM>());
-            var mapperTopicVM = new Mapper(configTopicVM);
-
-            var configDefinitionVM = new MapperConfiguration(cfg => cfg.CreateMap<Definition, DefinitionVM>());
-            var mapperDefinitionVM = new Mapper(configDefinitionVM);
-
             var viewModel = new DefinitionVM();
             var topics = repository.GetAllTopics();
 
             if (id != 0 && id.HasValue)
             {
                 var video = repository.GetDefinitionById(id.Value);
-                viewModel = mapperDefinitionVM.Map<DefinitionVM>(video);
+                viewModel = new DefinitionVM()
+                {
+                    Id = video.Id,
+                    Author = video.Author,
+                    CreatedDate = video.CreatedDate,
+                    UpdatedDate = video.UpdatedDate,
+                    HMTLText = video.HMTLText,
+                    TopicId = video.TopicId,
+                    TopicName = video.Topic.Name
+                };
             }
 
             viewModel.ErrorMessage = new MessageVM
@@ -499,7 +607,17 @@ namespace FanurApp.Controllers
                 MessageType = (int)MessageTypesEnum.None,
                 MessageText = string.Empty
             };
-            viewModel.Topics = topics.Select(i => mapperTopicVM.Map<TopicVM>(i)).ToList();
+            viewModel.Topics = topics.Select(i => new TopicVM()
+            {
+                Id = i.Id,
+                Name = i.Name,
+                Author = i.Author,
+                Description = i.Description,
+                CreatedDate = i.CreatedDate,
+                UpdatedDate = i.UpdatedDate,
+                CourseId = i.CourseId,
+                CourseName = i.Course.Name
+            }).ToList();
 
             return View(viewModel);
         }
@@ -508,18 +626,30 @@ namespace FanurApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                var configTopicVM = new MapperConfiguration(cfg => cfg.CreateMap<Topic, TopicVM>());
-                var mapperTopicVM = new Mapper(configTopicVM);
-
-                var configDefinitionVM = new MapperConfiguration(cfg => cfg.CreateMap<DefinitionVM, Definition>());
-                var mapperDefinitionVM = new Mapper(configDefinitionVM);
-
                 var topics = repository.GetAllTopics();
-                viewModel.Topics = topics.Select(i => mapperTopicVM.Map<TopicVM>(i)).ToList();
+                viewModel.Topics = topics.Select(i => new TopicVM()
+                {
+                    Id = i.Id,
+                    Name = i.Name,
+                    Author = i.Author,
+                    Description = i.Description,
+                    CreatedDate = i.CreatedDate,
+                    UpdatedDate = i.UpdatedDate,
+                    CourseId = i.CourseId,
+                    CourseName = i.Course.Name
+                }).ToList();
 
                 if (viewModel.Id != 0)
                 {
-                    var definition = mapperDefinitionVM.Map<Definition>(viewModel);
+                    var definition = new Definition()
+                    {
+                        Id = viewModel.Id,
+                        HMTLText = viewModel.HMTLText,
+                        Author = viewModel.Author,
+                        TopicId = viewModel.TopicId,
+                        CreatedDate = viewModel.CreatedDate,
+                        UpdatedDate = viewModel.UpdatedDate
+                    };
 
                     var resultUpdate = repository.UpdateDefinition(viewModel.Id, definition);
                     if (resultUpdate)
@@ -541,7 +671,14 @@ namespace FanurApp.Controllers
                 }
                 else
                 {
-                    var definition = mapperDefinitionVM.Map<Definition>(viewModel);
+                    var definition = new Definition()
+                    {
+                        TopicId = viewModel.TopicId,
+                        Author = viewModel.Author,
+                        HMTLText = viewModel.HMTLText,
+                        CreatedDate = viewModel.CreatedDate,
+                        UpdatedDate = viewModel.UpdatedDate
+                    };
 
                     var resultAdd = repository.AddDefinition(definition);
                     if (resultAdd)
@@ -593,9 +730,6 @@ namespace FanurApp.Controllers
         [HttpGet]
         public IActionResult ResourceIndex(MessageVM message)
         {
-            var configCultureVM = new MapperConfiguration(cfg => cfg.CreateMap<Culture, CultureVM>());
-            var mapperCultureVM = new Mapper(configCultureVM);
-
             var resources = repository.GetAllResources();
             var cultures = repository.GetAllCultures();
 
@@ -610,7 +744,11 @@ namespace FanurApp.Controllers
                     CultureName = i.Culture.Name,
                     CreatedDate = i.CreatedDate,
                     UpdatedDate = i.UpdatedDate,
-                    Cultures = cultures.Select(i => mapperCultureVM.Map<CultureVM>(i)).ToList()
+                    Cultures = cultures.Select(i => new CultureVM()
+                    {
+                        Id = i.Id,
+                        Name = i.Name
+                    }).ToList()
                 }).ToList()
             };
 
@@ -624,12 +762,6 @@ namespace FanurApp.Controllers
         [HttpGet]
         public IActionResult Resource(int? id)
         {
-            var configCultureVM = new MapperConfiguration(cfg => cfg.CreateMap<Culture, CultureVM>());
-            var mapperCultureVM = new Mapper(configCultureVM);
-
-            var configResourceVM = new MapperConfiguration(cfg => cfg.CreateMap<Resource, ResourceVM>());
-            var mapperResourceVM = new Mapper(configResourceVM);
-
             var viewModel = new ResourceVM();
             var cultures = repository.GetAllCultures();
 
@@ -638,12 +770,22 @@ namespace FanurApp.Controllers
                 MessageType = (int)MessageTypesEnum.None,
                 MessageText = string.Empty
             };
-            viewModel.Cultures = cultures.Select(i => mapperCultureVM.Map<CultureVM>(i)).ToList();
+            viewModel.Cultures = cultures.Select(i => new CultureVM()
+            {
+                Id = i.Id,
+                Name = i.Name
+            }).ToList();
 
             if (id != 0 && id.HasValue)
             {
                 var resource = repository.GetResourceById(id.Value);
-                mapperResourceVM.Map<ResourceVM>(resource);
+                viewModel.Id = resource.Id;
+                viewModel.CultureName = resource.Culture.Name;
+                viewModel.CreatedDate = resource.CreatedDate;
+                viewModel.UpdatedDate = resource.UpdatedDate;
+                viewModel.CultureId = resource.CultureId;
+                viewModel.Value = resource.Value;
+                viewModel.Key = resource.Key;
             }
 
             return View(viewModel);
@@ -653,18 +795,24 @@ namespace FanurApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                var configCultureVM = new MapperConfiguration(cfg => cfg.CreateMap<Culture, CultureVM>());
-                var mapperCultureVM = new Mapper(configCultureVM);
-
-                var configResourceVM = new MapperConfiguration(cfg => cfg.CreateMap<ResourceVM, Resource>());
-                var mapperResourceVM = new Mapper(configResourceVM);
-
                 var cultures = repository.GetAllCultures();
-                viewModel.Cultures = cultures.Select(i => mapperCultureVM.Map<CultureVM>(i)).ToList();
+                viewModel.Cultures = cultures.Select(i => new CultureVM()
+                {
+                    Id = i.Id,
+                    Name = i.Name
+                }).ToList();
 
                 if (viewModel.Id != 0)
                 {
-                    var resource = mapperResourceVM.Map<Resource>(viewModel);
+                    var resource = new Resource()
+                    {
+                        Id = viewModel.Id,
+                        Key = viewModel.Key,
+                        Value = viewModel.Value,
+                        CultureId = viewModel.CultureId,
+                        CreatedDate = viewModel.CreatedDate,
+                        UpdatedDate = viewModel.UpdatedDate
+                    };
 
                     var resultUpdate = repository.UpdateResource(viewModel.Id, resource);
                     if (resultUpdate)
@@ -686,7 +834,15 @@ namespace FanurApp.Controllers
                 }
                 else
                 {
-                    var resource = mapperResourceVM.Map<Resource>(viewModel);
+                    var resource = new Resource()
+                    {
+                        Id = viewModel.Id,
+                        Key = viewModel.Key,
+                        Value = viewModel.Value,
+                        CultureId = viewModel.CultureId,
+                        CreatedDate = viewModel.CreatedDate,
+                        UpdatedDate = viewModel.UpdatedDate
+                    };
 
                     var resultAdd = repository.AddResource(resource);
                     if (resultAdd)
