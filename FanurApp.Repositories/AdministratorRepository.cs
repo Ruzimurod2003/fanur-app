@@ -1,12 +1,19 @@
 ﻿using FanurApp.Data;
 using FanurApp.Models;
-using FanurApp.ViewModels.Administrator;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 
 namespace FanurApp.Repositories;
 public interface IAdministratorRepository
 {
+    #region Users
+    List<User> GetAllUsers();
+    User GetUserById(int id);
+    bool AddUser(User user);
+    bool UpdateUser(int userId, User newUser);
+    bool DeleteUser(int userId);
+    #endregion
+
     #region Courses
     List<Course> GetAllCourses();
     Course GetCourseById(int id);
@@ -74,6 +81,83 @@ public class AdministratorRepository : IAdministratorRepository
     {
         context = _context;
     }
+
+    #region Users
+    public List<User> GetAllUsers()
+    {
+        return context.Users.Include(i => i.Role).ToList();
+    }
+
+    public User GetUserById(int id)
+    {
+        var User = context.Users.Include(i => i.Role).FirstOrDefault(i => i.Id == id);
+        return User;
+    }
+
+    public bool AddUser(User user)
+    {
+        if (IsDublicateUser(user))
+        {
+            return false;
+        }
+        user.CreatedDate = DateTime.Now;
+        user.UpdatedDate = DateTime.Now;
+
+        context.Users.Add(user);
+        context.SaveChanges();
+        return true;
+    }
+
+    public bool UpdateUser(int userId, User newUser)
+    {
+        if (!IsExistUser(userId))
+        {
+            return false;
+        }
+        if (IsDublicateUser(newUser))
+        {
+            return false;
+        }
+
+        var user = context.Users.FirstOrDefault(c => c.Id == userId);
+        if (user != null)
+        {
+            user.Name = newUser.Name;
+            user.Email = newUser.Email;
+            user.Password = newUser.Password;
+            user.RoleId = newUser.RoleId;
+            user.UpdatedDate = DateTime.Now;
+        }
+        context.SaveChanges();
+        return true;
+    }
+
+    public bool DeleteUser(int userId)
+    {
+        if (!IsExistUser(userId))
+        {
+            return false;
+        }
+        var user = context.Users.FirstOrDefault(c => c.Id == userId);
+        if (user != null)
+        {
+            context.Users.Remove(user);
+        }
+        context.SaveChanges();
+        return true;
+    }
+    private bool IsExistUser(int userId)
+    {
+        return context.Users.Where(i => i.Id == userId).Any();
+    }
+    private bool IsDublicateUser(User User)
+    {
+        return context.Users
+            .Where(i => i.Email.ToLower() == User.Email.ToLower())
+            .Where(i => i.Password.ToLower() == User.Password.ToLower())
+            .Any();
+    }
+    #endregion
 
     #region Courses
     public List<Course> GetAllCourses()

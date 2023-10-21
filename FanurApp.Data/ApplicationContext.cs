@@ -45,7 +45,9 @@ public class ApplicationContext : DbContext
                     Email = "ruzimurodabdunazarov2003@mail.ru",
                     Name = "Ruzimurod Abdunazarov",
                     Password = "parol2003",
-                    RoleId = 1
+                    RoleId = 1,
+                    CreatedDate = DateTime.Now,
+                    UpdatedDate = DateTime.Now
                 },
                 new User
                 {
@@ -53,7 +55,9 @@ public class ApplicationContext : DbContext
                     Email = "eldoraxmedov2003@mail.ru",
                     Name = "Eldorbek Axmedov",
                     Password = "parol2003",
-                    RoleId = 2
+                    RoleId = 2,
+                    CreatedDate = DateTime.Now,
+                    UpdatedDate = DateTime.Now
                 }
             }
         );
