@@ -5,6 +5,7 @@ using FanurApp.ViewModels;
 using FanurApp.ViewModels.Administrator;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 
 namespace FanurApp.Controllers
 {
@@ -12,10 +13,12 @@ namespace FanurApp.Controllers
     public class AdministratorController : Controller
     {
         private readonly IAdministratorRepository repository;
+        private readonly IStringLocalizer localizer;
 
-        public AdministratorController(IAdministratorRepository _repository)
+        public AdministratorController(IAdministratorRepository _repository, IStringLocalizer _localizer)
         {
             repository = _repository;
+            localizer = _localizer;
         }
 
         [HttpGet]
@@ -100,7 +103,7 @@ namespace FanurApp.Controllers
                         return RedirectToAction("CourseIndex", "Administrator", new MessageVM()
                         {
                             MessageType = (int)MessageTypesEnum.Success,
-                            MessageText = "Kurslar muvofaqiyatli o'zgartirildi"
+                            MessageText = localizer["courses_updated_successfully"]
                         });
                     }
                     else
@@ -108,7 +111,7 @@ namespace FanurApp.Controllers
                         viewModel.ErrorMessage = new MessageVM
                         {
                             MessageType = (int)MessageTypesEnum.Danger,
-                            MessageText = "Kursni o'zgartirib bo'lmaydi"
+                            MessageText = localizer["courses_updated_unsuccessfully"]
                         };
                     }
                 }
@@ -129,7 +132,7 @@ namespace FanurApp.Controllers
                         return RedirectToAction("CourseIndex", "Administrator", new MessageVM()
                         {
                             MessageType = (int)MessageTypesEnum.Success,
-                            MessageText = "Kurslar muvofaqiyatli yaratildi"
+                            MessageText = localizer["courses_created_successfully"]
                         });
                     }
                     else
@@ -137,7 +140,7 @@ namespace FanurApp.Controllers
                         viewModel.ErrorMessage = new MessageVM
                         {
                             MessageType = (int)MessageTypesEnum.Danger,
-                            MessageText = "Kursni yaratib bo'lmaydi"
+                            MessageText = localizer["courses_created_unsuccessfully"]
                         };
                     }
                 }
@@ -154,16 +157,15 @@ namespace FanurApp.Controllers
                 return RedirectToAction("CourseIndex", "Administrator", new MessageVM()
                 {
                     MessageType = (int)MessageTypesEnum.Success,
-                    MessageText = "Kurslar muvofaqiyatli o'chirildi"
+                    MessageText = localizer["courses_deleted_successfully"]
                 });
             }
             else
             {
-
                 return RedirectToAction("CourseIndex", "Administrator", new MessageVM()
                 {
                     MessageType = (int)MessageTypesEnum.Danger,
-                    MessageText = "Kurslar o'chirilishi bilan problema bor"
+                    MessageText = localizer["courses_deleted_unsuccessfully"]
                 });
             }
         }
@@ -249,20 +251,20 @@ namespace FanurApp.Controllers
         [HttpPost]
         public IActionResult Topic(TopicVM viewModel)
         {
+            var courses = repository.GetAllCourses();
+
+            viewModel.Courses = courses.Select(i => new CourseVM()
+            {
+                Id = i.Id,
+                Name = i.Name,
+                Description = i.Description,
+                Author = i.Author,
+                CreatedDate = i.CreatedDate,
+                UpdatedDate = i.UpdatedDate
+            }).ToList();
+
             if (ModelState.IsValid)
             {
-                var courses = repository.GetAllCourses();
-
-                viewModel.Courses = courses.Select(i => new CourseVM()
-                {
-                    Id = i.Id,
-                    Name = i.Name,
-                    Description = i.Description,
-                    Author = i.Author,
-                    CreatedDate = i.CreatedDate,
-                    UpdatedDate = i.UpdatedDate
-                }).ToList();
-
                 if (viewModel.Id != 0)
                 {
                     var topic = new Topic()
@@ -282,7 +284,7 @@ namespace FanurApp.Controllers
                         return RedirectToAction("TopcIndex", "Administrator", new MessageVM()
                         {
                             MessageType = (int)MessageTypesEnum.Success,
-                            MessageText = "Mavzular muvofaqiyatli o'zgartirildi"
+                            MessageText = localizer["topics_updated_successfully"]
                         });
                     }
                     else
@@ -290,7 +292,7 @@ namespace FanurApp.Controllers
                         viewModel.ErrorMessage = new MessageVM
                         {
                             MessageType = (int)MessageTypesEnum.Danger,
-                            MessageText = "Mavzuni o'zgartirib bo'lmaydi"
+                            MessageText = localizer["topics_updated_unsuccessfully"]
                         };
                     }
                 }
@@ -313,7 +315,7 @@ namespace FanurApp.Controllers
                         return RedirectToAction("TopicIndex", "Administrator", new MessageVM()
                         {
                             MessageType = (int)MessageTypesEnum.Success,
-                            MessageText = "Mavzular muvofaqiyatli yaratildi"
+                            MessageText = localizer["topics_created_successfully"]
                         });
                     }
                     else
@@ -321,7 +323,7 @@ namespace FanurApp.Controllers
                         viewModel.ErrorMessage = new MessageVM
                         {
                             MessageType = (int)MessageTypesEnum.Danger,
-                            MessageText = "Mavzuni yaratib bo'lmaydi"
+                            MessageText = localizer["topics_created_unsuccessfully"]
                         };
                     }
                 }
@@ -338,16 +340,15 @@ namespace FanurApp.Controllers
                 return RedirectToAction("TopicIndex", "Administrator", new MessageVM()
                 {
                     MessageType = (int)MessageTypesEnum.Success,
-                    MessageText = "Mavzular muvofaqiyatli o'chirildi"
+                    MessageText = localizer["topics_deleted_successfully"]
                 });
             }
             else
             {
-
                 return RedirectToAction("TopicIndex", "Administrator", new MessageVM()
                 {
                     MessageType = (int)MessageTypesEnum.Danger,
-                    MessageText = "Mavzularni o'chirilishi bilan problema bor"
+                    MessageText = localizer["topics_deleted_unsuccessfully"]
                 });
             }
         }
@@ -436,21 +437,21 @@ namespace FanurApp.Controllers
         [HttpPost]
         public IActionResult Video(VideoVM viewModel)
         {
+            var topics = repository.GetAllTopics();
+            viewModel.Topics = topics.Select(i => new TopicVM()
+            {
+                Id = i.Id,
+                Name = i.Name,
+                Author = i.Author,
+                CreatedDate = i.CreatedDate,
+                UpdatedDate = i.UpdatedDate,
+                CourseId = i.CourseId,
+                Description = i.Description,
+                CourseName = i.Course.Name
+            }).ToList();
+
             if (ModelState.IsValid)
             {
-                var topics = repository.GetAllTopics();
-                viewModel.Topics = topics.Select(i => new TopicVM()
-                {
-                    Id = i.Id,
-                    Name = i.Name,
-                    Author = i.Author,
-                    CreatedDate = i.CreatedDate,
-                    UpdatedDate = i.UpdatedDate,
-                    CourseId = i.CourseId,
-                    Description = i.Description,
-                    CourseName = i.Course.Name
-                }).ToList();
-
                 if (viewModel.Id != 0)
                 {
                     var video = new Video()
@@ -471,7 +472,7 @@ namespace FanurApp.Controllers
                         return RedirectToAction("VideoIndex", "Administrator", new MessageVM()
                         {
                             MessageType = (int)MessageTypesEnum.Success,
-                            MessageText = "Videolar muvofaqiyatli o'zgartirildi"
+                            MessageText = localizer["videos_updated_successfully"]
                         });
                     }
                     else
@@ -479,7 +480,7 @@ namespace FanurApp.Controllers
                         viewModel.ErrorMessage = new MessageVM
                         {
                             MessageType = (int)MessageTypesEnum.Danger,
-                            MessageText = "Videoni o'zgartirib bo'lmaydi"
+                            MessageText = localizer["videos_updated_unsuccessfully"]
                         };
                     }
                 }
@@ -502,7 +503,7 @@ namespace FanurApp.Controllers
                         return RedirectToAction("VideoIndex", "Administrator", new MessageVM()
                         {
                             MessageType = (int)MessageTypesEnum.Success,
-                            MessageText = "Videolar muvofaqiyatli yaratildi"
+                            MessageText = localizer["videos_created_successfully"]
                         });
                     }
                     else
@@ -510,7 +511,7 @@ namespace FanurApp.Controllers
                         viewModel.ErrorMessage = new MessageVM
                         {
                             MessageType = (int)MessageTypesEnum.Danger,
-                            MessageText = "Videoni yaratib bo'lmaydi"
+                            MessageText = localizer["videos_created_unsuccessfully"]
                         };
                     }
                 }
@@ -527,7 +528,7 @@ namespace FanurApp.Controllers
                 return RedirectToAction("VideoIndex", "Administrator", new MessageVM()
                 {
                     MessageType = (int)MessageTypesEnum.Success,
-                    MessageText = "Video muvofaqiyatli o'chirildi"
+                    MessageText = localizer["videos_deleted_successfully"]
                 });
             }
             else
@@ -536,7 +537,7 @@ namespace FanurApp.Controllers
                 return RedirectToAction("TopicIndex", "Administrator", new MessageVM()
                 {
                     MessageType = (int)MessageTypesEnum.Danger,
-                    MessageText = "Videolarni o'chirilishi bilan problema bor"
+                    MessageText = localizer["videos_deleted_unsuccessfully"]
                 });
             }
         }
@@ -624,21 +625,21 @@ namespace FanurApp.Controllers
         [HttpPost]
         public IActionResult Definition(DefinitionVM viewModel)
         {
+            var topics = repository.GetAllTopics();
+            viewModel.Topics = topics.Select(i => new TopicVM()
+            {
+                Id = i.Id,
+                Name = i.Name,
+                Author = i.Author,
+                Description = i.Description,
+                CreatedDate = i.CreatedDate,
+                UpdatedDate = i.UpdatedDate,
+                CourseId = i.CourseId,
+                CourseName = i.Course.Name
+            }).ToList();
+
             if (ModelState.IsValid)
             {
-                var topics = repository.GetAllTopics();
-                viewModel.Topics = topics.Select(i => new TopicVM()
-                {
-                    Id = i.Id,
-                    Name = i.Name,
-                    Author = i.Author,
-                    Description = i.Description,
-                    CreatedDate = i.CreatedDate,
-                    UpdatedDate = i.UpdatedDate,
-                    CourseId = i.CourseId,
-                    CourseName = i.Course.Name
-                }).ToList();
-
                 if (viewModel.Id != 0)
                 {
                     var definition = new Definition()
@@ -657,7 +658,7 @@ namespace FanurApp.Controllers
                         return RedirectToAction("DefinitionIndex", "Administrator", new MessageVM()
                         {
                             MessageType = (int)MessageTypesEnum.Success,
-                            MessageText = "Definitionlar muvofaqiyatli o'zgartirildi"
+                            MessageText = localizer["definitions_updated_successfully"]
                         });
                     }
                     else
@@ -665,7 +666,7 @@ namespace FanurApp.Controllers
                         viewModel.ErrorMessage = new MessageVM
                         {
                             MessageType = (int)MessageTypesEnum.Danger,
-                            MessageText = "Definitionni o'zgartirib bo'lmaydi"
+                            MessageText = localizer["definitions_updated_unsuccessfully"]
                         };
                     }
                 }
@@ -686,7 +687,7 @@ namespace FanurApp.Controllers
                         return RedirectToAction("DefinitionIndex", "Administrator", new MessageVM()
                         {
                             MessageType = (int)MessageTypesEnum.Success,
-                            MessageText = "Definitionlar muvofaqiyatli yaratildi"
+                            MessageText = localizer["definitions_created_successfully"]
                         });
                     }
                     else
@@ -694,7 +695,7 @@ namespace FanurApp.Controllers
                         viewModel.ErrorMessage = new MessageVM
                         {
                             MessageType = (int)MessageTypesEnum.Danger,
-                            MessageText = "Definitionni yaratib bo'lmaydi"
+                            MessageText = localizer["definitions_created_unsuccessfully"]
                         };
                     }
                 }
@@ -711,16 +712,15 @@ namespace FanurApp.Controllers
                 return RedirectToAction("DefinitionIndex", "Administrator", new MessageVM()
                 {
                     MessageType = (int)MessageTypesEnum.Success,
-                    MessageText = "Definition muvofaqiyatli o'chirildi"
+                    MessageText = localizer["definitions_deleted_successfully"]
                 });
             }
             else
             {
-
                 return RedirectToAction("DefinitionIndex", "Administrator", new MessageVM()
                 {
                     MessageType = (int)MessageTypesEnum.Danger,
-                    MessageText = "Definitionlarni o'chirilishi bilan problema bor"
+                    MessageText = localizer["definitions_deleted_unsuccessfully"]
                 });
             }
         }
@@ -793,15 +793,15 @@ namespace FanurApp.Controllers
         [HttpPost]
         public IActionResult Resource(ResourceVM viewModel)
         {
+            var cultures = repository.GetAllCultures();
+            viewModel.Cultures = cultures.Select(i => new CultureVM()
+            {
+                Id = i.Id,
+                Name = i.Name
+            }).ToList();
+
             if (ModelState.IsValid)
             {
-                var cultures = repository.GetAllCultures();
-                viewModel.Cultures = cultures.Select(i => new CultureVM()
-                {
-                    Id = i.Id,
-                    Name = i.Name
-                }).ToList();
-
                 if (viewModel.Id != 0)
                 {
                     var resource = new Resource()
@@ -820,7 +820,7 @@ namespace FanurApp.Controllers
                         return RedirectToAction("ResourceIndex", "Administrator", new MessageVM()
                         {
                             MessageType = (int)MessageTypesEnum.Success,
-                            MessageText = "Tillar muvofaqiyatli o'zgartirildi"
+                            MessageText = localizer["resources_updated_successfully"]
                         });
                     }
                     else
@@ -828,7 +828,7 @@ namespace FanurApp.Controllers
                         viewModel.ErrorMessage = new MessageVM
                         {
                             MessageType = (int)MessageTypesEnum.Danger,
-                            MessageText = "Tilni o'zgartirib bo'lmaydi"
+                            MessageText = localizer["resources_updated_unsuccessfully"]
                         };
                     }
                 }
@@ -850,7 +850,7 @@ namespace FanurApp.Controllers
                         return RedirectToAction("ResourceIndex", "Administrator", new MessageVM()
                         {
                             MessageType = (int)MessageTypesEnum.Success,
-                            MessageText = "Tillar muvofaqiyatli yaratildi"
+                            MessageText = localizer["resources_created_successfully"]
                         });
                     }
                     else
@@ -858,7 +858,7 @@ namespace FanurApp.Controllers
                         viewModel.ErrorMessage = new MessageVM
                         {
                             MessageType = (int)MessageTypesEnum.Danger,
-                            MessageText = "Tilni yaratib bo'lmaydi"
+                            MessageText = localizer["resources_created_unsuccessfully"]
                         };
                     }
                 }
@@ -875,16 +875,15 @@ namespace FanurApp.Controllers
                 return RedirectToAction("ResourceIndex", "Administrator", new MessageVM()
                 {
                     MessageType = (int)MessageTypesEnum.Success,
-                    MessageText = "Tillar muvofaqiyatli o'chirildi"
+                    MessageText = localizer["resources_deleted_successfully"]
                 });
             }
             else
             {
-
                 return RedirectToAction("ResourceIndex", "Administrator", new MessageVM()
                 {
                     MessageType = (int)MessageTypesEnum.Danger,
-                    MessageText = "Tillar o'chirilishi bilan problema bor"
+                    MessageText = localizer["resources_deleted_unsuccessfully"]
                 });
             }
         }
@@ -945,7 +944,7 @@ namespace FanurApp.Controllers
                         return RedirectToAction("RoleIndex", "Administrator", new MessageVM()
                         {
                             MessageType = (int)MessageTypesEnum.Success,
-                            MessageText = "Rollar muvofaqiyatli o'zgartirildi"
+                            MessageText = localizer["roles_updated_successfully"]
                         });
                     }
                     else
@@ -953,7 +952,7 @@ namespace FanurApp.Controllers
                         viewModel.ErrorMessage = new MessageVM
                         {
                             MessageType = (int)MessageTypesEnum.Danger,
-                            MessageText = "Rolni o'zgartirib bo'lmaydi"
+                            MessageText = localizer["roles_updated_unsuccessfully"]
                         };
                     }
                 }
@@ -967,7 +966,7 @@ namespace FanurApp.Controllers
                         return RedirectToAction("RoleIndex", "Administrator", new MessageVM()
                         {
                             MessageType = (int)MessageTypesEnum.Success,
-                            MessageText = "Rolelar muvofaqiyatli yaratildi"
+                            MessageText = localizer["roles_created_successfully"]
                         });
                     }
                     else
@@ -975,7 +974,7 @@ namespace FanurApp.Controllers
                         viewModel.ErrorMessage = new MessageVM
                         {
                             MessageType = (int)MessageTypesEnum.Danger,
-                            MessageText = "Roleni yaratib bo'lmaydi"
+                            MessageText = localizer["roles_created_unsuccessfully"]
                         };
                     }
                 }
@@ -992,16 +991,15 @@ namespace FanurApp.Controllers
                 return RedirectToAction("RoleIndex", "Administrator", new MessageVM()
                 {
                     MessageType = (int)MessageTypesEnum.Success,
-                    MessageText = "Rolelar muvofaqiyatli o'chirildi"
+                    MessageText = localizer["roles_deleted_successfully"]
                 });
             }
             else
             {
-
                 return RedirectToAction("RoleIndex", "Administrator", new MessageVM()
                 {
                     MessageType = (int)MessageTypesEnum.Danger,
-                    MessageText = "Rolelar o'chirilishi bilan problema bor"
+                    MessageText = localizer["roles_deleted_unsuccessfully"]
                 });
             }
         }

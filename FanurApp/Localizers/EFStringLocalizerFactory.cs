@@ -20,7 +20,7 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
     private IStringLocalizer CreateStringLocalizer()
     {
         ApplicationContext _db = new ApplicationContext();
-        
+
         // инициализация базы данных
         if (!_db.Cultures.Any())
         {
@@ -28,8 +28,260 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                 new Culture
                 {
                     Name = "en",
-                    Resources = new List<Resource>() 
+                    Resources = new List<Resource>()
                     {
+                        new Resource
+                        {
+                           Key = "resources_deleted_unsuccessfully",
+                           Value = "Resources deleted unsuccessfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "resources_updated_unsuccessfully",
+                           Value = "Resources updated unsuccessfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "resources_created_unsuccessfully",
+                           Value = "Resources created unsuccessfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "resources_deleted_successfully",
+                           Value = "Resources deleted successfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "resources_updated_successfully",
+                           Value = "Resources updated successfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "resources_created_successfully",
+                           Value = "Resources created successfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "definitions_deleted_unsuccessfully",
+                           Value = "Definitions deleted unsuccessfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "definitions_updated_unsuccessfully",
+                           Value = "Definitions updated unsuccessfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "definitions_created_unsuccessfully",
+                           Value = "Definitions created unsuccessfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "definitions_deleted_successfully",
+                           Value = "Definitions deleted successfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "definitions_updated_successfully",
+                           Value = "Definitions updated successfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "definitions_created_successfully",
+                           Value = "Definitions created successfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "roles_deleted_unsuccessfully",
+                           Value = "Roles deleted unsuccessfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "roles_updated_unsuccessfully",
+                           Value = "Roles updated unsuccessfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "roles_created_unsuccessfully",
+                           Value = "Roles created unsuccessfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "roles_deleted_successfully",
+                           Value = "Roles deleted successfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "roles_updated_successfully",
+                           Value = "Roles updated successfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "roles_created_successfully",
+                           Value = "Roles created successfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "videos_deleted_unsuccessfully",
+                           Value = "Videos deleted unsuccessfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "videos_updated_unsuccessfully",
+                           Value = "Videos updated unsuccessfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "videos_created_unsuccessfully",
+                           Value = "Videos created unsuccessfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "videos_deleted_successfully",
+                           Value = "Videos deleted successfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "videos_updated_successfully",
+                           Value = "Videos updated successfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "videos_created_successfully",
+                           Value = "Videos created successfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "topics_deleted_unsuccessfully",
+                           Value = "Topics deleted unsuccessfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "topics_updated_unsuccessfully",
+                           Value = "Topics updated unsuccessfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "topics_created_unsuccessfully",
+                           Value = "Topics created unsuccessfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "topics_deleted_successfully",
+                           Value = "Topics deleted successfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "topics_updated_successfully",
+                           Value = "Topics updated successfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "topics_created_successfully",
+                           Value = "Topics created successfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "courses_deleted_unsuccessfully",
+                           Value = "Courses deleted unsuccessfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "courses_updated_unsuccessfully",
+                           Value = "Courses updated unsuccessfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "courses_created_unsuccessfully",
+                           Value = "Courses created unsuccessfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "courses_deleted_successfully",
+                           Value = "Courses deleted successfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "courses_updated_successfully",
+                           Value = "Courses updated successfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "courses_created_successfully",
+                           Value = "Courses created successfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
                         new Resource
                         {
                            Key = "create_new_video",
@@ -212,35 +464,35 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                            CreatedDate = DateTime.Now,
                            UpdatedDate = DateTime.Now
                         },
-                        new Resource 
+                        new Resource
                         {
-                            Key = "the_login_page", 
-                            Value = "The Login page", 
-                            CreatedDate = DateTime.Now, 
-                            UpdatedDate = DateTime.Now
-                        },
-                        new Resource 
-                        {
-                            Key = "enter_your_email", 
-                            Value = "Enter your email...", 
-                            CreatedDate = DateTime.Now, 
-                            UpdatedDate = DateTime.Now
-                        },
-                        new Resource 
-                        {
-                            Key = "email_is_not_like_that", 
-                            Value = "Email is not like that 🥱", 
-                            CreatedDate = DateTime.Now, 
-                            UpdatedDate = DateTime.Now
-                        },
-                        new Resource 
-                        {
-                            Key = "enter_your_password", 
-                            Value = "Enter your password...", 
+                            Key = "the_login_page",
+                            Value = "The Login page",
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         },
-                        new Resource 
+                        new Resource
+                        {
+                            Key = "enter_your_email",
+                            Value = "Enter your email...",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "email_is_not_like_that",
+                            Value = "Email is not like that 🥱",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "enter_your_password",
+                            Value = "Enter your password...",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
                         {
                             Key = "have_you_forgotten_your_password",
                             Value = "Have you forgotten your password 🙄",
@@ -254,72 +506,72 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         },
-                        new Resource 
+                        new Resource
                         {
-                            Key = "do_you_remember", 
+                            Key = "do_you_remember",
                             Value = "Remember me?",
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         },
                         new Resource
                         {
-                            Key = "login_button", 
-                            Value = "Login", 
+                            Key = "login_button",
+                            Value = "Login",
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         },
-                        new Resource 
+                        new Resource
                         {
                             Key = "is_there_an_account",
                             Value = "Is ther an account 😏",
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         },
-                        new Resource 
+                        new Resource
                         {
                             Key = "to_the_account_registration_page",
                             Value = "To the registration page",
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         },
-                        new Resource 
+                        new Resource
                         {
                             Key = "this_user_is_already_registered",
-                            Value = "This user is already registered", 
+                            Value = "This user is already registered",
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         },
-                        new Resource 
+                        new Resource
                         {
-                            Key = "you_entered_the_wrong_password_or_email", 
+                            Key = "you_entered_the_wrong_password_or_email",
                             Value = "You entered the wrong password or email",
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         },
-                        new Resource 
+                        new Resource
                         {
-                            Key = "course_settings", 
+                            Key = "course_settings",
                             Value = "COURSE SETTINGS",
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         },
-                        new Resource 
+                        new Resource
                         {
-                            Key = "courses", 
+                            Key = "courses",
                             Value = "Courses",
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         },
-                        new Resource 
+                        new Resource
                         {
-                            Key = "topics", 
+                            Key = "topics",
                             Value = "Topics",
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         },
-                        new Resource 
+                        new Resource
                         {
-                            Key = "videos", 
+                            Key = "videos",
                             Value = "Videos",
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
@@ -385,8 +637,260 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                 new Culture
                 {
                     Name = "ru",
-                    Resources = new List<Resource>() 
+                    Resources = new List<Resource>()
                     {
+                        new Resource
+                        {
+                           Key = "resources_deleted_unsuccessfully",
+                           Value = "Ресурсы удалены неудачно",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "resources_updated_unsuccessfully",
+                           Value = "Ресурсы обновлены неудачно",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "resources_created_unsuccessfully",
+                           Value = "Ресурсы созданы неудачно",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "resources_deleted_successfully",
+                           Value = "Ресурсы успешно удалены",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "resources_updated_successfully",
+                           Value = "Ресурсы успешно обновлены",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "resources_created_successfully",
+                           Value = "Ресурсы успешно созданы",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "definitions_deleted_unsuccessfully",
+                           Value = "Определение удалены неудачно",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "definitions_updated_unsuccessfully",
+                           Value = "Определение обновлены неудачно",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "definitions_created_unsuccessfully",
+                           Value = "Определение созданы неудачно",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "definitions_deleted_successfully",
+                           Value = "Определение успешно удалены",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "definitions_updated_successfully",
+                           Value = "Определение успешно обновлены",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "definitions_created_successfully",
+                           Value = "Определение успешно созданы",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "roles_deleted_unsuccessfully",
+                           Value = "Pоль удалены неудачно",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "roles_updated_unsuccessfully",
+                           Value = "Pоль обновлены неудачно",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "roles_created_unsuccessfully",
+                           Value = "Pоль созданы неудачно",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "roles_deleted_successfully",
+                           Value = "Pоль успешно удалены",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "roles_updated_successfully",
+                           Value = "Pоль успешно обновлены",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "roles_created_successfully",
+                           Value = "Pоль успешно созданы",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "videos_deleted_unsuccessfully",
+                           Value = "Bидео удалены неудачно",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "videos_updated_unsuccessfully",
+                           Value = "Bидео обновлены неудачно",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "videos_created_unsuccessfully",
+                           Value = "Bидео созданы неудачно",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "videos_deleted_successfully",
+                           Value = "Bидео успешно удалены",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "videos_updated_successfully",
+                           Value = "Bидео успешно обновлены",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "videos_created_successfully",
+                           Value = "Bидео успешно созданы",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "topics_deleted_unsuccessfully",
+                           Value = "Tемы удалены неудачно",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "topics_updated_unsuccessfully",
+                           Value = "Tемы обновлены неудачно",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "topics_created_unsuccessfully",
+                           Value = "Tемы созданы неудачно",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "topics_deleted_successfully",
+                           Value = "Tемы успешно удалены",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "topics_updated_successfully",
+                           Value = "Tемы успешно обновлены",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "topics_created_successfully",
+                           Value = "Tемы успешно созданы",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "courses_deleted_unsuccessfully",
+                           Value = "Курсы удалены неудачно",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "courses_updated_unsuccessfully",
+                           Value = "Курсы обновлены неудачно",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "courses_created_unsuccessfully",
+                           Value = "Курсы созданы неудачно",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "courses_deleted_successfully",
+                           Value = "Курсы успешно удалены",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "courses_updated_successfully",
+                           Value = "Курсы успешно обновлены",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "courses_created_successfully",
+                           Value = "Курсы успешно созданы",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
                         new Resource
                         {
                            Key = "create_new_video",
@@ -569,21 +1073,21 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                            CreatedDate = DateTime.Now,
                            UpdatedDate = DateTime.Now
                         },
-                        new Resource 
+                        new Resource
                         {
-                            Key = "the_login_page", 
+                            Key = "the_login_page",
                             Value = "Страница входа",
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         },
-                        new Resource 
+                        new Resource
                         {
                             Key = "enter_your_email",
-                            Value = "Введите адрес электронной почты...", 
+                            Value = "Введите адрес электронной почты...",
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         },
-                        new Resource 
+                        new Resource
                         {
                             Key = "email_is_not_like_that",
                             Value = "Электронная почта не такая 🥱",
@@ -597,65 +1101,65 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         },
-                        new Resource 
+                        new Resource
                         {
                             Key = "have_you_forgotten_your_password",
                             Value = "Вы забыли свой пароль 🙄",
-                            CreatedDate = DateTime.Now, 
-                            UpdatedDate = DateTime.Now
-                        },
-                        new Resource 
-                        {
-                            Key = "password_is_not_like_that", 
-                            Value = "Пароль не такой 🥱", 
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         },
-                        new Resource 
+                        new Resource
+                        {
+                            Key = "password_is_not_like_that",
+                            Value = "Пароль не такой 🥱",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
                         {
                             Key = "do_you_remember",
                             Value = "Запомнить меня?",
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         },
-                        new Resource 
+                        new Resource
                         {
-                            Key = "login_button", 
-                            Value = "Авторизоваться", 
-                            CreatedDate = DateTime.Now, 
+                            Key = "login_button",
+                            Value = "Авторизоваться",
+                            CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         },
-                        new Resource 
+                        new Resource
                         {
-                            Key = "is_there_an_account", 
+                            Key = "is_there_an_account",
                             Value = "Есть аккаунт 😏",
-                            CreatedDate = DateTime.Now, 
+                            CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         },
-                        new Resource 
+                        new Resource
                         {
                             Key = "to_the_account_registration_page",
                             Value = "На страницу регистрации",
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         },
-                        new Resource 
+                        new Resource
                         {
                             Key = "this_user_is_already_registered",
-                            Value = "Этот пользователь уже зарегистрирован", 
+                            Value = "Этот пользователь уже зарегистрирован",
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         },
-                        new Resource 
+                        new Resource
                         {
-                            Key = "you_entered_the_wrong_password_or_email", 
+                            Key = "you_entered_the_wrong_password_or_email",
                             Value = "Вы ввели неверный пароль или адрес электронной почты",
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         },
-                        new Resource 
+                        new Resource
                         {
-                            Key = "course_settings", 
+                            Key = "course_settings",
                             Value = "НАСТРОЙКИ КУРСА",
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
@@ -742,8 +1246,260 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                 new Culture
                 {
                     Name = "uz",
-                    Resources = new List<Resource>() 
+                    Resources = new List<Resource>()
                     {
+                        new Resource
+                        {
+                           Key = "resources_deleted_unsuccessfully",
+                           Value = "Resursni o'chirish mumkin emas",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "resources_updated_unsuccessfully",
+                           Value = "Resursni yangilash mumkin emas",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "resources_created_unsuccessfully",
+                           Value = "Resursni yaratish mumkin emas",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "resources_deleted_successfully",
+                           Value = "Resursni muvofaqiyatli o'chirildi",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "resources_updated_successfully",
+                           Value = "Resursni muvofaqiyatli o'zgartirildi",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "resources_created_successfully",
+                           Value = "Resursni muvofaqiyatli yaratildi",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "definitions_deleted_unsuccessfully",
+                           Value = "Tafsifni o'chirish mumkin emas",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "definitions_updated_unsuccessfully",
+                           Value = "Tafsifni yangilash mumkin emas",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "definitions_created_unsuccessfully",
+                           Value = "Tafsifni yaratish mumkin emas",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "definitions_deleted_successfully",
+                           Value = "Tafsifni muvofaqiyatli o'chirildi",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "definitions_updated_successfully",
+                           Value = "Tafsifni muvofaqiyatli o'zgartirildi",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "definitions_created_successfully",
+                           Value = "Tafsifni muvofaqiyatli yaratildi",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "roles_deleted_unsuccessfully",
+                           Value = "Rolni o'chirish mumkin emas",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "roles_updated_unsuccessfully",
+                           Value = "Rolni yangilash mumkin emas",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "roles_created_unsuccessfully",
+                           Value = "Rolni yaratish mumkin emas",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "roles_deleted_successfully",
+                           Value = "Rolni muvofaqiyatli o'chirildi",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "roles_updated_successfully",
+                           Value = "Rolni muvofaqiyatli o'zgartirildi",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "roles_created_successfully",
+                           Value = "Rolni muvofaqiyatli yaratildi",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "videos_deleted_unsuccessfully",
+                           Value = "Videoni o'chirish mumkin emas",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "videos_updated_unsuccessfully",
+                           Value = "Videoni yangilash mumkin emas",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "videos_created_unsuccessfully",
+                           Value = "Videoni yaratish mumkin emas",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "videos_deleted_successfully",
+                           Value = "Videoni muvofaqiyatli o'chirildi",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "videos_updated_successfully",
+                           Value = "Videoni muvofaqiyatli o'zgartirildi",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "videos_created_successfully",
+                           Value = "Videoni muvofaqiyatli yaratildi",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "topics_deleted_unsuccessfully",
+                           Value = "Mavzuni o'chirish mumkin emas",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "topics_updated_unsuccessfully",
+                           Value = "Mavzuni yangilash mumkin emas",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "topics_created_unsuccessfully",
+                           Value = "Mavzuni yaratish mumkin emas",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "topics_deleted_successfully",
+                           Value = "Mavzuni muvofaqiyatli o'chirildi",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "topics_updated_successfully",
+                           Value = "Mavzuni muvofaqiyatli o'zgartirildi",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "topics_created_successfully",
+                           Value = "Mavzuni muvofaqiyatli yaratildi",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "courses_deleted_unsuccessfully",
+                           Value = "Kursni o'chirish mumkin emas",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "courses_updated_unsuccessfully",
+                           Value = "Kursni yangilash mumkin emas",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "courses_created_unsuccessfully",
+                           Value = "Kursni yaratish mumkin emas",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "courses_deleted_successfully",
+                           Value = "Kursni muvofaqiyatli o'chirildi",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "courses_updated_successfully",
+                           Value = "Kursni muvofaqiyatli o'zgartirildi",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "courses_created_successfully",
+                           Value = "Kursni muvofaqiyatli yaratildi",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
                         new Resource
                         {
                            Key = "create_new_video",
@@ -926,88 +1682,88 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                            CreatedDate = DateTime.Now,
                            UpdatedDate = DateTime.Now
                         },
-                        new Resource 
+                        new Resource
                         {
-                            Key = "the_login_page", 
+                            Key = "the_login_page",
                             Value = "Kirish sahifasi",
-                            CreatedDate = DateTime.Now,
-                            UpdatedDate = DateTime.Now
-                        },
-                        new Resource 
-                        {
-                            Key = "enter_your_email", 
-                            Value = "Elektron pochtangizni kiriting...",
-                            CreatedDate = DateTime.Now, 
-                            UpdatedDate = DateTime.Now
-                        },
-                        new Resource 
-                        {
-                            Key = "email_is_not_like_that",
-                            Value = "Elektron pochta bunday emas 🥱",
-                            CreatedDate = DateTime.Now, 
-                            UpdatedDate = DateTime.Now
-                        },
-                        new Resource 
-                        {
-                            Key = "enter_your_password", 
-                            Value = "Parolingizni kiriting...",
-                            CreatedDate = DateTime.Now,
-                            UpdatedDate = DateTime.Now
-                        },
-                        new Resource 
-                        {
-                            Key = "have_you_forgotten_your_password",
-                            Value = "Parolni unutdingizmi 🙄", 
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         },
                         new Resource
                         {
-                            Key = "password_is_not_like_that", 
-                            Value = "Parol bunday emas 🥱", 
-                            CreatedDate = DateTime.Now, 
+                            Key = "enter_your_email",
+                            Value = "Elektron pochtangizni kiriting...",
+                            CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         },
-                        new Resource 
+                        new Resource
+                        {
+                            Key = "email_is_not_like_that",
+                            Value = "Elektron pochta bunday emas 🥱",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "enter_your_password",
+                            Value = "Parolingizni kiriting...",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "have_you_forgotten_your_password",
+                            Value = "Parolni unutdingizmi 🙄",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "password_is_not_like_that",
+                            Value = "Parol bunday emas 🥱",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
                         {
                             Key = "do_you_remember",
-                            Value = "Meni eslaysizmi?", 
-                            CreatedDate = DateTime.Now, 
+                            Value = "Meni eslaysizmi?",
+                            CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         },
-                        new Resource 
+                        new Resource
                         {
-                            Key = "login_button", 
+                            Key = "login_button",
                             Value = "Tizimga kirish",
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         },
-                        new Resource 
+                        new Resource
                         {
-                            Key = "is_there_an_account", 
-                            Value = "Hisob bormi 😏", 
-                            CreatedDate = DateTime.Now, 
+                            Key = "is_there_an_account",
+                            Value = "Hisob bormi 😏",
+                            CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         },
                         new Resource
                         {
                             Key = "to_the_account_registration_page",
                             Value = "Ro'yxatdan o'tish sahifasiga ",
-                            CreatedDate = DateTime.Now, 
+                            CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         },
-                        new Resource 
+                        new Resource
                         {
                             Key = "this_user_is_already_registered",
                             Value = "Bu foydalanuvchi allaqachon roʻyxatdan oʻtgan",
-                            CreatedDate = DateTime.Now, 
+                            CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         },
-                        new Resource 
+                        new Resource
                         {
-                            Key = "you_entered_the_wrong_password_or_email", 
-                            Value = "Siz noto'g'ri parol yoki elektron pochta manzilini kiritdingiz", 
-                            CreatedDate = DateTime.Now, 
+                            Key = "you_entered_the_wrong_password_or_email",
+                            Value = "Siz noto'g'ri parol yoki elektron pochta manzilini kiritdingiz",
+                            CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         },
                         new Resource
