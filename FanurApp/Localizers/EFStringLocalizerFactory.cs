@@ -1825,7 +1825,7 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                         new Resource
                         {
                             Key = "additional_settings",
-                            Value = "Additional settings",
+                            Value = "Qo'shimcha sozlamalar",
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         },
