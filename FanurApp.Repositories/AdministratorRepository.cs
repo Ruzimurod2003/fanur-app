@@ -1,6 +1,8 @@
 ﻿using FanurApp.Data;
 using FanurApp.Models;
+using FanurApp.ViewModels.Administrator;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace FanurApp.Repositories;
 public interface IAdministratorRepository
@@ -52,6 +54,15 @@ public interface IAdministratorRepository
     bool AddRole(Role role);
     bool UpdateRole(int roleId, Role newRole);
     bool DeleteRole(int roleId);
+
+    #endregion
+
+    #region Quizzes
+    List<Quiz> GetAllQuizzes();
+    Quiz GetQuizById(int id);
+    bool AddQuiz(Quiz quiz);
+    bool UpdateQuiz(int quizId, Quiz newQuiz);
+    bool DeleteQuiz(int quizId);
 
     #endregion
 }
@@ -538,6 +549,89 @@ public class AdministratorRepository : IAdministratorRepository
     {
         return context.Roles
             .Where(i => i.Name.ToLower() == course.Name.ToLower())
+            .Any();
+    }
+    #endregion
+
+    #region Quizzes
+    public List<Quiz> GetAllQuizzes()
+    {
+        return context.Quizzes.Include(i => i.Topic).ToList();
+    }
+
+    public Quiz GetQuizById(int id)
+    {
+        return context.Quizzes.Include(i => i.Topic)
+            .Where(i => i.Id == id)
+            .FirstOrDefault();
+    }
+
+    public bool AddQuiz(Quiz quiz)
+    {
+        if (IsDublicateQuiz(quiz))
+        {
+            return false;
+        }
+        quiz.CreatedDate = DateTime.Now;
+        quiz.UpdatedDate = DateTime.Now;
+        context.Quizzes.Add(quiz);
+        context.SaveChanges();
+        return true;
+    }
+
+    public bool UpdateQuiz(int quizId, Quiz newQuiz)
+    {
+        if (!IsExistQuiz(quizId))
+        {
+            return false;
+        }
+        if (IsDublicateQuiz(newQuiz))
+        {
+            return false;
+        }
+
+        var quiz = context.Quizzes.FirstOrDefault(c => c.Id == quizId);
+        if (quiz != null)
+        {
+            quiz.QuestionText = newQuiz.QuestionText;
+            quiz.AnswerA = newQuiz.AnswerA;
+            quiz.AnswerB = newQuiz.AnswerB;
+            quiz.AnswerC = newQuiz.AnswerC;
+            quiz.AnswerD = newQuiz.AnswerD;
+            quiz.TopicId = newQuiz.TopicId;
+            quiz.IsTrueAnswer = newQuiz.IsTrueAnswer;
+        }
+        context.SaveChanges();
+        return true;
+    }
+
+    public bool DeleteQuiz(int quizId)
+    {
+        if (!IsExistQuiz(quizId))
+        {
+            return false;
+        }
+        var quiz = context.Quizzes.FirstOrDefault(c => c.Id == quizId);
+        if (quiz != null)
+        {
+            context.Quizzes.Remove(quiz);
+        }
+        context.SaveChanges();
+        return true;
+    }
+    private bool IsExistQuiz(int quizId)
+    {
+        return context.Quizzes.Where(i => i.Id == quizId).Any();
+    }
+    private bool IsDublicateQuiz(Quiz quiz)
+    {
+        return context.Quizzes
+            .Where(i => i.QuestionText.ToLower() == quiz.QuestionText.ToLower())
+            .Where(i => i.AnswerA.ToLower() == quiz.AnswerA.ToLower())
+            .Where(i => i.AnswerB.ToLower() == quiz.AnswerB.ToLower())
+            .Where(i => i.AnswerC.ToLower() == quiz.AnswerC.ToLower())
+            .Where(i => i.AnswerD.ToLower() == quiz.AnswerD.ToLower())
+            .Where(i => i.TopicId == quiz.TopicId)
             .Any();
     }
     #endregion

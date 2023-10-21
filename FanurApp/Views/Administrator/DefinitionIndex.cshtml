@@ -7,9 +7,9 @@
 <partial name="~/Views/PartialComponents/_AlertMessage.cshtml" model="Model.Message" />
 <div class="mb-5 flex items-center gap-2">
     <a class="btn btn-info gap-2" asp-controller="Administrator" asp-action="Definition" asp-route-id="0">
-        Yangi definition yaratish
+        @Localizer["create_new_definition"]
     </a>
-    <a class="btn btn-success gap-2" asp-controller="Administrator" asp-action="DefinitionIndex">Sahifani yangilash</a>
+    <a class="btn btn-success gap-2" asp-controller="Administrator" asp-action="DefinitionIndex">@Localizer["refresh_page"]</a>
 </div>
 
 @while (page != ((count - 1) / 3 + 2))
@@ -27,12 +27,12 @@
                         <div class="mb-5 flex items-center gap-2">
                             <a class="btn btn-warning gap-2" asp-controller="Administrator" asp-action="Definition"
                                asp-route-id="@definition.Id">
-                                <i class="bi bi-pencil-square"></i>Tahrirlash
+                                <i class="bi bi-pencil-square"></i>@Localizer["editing"]
                             </a>
                             <form method="post" asp-controller="Administrator" asp-action="DeleteDefinition"
                                   asp-route-id="@definition.Id">
                                 <button type="submit" class="btn btn-danger gap-2">
-                                    <i class="bi bi-trash3"></i>O'chirish
+                                    <i class="bi bi-trash3"></i>@Localizer["deleting"]
                                 </button>
                             </form>
                         </div>

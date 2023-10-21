@@ -13,6 +13,7 @@ public class ApplicationContext : DbContext
     public DbSet<Culture> Cultures { get; set; }
     public DbSet<Resource> Resources { get; set; }
     public DbSet<Definition> Definitions { get; set; }
+    public DbSet<Quiz> Quizzes { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Role>().HasData(

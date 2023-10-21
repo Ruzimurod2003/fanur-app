@@ -6,24 +6,24 @@
         <input class="form-input" asp-for="Id" type="hidden">
     </div>
     <div class="mb-3">
-        <label class="mb-2 text-muted" asp-for="CultureId">Qaysi tilda ekanligini kiritasan... </label>
+        <label class="mb-2 text-muted" asp-for="CultureId">@Localizer["enter_culture_name"]</label>
         <select class="form-select" asp-for="CultureId"
                 asp-items="Model.Cultures.Select(i=>new SelectListItem(){Value = i.Id.ToString(), Text = i.Name})">
         </select>
         <span class="text-danger" asp-validation-for="CultureId"></span>
     </div>
     <div class="mb-3">
-        <label class="mb-2 text-muted" asp-for="Key">Kalitni kiritasan... </label>
+        <label class="mb-2 text-muted" asp-for="Key">@Localizer["enter_key_of_resource"]</label>
         <input class="form-input" asp-for="Key" type="text">
         <span class="text-danger" asp-validation-for="CultureId"></span>
     </div>
     <div class="mb-3">
-        <label class="mb-2 text-muted" asp-for="Value">Qiymatini kiritasan... </label>
+        <label class="mb-2 text-muted" asp-for="Value">@Localizer["enter_value_of_resource"]</label>
         <input class="form-input" asp-for="Value" type="text">
         <span class="text-danger" asp-validation-for="Value"></span>
     </div>
     <div class="mb-5 flex items-center gap-2">
-        <input class="btn btn-primary gap-2" type="submit" value="Saqlash" />
-        <a class="btn btn-success gap-2" asp-controller="Administrator" asp-action="ResourceIndex">Main pagega qaytish</a>
+        <button class="btn btn-primary gap-2" type="submit">@Localizer["save"]</button>
+        <a class="btn btn-success gap-2" asp-controller="Administrator" asp-action="ResourceIndex">@Localizer["go_to_main_page"]</a>
     </div>
 </form>

@@ -6,24 +6,24 @@
         <input class="form-input" asp-for="Id" type="hidden">
     </div>
     <div class="mb-3">
-        <label class="mb-2 text-muted" asp-for="TopicId">Definitionni nomini kiritasan... </label>
+        <label class="mb-2 text-muted" asp-for="TopicId">@Localizer["enter_name_of_topic"]</label>
         <select class="form-select" asp-for="TopicId" asp-items="
             Model.Topics.Select(i=>new SelectListItem(){Value = i.Id.ToString(), Text = i.Name})">
         </select>
         <span class="text-danger" asp-validation-for="TopicId"></span>
     </div>
     <div class="mb-3">
-        <label class="mb-2 text-muted" asp-for="HMTLText">HMTLText nomini kiritasan... </label>
+        <label class="mb-2 text-muted" asp-for="HMTLText">@Localizer["enter_html_text_of_definition"]</label>
         <input class="form-input" asp-for="HMTLText" type="text">
         <span class="text-danger" asp-validation-for="HMTLText"></span>
     </div>
     <div class="mb-3">
-        <label class="mb-2 text-muted" asp-for="Author">Muallifni nomini kiritasan... </label>
+        <label class="mb-2 text-muted" asp-for="Author">@Localizer["enter_author_of_definition"]</label>
         <input class="form-input" asp-for="Author" type="text">
         <span class="text-danger" asp-validation-for="Author"></span>
     </div>
     <div class="mb-5 flex items-center gap-2">
-        <input class="btn btn-primary gap-2" type="submit" value="Saqlash" />
-        <a class="btn btn-success gap-2" asp-controller="Administrator" asp-action="DefinitionIndex">Main pagega qaytish</a>
+        <button class="btn btn-primary gap-2" type="submit">@Localizer["save"]</button>
+        <a class="btn btn-success gap-2" asp-controller="Administrator" asp-action="DefinitionIndex">@Localizer["go_to_main_page"]</a>
     </div>
 </form>

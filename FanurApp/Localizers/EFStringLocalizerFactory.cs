@@ -30,6 +30,188 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                     Name = "en",
                     Resources = new List<Resource>() 
                     {
+                        new Resource
+                        {
+                           Key = "create_new_video",
+                           Value = "Create new video",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_caption_of_video",
+                           Value = "Enter caption of video",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_author_of_video",
+                           Value = "Enter author of video",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_url_name_of_video",
+                           Value = "Enter URL name of video",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "create_new_topic",
+                           Value = "Create new topic",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_description_of_topic",
+                           Value = "Enter description of text",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_author_of_topic",
+                           Value = "Enter author of topic",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "create_new_role",
+                           Value = "Create new role",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_role_name",
+                           Value = "Enter role name",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "create_new_resource",
+                           Value = "Create new resource",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_value_of_resource",
+                           Value = "Enter value of resource",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_key_of_resource",
+                           Value = "Enter key of resource",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_culture_name",
+                           Value = "Enter culture name",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "create_new_definition",
+                           Value = "Create new definition",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_author_of_definition",
+                           Value = "Enter author of definition",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_html_text_of_definition",
+                           Value = "Enter definition text from HMTL",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_name_of_topic",
+                           Value = "Enter name of topic",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "go_to_main_page",
+                           Value = "Go to main page",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "save",
+                           Value = "Save",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_description_of_course",
+                           Value = "Enter description of course",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_author_of_course",
+                           Value = "Enter author of course",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_name_of_course",
+                           Value = "Enter name of course",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "deleting",
+                           Value = "Deleting",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "editing",
+                           Value = "Editing",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "refresh_page",
+                           Value = "Refresh page",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "create_new_course",
+                           Value = "Create a new course",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
                         new Resource 
                         {
                             Key = "the_login_page", 
@@ -205,6 +387,188 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                     Name = "ru",
                     Resources = new List<Resource>() 
                     {
+                        new Resource
+                        {
+                           Key = "create_new_video",
+                           Value = "Создать новое видео",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_caption_of_video",
+                           Value = "Введите заголовок видео",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_author_of_video",
+                           Value = "Введите автора видео",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_url_name_of_video",
+                           Value = "Введите URL-адрес видео",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "create_new_topic",
+                           Value = "Создать новую тему",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_description_of_topic",
+                           Value = "Введите описание текста",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_author_of_topic",
+                           Value = "Введите автора темы",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "create_new_role",
+                           Value = "Создать новую роль",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_role_name",
+                           Value = "Введите имя роли",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "create_new_resource",
+                           Value = "Создать новый ресурс",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_value_of_resource",
+                           Value = "Введите стоимость ресурса",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_key_of_resource",
+                           Value = "Введите ключ ресурса",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_culture_name",
+                           Value = "Введите название культуры",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "create_new_definition",
+                           Value = "Создать новое описание",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_author_of_definition",
+                           Value = "Введите автора описания",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_html_text_of_definition",
+                           Value = "Напишите описание в HTML-форме",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_name_of_topic",
+                           Value = "Введите название темы",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "go_to_main_page",
+                           Value = "Перейти на главную страницу",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "save",
+                           Value = "Сохранять",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_description_of_course",
+                           Value = "Введите описание курса",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_author_of_course",
+                           Value = "Введите автора курса",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_name_of_course",
+                           Value = "Введите название курса",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "deleting",
+                           Value = "Удаление",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "editing",
+                           Value = "Редактирование",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "refresh_page",
+                           Value = "Обновить страницу",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "create_new_course",
+                           Value = "Создать новый курс",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
                         new Resource 
                         {
                             Key = "the_login_page", 
@@ -380,6 +744,188 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                     Name = "uz",
                     Resources = new List<Resource>() 
                     {
+                        new Resource
+                        {
+                           Key = "create_new_video",
+                           Value = "Yangi videoni yaratish",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_caption_of_video",
+                           Value = "Video uchun matn yozing",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_author_of_video",
+                           Value = "Videoni muallifini kiriting",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_url_name_of_video",
+                           Value = "Videoni URL manzilini kiriting",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "create_new_topic",
+                           Value = "Yangi mavzuni yaratish",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_description_of_topic",
+                           Value = "Mavzuni tavsifini kiriting",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_author_of_topic",
+                           Value = "Mavzuni mualifini kiriting",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "create_new_role",
+                           Value = "Yangi rolni yaratish",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_role_name",
+                           Value = "Rolni nomini kiriting",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "create_new_resource",
+                           Value = "Yangi resursni yaratish",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_value_of_resource",
+                           Value = "Resurs uchun qiymatini kiriting",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_key_of_resource",
+                           Value = "Resurs uchun kalit so'zni kiriting",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_culture_name",
+                           Value = "Tilni nomini kiritng",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "create_new_definition",
+                           Value = "Yangi tafsifni yaratish",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_author_of_definition",
+                           Value = "Tavsifni muallifini kiriting",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_html_text_of_definition",
+                           Value = "Tavsifni HTML ko'rinishida yozing",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_name_of_topic",
+                           Value = "Mavzuni nomini kiriting",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "go_to_main_page",
+                           Value = "Asosiy sahifaga qaytish",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "save",
+                           Value = "Saqlash",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_description_of_course",
+                           Value = "Kurs haqida batafsil yozing",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_author_of_course",
+                           Value = "Kurni muallifini kiriting",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_name_of_course",
+                           Value = "Kursni nomini kiriting",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "deleting",
+                           Value = "O'chirish",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "editing",
+                           Value = "Tahrirlash",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "refresh_page",
+                           Value = "Sahifani yangilash",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "create_new_course",
+                           Value = "Yangi kursni yaratish",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
                         new Resource 
                         {
                             Key = "the_login_page", 

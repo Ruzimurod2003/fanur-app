@@ -6,22 +6,22 @@
         <input class="form-input" asp-for="Id" type="hidden">
     </div>
     <div class="mb-3">
-        <label class="mb-2 text-muted" asp-for="Name">Kursni nomini kiritasan... </label>
+        <label class="mb-2 text-muted" asp-for="Name">@Localizer["enter_name_of_course"]</label>
         <input class="form-input" asp-for="Name" type="text">
         <span class="text-danger" asp-validation-for="Name"></span>
     </div>
     <div class="mb-3">
-        <label class="mb-2 text-muted" asp-for="Author">Muallifni nomini kiritasan... </label>
+        <label class="mb-2 text-muted" asp-for="Author">@Localizer["enter_author_of_course"]</label>
         <input class="form-input" asp-for="Author" type="text">
         <span class="text-danger" asp-validation-for="Author"></span>
     </div>
     <div class="mb-3">
-        <label class="mb-2 text-muted" asp-for="Description">Nima uchun bu kursni o'rganish kere?</label>
+        <label class="mb-2 text-muted" asp-for="Description">@Localizer["enter_description_of_course"]</label>
         <input class="form-input" asp-for="Description" type="text">
         <span class="text-danger" asp-validation-for="Description"></span>
     </div>
     <div class="mb-5 flex items-center gap-2">
-        <input class="btn btn-primary gap-2" type="submit" value="Saqlash" />
-        <a class="btn btn-success gap-2" asp-controller="Administrator" asp-action="CourseIndex">Main pagega qaytish</a>
+        <button class="btn btn-primary gap-2" type="submit">@Localizer["save"]</button>
+        <a class="btn btn-success gap-2" asp-controller="Administrator" asp-action="CourseIndex">@Localizer["go_to_main_page"]</a>
     </div>
 </form>
