@@ -1,0 +1,53 @@
+﻿@model UserIndexVM;
+@{
+    int count = Model.Users.Count;
+    int page = 1;
+}
+
+<partial name="~/Views/PartialComponents/_AlertMessage.cshtml" model="Model.Message" />
+<div class="mb-5 flex items-center gap-2">
+    <a class="btn btn-info gap-2" asp-controller="Administrator" asp-action="User" asp-route-id="0">
+        @Localizer["create_new_user"]
+    </a>
+    <a class="btn btn-success gap-2" asp-controller="Administrator" asp-action="UserIndex">@Localizer["refresh_page"]</a>
+</div>
+
+@while (page != ((count - 1) / 3 + 2))
+{
+    <div class="max-w-[320px] md:max-w-[990px] mx-auto">
+        <div class="md:flex justify-betwen md:space-y-0 rtl:space-x-reverse">
+            @foreach (var user in Model.Users.Skip((page - 1) * 3).Take(3).ToList())
+            {
+                <div class="border border-black dark:border-[#1b2e4b] text-center rounded group hover:border-primary">
+                    <div class="py-7 px-6">
+
+                        <div class="truncate ltr:pl-4 rtl:pr-4">
+                            <h4 class="text-base">
+                                @user.Name
+                                <span class="rounded bg-success-light px-1 text-xs text-success ltr:ml-2 rtl:ml-2">
+                                    @user.RoleName
+                                </span>
+                            </h4>
+                        </div>
+                        <h6 class="text-[#3b3f5c] font-semibold mb-4 dark:text-white-light">@user.Email</h6>
+                        <p class="text-white-dark">@user.Password</p>
+                        <br />
+                        <div class="mb-5 flex items-center gap-2">
+                            <a class="btn btn-warning gap-2" asp-controller="Administrator" asp-action="User"
+                               asp-route-id="@user.Id">
+                                <i class="bi bi-pencil-square"></i>@Localizer["editing"]
+                            </a>
+                            <form method="post" asp-controller="Administrator" asp-action="DeleteUser"
+                                  asp-route-id="@user.Id">
+                                <button type="submit" class="btn btn-danger gap-2">
+                                    <i class="bi bi-trash3"></i>@Localizer["deleting"]
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    page = page + 1;
+}

@@ -26,6 +26,179 @@ namespace FanurApp.Controllers
         {
             return View();
         }
+
+
+        #region Users
+        [HttpGet]
+        public IActionResult UserIndex(MessageVM message)
+        {
+            var users = repository.GetAllUsers();
+            var roles = repository.GetAllRoles();
+
+            var viewModel = new UserIndexVM()
+            {
+                Users = users.Select(i => new UserVM()
+                {
+                    Id = i.Id,
+                    Email = i.Email,
+                    Password = i.Password,
+                    Name = i.Name,
+                    CreatedDate = i.CreatedDate,
+                    UpdatedDate = i.UpdatedDate,
+                    RoleId = i.RoleId,
+                    Roles = roles.Select(i => new RoleVM()
+                    {
+                        Id = i.Id,
+                        Name = i.Name,
+                    }).ToList(),
+                    RoleName = i.Role.Name,
+                }).ToList()
+            };
+
+            if (message != null)
+            {
+                viewModel.Message = message;
+            }
+
+            return View(viewModel);
+        }
+        [HttpGet]
+        public new IActionResult User(int? id)
+        {
+            var viewModel = new UserVM();
+            var roles = repository.GetAllRoles();
+
+            if (id != 0 && id.HasValue)
+            {
+                var user = repository.GetUserById(id.Value);
+                viewModel = new UserVM()
+                {
+                    Id = id.Value,
+                    Name = user.Name,
+                    Email = user.Email,
+                    Password = user.Password,
+                    CreatedDate = user.CreatedDate,
+                    UpdatedDate = user.UpdatedDate,
+                    RoleId = user.Role.Id,
+                    RoleName = user.Role.Name
+                };
+            }
+
+            viewModel.ErrorMessage = new MessageVM
+            {
+                MessageType = (int)MessageTypesEnum.None,
+                MessageText = string.Empty
+            };
+            viewModel.Roles = roles.Select(i => new RoleVM()
+            {
+                Id = i.Id,
+                Name = i.Name
+            }).ToList();
+
+            return View(viewModel);
+        }
+        [HttpPost]
+        public new IActionResult User(UserVM viewModel)
+        {
+            var roles = repository.GetAllRoles();
+
+            viewModel.Roles = roles.Select(i => new RoleVM()
+            {
+                Id = i.Id,
+                Name = i.Name
+            }).ToList();
+
+            if (ModelState.IsValid)
+            {
+                if (viewModel.Id != 0)
+                {
+                    var user = new User()
+                    {
+                        Id = viewModel.Id,
+                        Name = viewModel.Name,
+                        Email = viewModel.Email,
+                        Password = viewModel.Password,
+                        RoleId = viewModel.RoleId,
+                        CreatedDate = viewModel.CreatedDate,
+                        UpdatedDate = viewModel.UpdatedDate
+                    };
+
+                    var resultUpdate = repository.UpdateUser(viewModel.Id, user);
+                    if (resultUpdate)
+                    {
+                        return RedirectToAction("UserIndex", "Administrator", new MessageVM()
+                        {
+                            MessageType = (int)MessageTypesEnum.Success,
+                            MessageText = localizer["users_updated_successfully"]
+                        });
+                    }
+                    else
+                    {
+                        viewModel.ErrorMessage = new MessageVM
+                        {
+                            MessageType = (int)MessageTypesEnum.Danger,
+                            MessageText = localizer["users_updated_unsuccessfully"]
+                        };
+                    }
+                }
+                else
+                {
+                    var user = new User()
+                    {
+                        Id = viewModel.Id,
+                        Name = viewModel.Name,
+                        Email = viewModel.Email,
+                        Password = viewModel.Password,
+                        RoleId = viewModel.RoleId,
+                        CreatedDate = viewModel.CreatedDate,
+                        UpdatedDate = viewModel.UpdatedDate
+                    };
+
+                    var resultAdd = repository.AddUser(user);
+                    if (resultAdd)
+                    {
+                        return RedirectToAction("UserIndex", "Administrator", new MessageVM()
+                        {
+                            MessageType = (int)MessageTypesEnum.Success,
+                            MessageText = localizer["users_created_successfully"]
+                        });
+                    }
+                    else
+                    {
+                        viewModel.ErrorMessage = new MessageVM
+                        {
+                            MessageType = (int)MessageTypesEnum.Danger,
+                            MessageText = localizer["users_created_unsuccessfully"]
+                        };
+                    }
+                }
+            }
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteUser(int id)
+        {
+            var result = repository.DeleteUser(id);
+            if (result)
+            {
+                return RedirectToAction("UserIndex", "Administrator", new MessageVM()
+                {
+                    MessageType = (int)MessageTypesEnum.Success,
+                    MessageText = localizer["users_deleted_successfully"]
+                });
+            }
+            else
+            {
+                return RedirectToAction("UserIndex", "Administrator", new MessageVM()
+                {
+                    MessageType = (int)MessageTypesEnum.Danger,
+                    MessageText = localizer["users_deleted_unsuccessfully"]
+                });
+            }
+        }
+        #endregion
+
         #region Courses
         [HttpGet]
         public IActionResult CourseIndex(MessageVM message)

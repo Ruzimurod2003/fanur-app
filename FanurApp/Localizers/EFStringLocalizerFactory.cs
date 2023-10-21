@@ -32,6 +32,83 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                     {
                         new Resource
                         {
+                           Key = "users",
+                           Value = "Users",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "create_new_user",
+                           Value = "Create new user",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_password_of_user",
+                           Value = "Enter password of user",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_email_of_user",
+                           Value = "Enter email of user",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_name_of_user",
+                           Value = "Enter name of user",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "users_deleted_unsuccessfully",
+                           Value = "Users deleted unsuccessfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "users_updated_unsuccessfully",
+                           Value = "Users updated unsuccessfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "users_created_unsuccessfully",
+                           Value = "Users created unsuccessfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "users_deleted_successfully",
+                           Value = "Users deleted successfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "users_updated_successfully",
+                           Value = "Users updated successfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "users_created_successfully",
+                           Value = "Users created successfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
                            Key = "resources_deleted_unsuccessfully",
                            Value = "Resources deleted unsuccessfully",
                            CreatedDate = DateTime.Now,
@@ -641,6 +718,83 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                     {
                         new Resource
                         {
+                           Key = "users",
+                           Value = "Пользователи",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "create_new_user",
+                           Value = "Создать нового пользователя",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_password_of_user",
+                           Value = "Введите пароль пользователя",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_email_of_user",
+                           Value = "Введите адрес электронной почты пользователя",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_name_of_user",
+                           Value = "Введите имя пользователя",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "users_deleted_unsuccessfully",
+                           Value = "Пользователь удалены неудачно",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "users_updated_unsuccessfully",
+                           Value = "Пользователь обновлены неудачно",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "users_created_unsuccessfully",
+                           Value = "Пользователь созданы неудачно",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "users_deleted_successfully",
+                           Value = "Пользователь успешно удалены",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "users_updated_successfully",
+                           Value = "Пользователь успешно обновлены",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "users_created_successfully",
+                           Value = "Пользователь успешно созданы",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
                            Key = "resources_deleted_unsuccessfully",
                            Value = "Ресурсы удалены неудачно",
                            CreatedDate = DateTime.Now,
@@ -1248,6 +1402,83 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                     Name = "uz",
                     Resources = new List<Resource>()
                     {
+                        new Resource
+                        {
+                           Key = "users",
+                           Value = "Foydalanuvchilar",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "create_new_user",
+                           Value = "Yangi userni yaratish",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_password_of_user",
+                           Value = "Userni parolini kiriting",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_email_of_user",
+                           Value = "Userni emailini kiriting",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_name_of_user",
+                           Value = "Userni ismini kiriting",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "users_deleted_unsuccessfully",
+                           Value = "Userni o'chirish mumkin emas",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "users_updated_unsuccessfully",
+                           Value = "Userni yangilash mumkin emas",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "users_created_unsuccessfully",
+                           Value = "Userni yaratish mumkin emas",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "users_deleted_successfully",
+                           Value = "Userni muvofaqiyatli o'chirildi",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "users_updated_successfully",
+                           Value = "Userni muvofaqiyatli o'zgartirildi",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "users_created_successfully",
+                           Value = "Userni muvofaqiyatli yaratildi",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
                         new Resource
                         {
                            Key = "resources_deleted_unsuccessfully",
