@@ -155,6 +155,7 @@ public class AdministratorRepository : IAdministratorRepository
         return context.Users
             .Where(i => i.Email.ToLower() == User.Email.ToLower())
             .Where(i => i.Password.ToLower() == User.Password.ToLower())
+            .Where(i => i.RoleId == User.RoleId)
             .Any();
     }
     #endregion
