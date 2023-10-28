@@ -5,6 +5,7 @@ using FanurApp.ViewModels;
 using FanurApp.ViewModels.Administrator;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Localization;
 
 namespace FanurApp.Controllers
@@ -707,7 +708,7 @@ namespace FanurApp.Controllers
             else
             {
 
-                return RedirectToAction("TopicIndex", "Administrator", new MessageVM()
+                return RedirectToAction("VideoIndex", "Administrator", new MessageVM()
                 {
                     MessageType = (int)MessageTypesEnum.Danger,
                     MessageText = localizer["videos_deleted_unsuccessfully"]
@@ -1173,6 +1174,215 @@ namespace FanurApp.Controllers
                 {
                     MessageType = (int)MessageTypesEnum.Danger,
                     MessageText = localizer["roles_deleted_unsuccessfully"]
+                });
+            }
+        }
+        #endregion
+
+
+        #region Quizzess
+        [HttpGet]
+        public IActionResult QuizIndex(MessageVM message)
+        {
+            var quizzes = repository.GetAllQuizzes();
+            var topics = repository.GetAllTopics();
+
+            var viewModel = new QuizIndexVM()
+            {
+                Quizzes = quizzes.Select(i => new QuizVM()
+                {
+                    Id = i.Id,
+                    TopicId = i.TopicId,
+                    TopicName = i.Topic.Name,
+                    CreatedDate = i.CreatedDate,
+                    UpdatedDate = i.UpdatedDate,
+                    AnswerA = i.AnswerA,
+                    AnswerB = i.AnswerB,
+                    AnswerC = i.AnswerC,
+                    AnswerD = i.AnswerD,
+                    IsTrueAnswer = i.IsTrueAnswer,
+                    QuestionText = i.QuestionText,
+                    Topics = topics.Select(i => new TopicVM()
+                    {
+                        Id = i.Id,
+                        Name = i.Name,
+                        Description = i.Description,
+                        Author = i.Author,
+                        CreatedDate = i.CreatedDate,
+                        CourseId = i.CourseId,
+                        UpdatedDate = i.UpdatedDate,
+                    }).ToList()
+                }).ToList()
+            };
+
+            if (message != null)
+            {
+                viewModel.Message = message;
+            }
+
+            return View(viewModel);
+        }
+        [HttpGet]
+        public IActionResult Quiz(int? id)
+        {
+            var viewModel = new QuizVM();
+            var topics = repository.GetAllTopics();
+
+            if (id != 0 && id.HasValue)
+            {
+                var quiz = repository.GetQuizById(id.Value);
+                viewModel = new QuizVM()
+                {
+                    Id = quiz.Id,
+                    UpdatedDate = quiz.UpdatedDate,
+                    CreatedDate = quiz.CreatedDate,
+                    AnswerA = quiz.AnswerA,
+                    AnswerB = quiz.AnswerB,
+                    AnswerC = quiz.AnswerC,
+                    AnswerD = quiz.AnswerD,
+                    IsTrueAnswer = quiz.IsTrueAnswer,
+                    QuestionText = quiz.QuestionText,
+                    TopicId = quiz.TopicId,
+                    TopicName = quiz.Topic.Name,
+                };
+            }
+
+            viewModel.ErrorMessage = new MessageVM
+            {
+                MessageType = (int)MessageTypesEnum.None,
+                MessageText = string.Empty
+            };
+            viewModel.Topics = topics.Select(i => new TopicVM()
+            {
+                Id = i.Id,
+                Name = i.Name,
+                Author = i.Author,
+                CreatedDate = i.CreatedDate,
+                UpdatedDate = i.UpdatedDate,
+                CourseId = i.CourseId,
+                Description = i.Description,
+                CourseName = i.Course.Name
+            }).ToList();
+
+            return View(viewModel);
+        }
+        [HttpPost]
+        public IActionResult Quiz(QuizVM viewModel)
+        {
+            var topics = repository.GetAllTopics();
+            viewModel.Topics = topics.Select(i => new TopicVM()
+            {
+                Id = i.Id,
+                Name = i.Name,
+                Author = i.Author,
+                CreatedDate = i.CreatedDate,
+                UpdatedDate = i.UpdatedDate,
+                CourseId = i.CourseId,
+                Description = i.Description,
+                CourseName = i.Course.Name
+            }).ToList();
+
+            if (ModelState.IsValid)
+            {
+                if (!Enum.IsDefined(typeof(QuizAnswersEnum), viewModel.IsTrueAnswer))
+                {
+                    ModelState.AddModelError("IsTrueAnswer", localizer["enter_one_of_the_answers_A_B_C_D_for_the_system"]);
+                }
+                else
+                {
+                    if (viewModel.Id != 0)
+                    {
+                        var quiz = new Quiz()
+                        {
+                            Id = viewModel.Id,
+                            UpdatedDate = viewModel.UpdatedDate,
+                            CreatedDate = viewModel.CreatedDate,
+                            AnswerA = viewModel.AnswerA,
+                            AnswerB = viewModel.AnswerB,
+                            AnswerC = viewModel.AnswerC,
+                            AnswerD = viewModel.AnswerD,
+                            IsTrueAnswer = viewModel.IsTrueAnswer,
+                            QuestionText = viewModel.QuestionText,
+                            TopicId = viewModel.TopicId
+                        };
+
+                        var resultUpdate = repository.UpdateQuiz(viewModel.Id, quiz);
+
+                        if (resultUpdate)
+                        {
+                            return RedirectToAction("QuizIndex", "Administrator", new MessageVM()
+                            {
+                                MessageType = (int)MessageTypesEnum.Success,
+                                MessageText = localizer["quizzes_updated_successfully"]
+                            });
+                        }
+                        else
+                        {
+                            viewModel.ErrorMessage = new MessageVM
+                            {
+                                MessageType = (int)MessageTypesEnum.Danger,
+                                MessageText = localizer["quizzes_updated_unsuccessfully"]
+                            };
+                        }
+                    }
+                    else
+                    {
+                        var Quiz = new Quiz()
+                        {
+                            TopicId = viewModel.TopicId,
+                            AnswerA = viewModel.AnswerA,
+                            AnswerB = viewModel.AnswerB,
+                            AnswerC = viewModel.AnswerC,
+                            AnswerD = viewModel.AnswerD,
+                            IsTrueAnswer = viewModel.IsTrueAnswer,
+                            QuestionText = viewModel.QuestionText,
+                            CreatedDate = viewModel.CreatedDate,
+                            UpdatedDate = viewModel.UpdatedDate
+                        };
+
+                        var resultAdd = repository.AddQuiz(Quiz);
+
+                        if (resultAdd)
+                        {
+                            return RedirectToAction("QuizIndex", "Administrator", new MessageVM()
+                            {
+                                MessageType = (int)MessageTypesEnum.Success,
+                                MessageText = localizer["quizzes_created_successfully"]
+                            });
+                        }
+                        else
+                        {
+                            viewModel.ErrorMessage = new MessageVM
+                            {
+                                MessageType = (int)MessageTypesEnum.Danger,
+                                MessageText = localizer["quizzes_created_unsuccessfully"]
+                            };
+                        }
+                    }
+                }
+            }
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteQuiz(int id)
+        {
+            var result = repository.DeleteQuiz(id);
+            if (result)
+            {
+                return RedirectToAction("QuizIndex", "Administrator", new MessageVM()
+                {
+                    MessageType = (int)MessageTypesEnum.Success,
+                    MessageText = localizer["quizzes_deleted_successfully"]
+                });
+            }
+            else
+            {
+
+                return RedirectToAction("QuizIndex", "Administrator", new MessageVM()
+                {
+                    MessageType = (int)MessageTypesEnum.Danger,
+                    MessageText = localizer["quizzes_deleted_unsuccessfully"]
                 });
             }
         }

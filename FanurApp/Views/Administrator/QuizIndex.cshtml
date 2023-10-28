@@ -1,0 +1,60 @@
+﻿@model QuizIndexVM;
+@{
+    int count = Model.Quizzes.Count;
+    int page = 1;
+}
+@{
+    string GetClassFromQuiz(string isTrueAnswer, string answer)
+    {
+        if (isTrueAnswer.ToUpper() == answer.ToUpper())
+        {
+            return "text-success dark:text-green-dark";
+        }
+        else
+        {
+            return "text-[#3b3f5c] dark:text-white-dark";
+        }
+    }
+}
+<partial name="~/Views/PartialComponents/_AlertMessage.cshtml" model="Model.Message" />
+<div class="mb-5 flex items-center gap-2">
+    <a class="btn btn-info gap-2" asp-controller="Administrator" asp-action="Quiz" asp-route-id="0">
+        @Localizer["create_new_quiz"]
+    </a>
+    <a class="btn btn-success gap-2" asp-controller="Administrator" asp-action="QuizIndex">@Localizer["refresh_page"]</a>
+</div>
+
+@while (page != ((count - 1) / 3 + 2))
+{
+    <div class="max-w-[320px] md:max-w-[990px] mx-auto">
+        <div class="md:flex justify-betwen md:space-y-0 rtl:space-x-reverse">
+            @foreach (var quiz in Model.Quizzes.Skip((page - 1) * 3).Take(3).ToList())
+            {
+                <div class="border border-black dark:border-[#1b2e4b] text-center rounded group hover:border-primary">
+                    <div class="py-7 px-6">
+                        <h4 class="text-[#3b3f5c] text-xl font-semibold mb-4 dark:text-white-light">@quiz.TopicName</h4>
+                        <h6 class="text-[#3b3f5c] font-semibold mb-4 dark:text-white-light">@quiz.Id) @quiz.QuestionText</h6>
+                        <p class="font-semibold mb-4 @GetClassFromQuiz(quiz.IsTrueAnswer,"A")">A) @quiz.AnswerA</p>
+                        <p class="font-semibold mb-4 @GetClassFromQuiz(quiz.IsTrueAnswer,"B")">B) @quiz.AnswerB</p>
+                        <p class="font-semibold mb-4 @GetClassFromQuiz(quiz.IsTrueAnswer,"C")">C) @quiz.AnswerC</p>
+                        <p class="font-semibold mb-4 @GetClassFromQuiz(quiz.IsTrueAnswer,"D")">D) @quiz.AnswerD</p>
+                        <br />
+                        <div class="mb-5 flex items-center gap-2">
+                            <a class="btn btn-warning gap-2" asp-controller="Administrator" asp-action="Quiz"
+                               asp-route-id="@quiz.Id">
+                                <i class="bi bi-pencil-square"></i>@Localizer["editing"]
+                            </a>
+                            <form method="post" asp-controller="Administrator" asp-action="DeleteQuiz"
+                                  asp-route-id="@quiz.Id">
+                                <button type="submit" class="btn btn-danger gap-2">
+                                    <i class="bi bi-trash3"></i>@Localizer["deleting"]
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+                            page = page + 1;
+                        }

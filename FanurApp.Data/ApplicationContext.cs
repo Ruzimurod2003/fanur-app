@@ -157,6 +157,50 @@ public class ApplicationContext : DbContext
                 },
             }
         );
+        modelBuilder.Entity<Quiz>().HasData(
+            new List<Quiz>
+            {
+                new Quiz
+                {
+                    Id = 1,
+                    TopicId = 1,
+                    QuestionText = "____ are you from?",
+                    AnswerA = "Where",
+                    AnswerB = "How",
+                    AnswerC = "Which",
+                    AnswerD = "What",
+                    IsTrueAnswer = "A",
+                    CreatedDate = DateTime.Now,
+                    UpdatedDate = DateTime.Now,
+                },
+                new Quiz
+                {
+                    Id = 2,
+                    TopicId = 1,
+                    QuestionText = "____ is your name?",
+                    AnswerA = "Where",
+                    AnswerB = "How",
+                    AnswerC = "Which",
+                    AnswerD = "What",
+                    IsTrueAnswer = "D",
+                    CreatedDate = DateTime.Now,
+                    UpdatedDate = DateTime.Now,
+                },
+                new Quiz
+                {
+                    Id = 3,
+                    TopicId = 2,
+                    QuestionText = "____ is your name?",
+                    AnswerA = "Where",
+                    AnswerB = "How",
+                    AnswerC = "Which",
+                    AnswerD = "What",
+                    IsTrueAnswer = "D",
+                    CreatedDate = DateTime.Now,
+                    UpdatedDate = DateTime.Now,
+                },
+            }
+        );
     }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

@@ -7,29 +7,134 @@ namespace FanurApp.Localizers;
 
 public class EFStringLocalizerFactory : IStringLocalizerFactory
 {
-    public IStringLocalizer Create(Type resourceSource)
-    {
-        return CreateStringLocalizer();
-    }
+   public IStringLocalizer Create(Type resourceSource)
+   {
+      return CreateStringLocalizer();
+   }
 
-    public IStringLocalizer Create(string baseName, string location)
-    {
-        return CreateStringLocalizer();
-    }
+   public IStringLocalizer Create(string baseName, string location)
+   {
+      return CreateStringLocalizer();
+   }
 
-    private IStringLocalizer CreateStringLocalizer()
-    {
-        ApplicationContext _db = new ApplicationContext();
-
-        // инициализация базы данных
-        if (!_db.Cultures.Any())
-        {
-            _db.AddRange(
-                new Culture
-                {
-                    Name = "en",
-                    Resources = new List<Resource>()
-                    {
+   private IStringLocalizer CreateStringLocalizer()
+   {
+      ApplicationContext _db = new ApplicationContext();
+      
+      // инициализация базы данных
+      if (!_db.Cultures.Any())
+      {
+         _db.AddRange(
+             new Culture
+             {
+                Name = "en",
+                Resources = new List<Resource>()
+                 {
+                        new Resource
+                        {
+                           Key = "enter_one_of_the_answers_A_B_C_D_for_the_system",
+                           Value = "Enter one of the answers A,B,C,D for the system",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "quizzes_deleted_unsuccessfully",
+                           Value = "Quizzes deleted unsuccessfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "quizzes_updated_unsuccessfully",
+                           Value = "Quizzes updated unsuccessfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "quizzes_created_unsuccessfully",
+                           Value = "Quizzes created unsuccessfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "quizzes_deleted_successfully",
+                           Value = "Quizzes deleted successfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "quizzes_updated_successfully",
+                           Value = "Quizzes updated successfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "quizzes_created_successfully",
+                           Value = "Quizzes created successfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_is_true_answer_name_of_quiz",
+                           Value = "Enter true answer of quiz",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_answer_d_name_of_quiz",
+                           Value = "Enter answer D name of quiz",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_answer_c_name_of_quiz",
+                           Value = "Enter answer C name of quiz",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_answer_b_name_of_quiz",
+                           Value = "Enter answer B name of quiz",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_answer_a_name_of_quiz",
+                           Value = "Enter answer A name of quiz",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_question_text_name_of_quiz",
+                           Value = "Enter question text name of quiz",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "create_new_quiz",
+                           Value = "Create new quiz",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "quizzes",
+                           Value = "Quizzes",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
                         new Resource
                         {
                            Key = "users",
@@ -709,13 +814,118 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         }
-                    }
-                },
-                new Culture
-                {
-                    Name = "ru",
-                    Resources = new List<Resource>()
-                    {
+                 }
+             },
+             new Culture
+             {
+                Name = "ru",
+                Resources = new List<Resource>()
+                 {
+                        new Resource
+                        {
+                           Key = "enter_one_of_the_answers_A_B_C_D_for_the_system",
+                           Value = "Введите один из ответов A,B,C,D для системы.",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "quizzes_deleted_unsuccessfully",
+                           Value = "Викторины удалены неудачно",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "quizzes_updated_unsuccessfully",
+                           Value = "Викторины обновлены неудачно",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "quizzes_created_unsuccessfully",
+                           Value = "Викторины созданы неудачно",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "quizzes_deleted_successfully",
+                           Value = "Викторины успешно удалены",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "quizzes_updated_successfully",
+                           Value = "Викторины успешно обновлены",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "quizzes_created_successfully",
+                           Value = "Викторины успешно созданы",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_is_true_answer_name_of_quiz",
+                           Value = "Введите правильный ответ викторины",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_answer_d_name_of_quiz",
+                           Value = "Введите ответ D",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_answer_c_name_of_quiz",
+                           Value = "Введите ответ C",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_answer_b_name_of_quiz",
+                           Value = "Введите ответ Б",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_answer_a_name_of_quiz",
+                           Value = "Введите ответ A",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_question_text_name_of_quiz",
+                           Value = "Введите текст вопроса",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "create_new_quiz",
+                           Value = "Создать новый тест",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "quizzes",
+                           Value = "Тесты",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
                         new Resource
                         {
                            Key = "users",
@@ -1395,13 +1605,118 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         }
-                    }
-                },
-                new Culture
-                {
-                    Name = "uz",
-                    Resources = new List<Resource>()
-                    {
+                 }
+             },
+             new Culture
+             {
+                Name = "uz",
+                Resources = new List<Resource>()
+                 {
+                        new Resource
+                        {
+                           Key = "enter_one_of_the_answers_A_B_C_D_for_the_system",
+                           Value = "Tizim uchun A,B,C,D javoblardan birini kiriting",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "quizzes_deleted_unsuccessfully",
+                           Value = "Test muvofaqiyatsiz o'chirildi",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "quizzes_updated_unsuccessfully",
+                           Value = "Test muvofaqiyatsiz o'zgartirildi",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "quizzes_created_unsuccessfully",
+                           Value = "Test muvofaqiyatsiz yaratildi",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "quizzes_deleted_successfully",
+                           Value = "Test muvofaqiyatli o'chirildi",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "quizzes_updated_successfully",
+                           Value = "Test muvofaqiyatli o'zgartirildi",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "quizzes_created_successfully",
+                           Value = "Test muvofaqiyatli yaratildi",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_is_true_answer_name_of_quiz",
+                           Value = "Testning to'g'ri jvobini kiriting",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_answer_d_name_of_quiz",
+                           Value = "Testning D javobini kiriting",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_answer_c_name_of_quiz",
+                           Value = "Testning C javobini kiriting",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_answer_b_name_of_quiz",
+                           Value = "Testning B javobini kiriting",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_answer_a_name_of_quiz",
+                           Value = "Testning A jvobini kiriting",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_question_text_name_of_quiz",
+                           Value = "Test matnini kiriting",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "create_new_quiz",
+                           Value = "Yangi test yaratish",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "quizzes",
+                           Value = "Testlar",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
                         new Resource
                         {
                            Key = "users",
@@ -2081,11 +2396,11 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         }
-                    }
-                }
-            );
-            _db.SaveChanges();
-        }
-        return new EFStringLocalizer(_db);
-    }
+                 }
+             }
+         );
+         _db.SaveChanges();
+      }
+      return new EFStringLocalizer(_db);
+   }
 }

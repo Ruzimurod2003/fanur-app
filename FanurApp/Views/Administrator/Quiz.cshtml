@@ -1,0 +1,54 @@
+﻿@model QuizVM
+
+<form class="space-y-5" method="post" asp-controller="Administrator" asp-action="Quiz">
+    <partial name="~/Views/PartialComponents/_AlertMessage.cshtml" model="Model.ErrorMessage" />
+    <div class="mb-3">
+        <input class="form-input" asp-for="Id" type="hidden">
+    </div>
+    <div class="mb-3">
+        <label class="mb-2 text-muted" asp-for="TopicId">@Localizer["enter_name_of_topic"]</label>
+        <select class="form-select" asp-for="TopicId"
+                asp-items="Model.Topics.Select(i=>new SelectListItem(){Value = i.Id.ToString(), Text = i.Name})">
+        </select>
+        <span class="text-danger" asp-validation-for="TopicId"></span>
+    </div>
+    <div class="mb-3">
+        <label class="mb-2 text-muted" asp-for="QuestionText">@Localizer["enter_question_text_name_of_quiz"]</label>
+        <input class="form-input" asp-for="QuestionText" type="text">
+        <span class="text-danger" asp-validation-for="QuestionText"></span>
+    </div>
+    <div class="mb-3">
+        <label class="mb-2 text-muted" asp-for="AnswerA">@Localizer["enter_answer_a_name_of_quiz"]</label>
+        <input class="form-input" asp-for="AnswerA" type="text">
+        <span class="text-danger" asp-validation-for="AnswerA"></span>
+    </div>
+    <div class="mb-3">
+        <label class="mb-2 text-muted" asp-for="AnswerB">@Localizer["enter_answer_b_name_of_quiz"]</label>
+        <input class="form-input" asp-for="AnswerB" type="text">
+        <span class="text-danger" asp-validation-for="AnswerB"></span>
+    </div>
+    <div class="mb-3">
+        <label class="mb-2 text-muted" asp-for="AnswerC">@Localizer["enter_answer_c_name_of_quiz"]</label>
+        <input class="form-input" asp-for="AnswerC" type="text">
+        <span class="text-danger" asp-validation-for="AnswerC"></span>
+    </div>
+    <div class="mb-3">
+        <label class="mb-2 text-muted" asp-for="AnswerD">@Localizer["enter_answer_d_name_of_quiz"]</label>
+        <input class="form-input" asp-for="AnswerD" type="text">
+        <span class="text-danger" asp-validation-for="AnswerD"></span>
+    </div>
+    <div class="mb-3">
+        <label class="mb-2 text-muted" asp-for="IsTrueAnswer">@Localizer["enter_is_true_answer_name_of_quiz"]</label>
+        <input class="form-input" asp-for="IsTrueAnswer" type="text" onkeyup="
+            var start = this.selectionStart;
+            var end = this.selectionEnd;
+            this.value = this.value.toUpperCase();
+            this.setSelectionRange(start, end);
+        ">
+        <span class="text-danger" asp-validation-for="IsTrueAnswer"></span>
+    </div>
+    <div class="mb-5 flex items-center gap-2">
+        <button class="btn btn-primary gap-2" type="submit">@Localizer["save"]</button>
+        <a class="btn btn-success gap-2" asp-controller="Administrator" asp-action="QuizIndex">@Localizer["go_to_main_page"]</a>
+    </div>
+</form>
