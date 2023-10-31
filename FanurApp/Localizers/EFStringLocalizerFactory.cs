@@ -1419,7 +1419,7 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                         new Resource
                         {
                            Key = "editing",
-                           Value = "Редактирование",
+                           Value = "Изменение",
                            CreatedDate = DateTime.Now,
                            UpdatedDate = DateTime.Now
                         },

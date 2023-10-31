@@ -126,7 +126,7 @@ public class ApplicationContext : DbContext
                 {
                     Id = 2,
                     TopicId = 2,
-                    URLName = "https://www.youtube.com/embed/qgInM6FH8Lk?rel=0",
+                    URLName = "https://www.youtube.com/embed/mJF8Hjpwcik",
                     Caption = "Bu video ingliz tilini o'rganuvchilar uchun",
                     CreatedDate = DateTime.Now,
                     UpdatedDate = DateTime.Now,
