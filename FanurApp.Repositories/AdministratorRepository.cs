@@ -24,6 +24,7 @@ public interface IAdministratorRepository
 
     #region Topics
     List<Topic> GetAllTopics();
+    List<Topic> GetAllTopicsByCourseId(int courseId);
     Topic GetTopicById(int id);
     bool AddTopic(Topic topic);
     bool UpdateTopic(int topicId, Topic newTopic);
@@ -245,6 +246,13 @@ public class AdministratorRepository : IAdministratorRepository
     public List<Topic> GetAllTopics()
     {
         return context.Topics.Include(i => i.Course).ToList();
+    }
+
+    public List<Topic> GetAllTopicsByCourseId(int courseId)
+    {
+        return context.Topics.Include(i => i.Course)
+        .Where(i => i.CourseId == courseId)
+        .ToList();
     }
 
     public Topic GetTopicById(int id)
