@@ -11,6 +11,9 @@ public class QuizVM
     public TopicVM Topic { get; set; }
     public string TopicName { get; set; }
     [Required]
+    public int CourseId { get; set; }
+    public List<CourseVM> Courses { get; set; }
+    [Required]
     public string AnswerA { get; set; }
     [Required]
     public string AnswerB { get; set; }

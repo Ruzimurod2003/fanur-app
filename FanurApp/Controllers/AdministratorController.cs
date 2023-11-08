@@ -1207,7 +1207,7 @@ namespace FanurApp.Controllers
             }
         }
         #endregion
-
+        
 
         #region Quizzess
         [HttpGet]
@@ -1255,7 +1255,10 @@ namespace FanurApp.Controllers
         public IActionResult Quiz(int? id)
         {
             var viewModel = new QuizVM();
-            var topics = repository.GetAllTopics();
+            var topics = (viewModel.CourseId != 0) ? 
+                            repository.GetAllTopicsByCourseId(viewModel.CourseId) : 
+                            repository.GetAllTopics();
+            var courses = repository.GetAllCourses();
 
             if (id != 0 && id.HasValue)
             {
@@ -1293,12 +1296,26 @@ namespace FanurApp.Controllers
                 CourseName = i.Course.Name
             }).ToList();
 
+            viewModel.Courses = courses.Select(i => new CourseVM()
+            {
+                Id = i.Id,
+                Name = i.Name,
+                Author = i.Author,
+                CreatedDate = i.CreatedDate,
+                UpdatedDate = i.UpdatedDate,
+                Description = i.Description
+            }).ToList();
+
             return View(viewModel);
         }
         [HttpPost]
         public IActionResult Quiz(QuizVM viewModel)
         {
-            var topics = repository.GetAllTopics();
+            var topics = (viewModel.CourseId != 0) ? 
+                            repository.GetAllTopicsByCourseId(viewModel.CourseId) : 
+                            repository.GetAllTopics();
+            var courses = repository.GetAllCourses();
+
             viewModel.Topics = topics.Select(i => new TopicVM()
             {
                 Id = i.Id,
@@ -1309,6 +1326,16 @@ namespace FanurApp.Controllers
                 CourseId = i.CourseId,
                 Description = i.Description,
                 CourseName = i.Course.Name
+            }).ToList();
+            
+            viewModel.Courses = courses.Select(i => new CourseVM()
+            {
+                Id = i.Id,
+                Name = i.Name,
+                Author = i.Author,
+                CreatedDate = i.CreatedDate,
+                UpdatedDate = i.UpdatedDate,
+                Description = i.Description
             }).ToList();
 
             if (ModelState.IsValid)
