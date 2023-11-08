@@ -27,7 +27,7 @@ namespace FanurApp.Controllers
         {
             return View();
         }
-
+        
 
         #region Users
         [HttpGet]
@@ -789,7 +789,10 @@ namespace FanurApp.Controllers
         public IActionResult Definition(int? id)
         {
             var viewModel = new DefinitionVM();
-            var topics = repository.GetAllTopics();
+            var topics = (viewModel.CourseId != 0) ? 
+                            repository.GetAllTopicsByCourseId(viewModel.CourseId) : 
+                            repository.GetAllTopics();
+            var courses = repository.GetAllCourses();
 
             if (id != 0 && id.HasValue)
             {
@@ -823,12 +826,26 @@ namespace FanurApp.Controllers
                 CourseName = i.Course.Name
             }).ToList();
 
+            viewModel.Courses = courses.Select(i => new CourseVM()
+            {
+                Id = i.Id,
+                Name = i.Name,
+                Author = i.Author,
+                Description = i.Description,
+                CreatedDate = i.CreatedDate,
+                UpdatedDate = i.UpdatedDate
+            }).ToList();
+
             return View(viewModel);
         }
         [HttpPost]
         public IActionResult Definition(DefinitionVM viewModel)
         {
-            var topics = repository.GetAllTopics();
+            var topics = (viewModel.CourseId != 0) ? 
+                            repository.GetAllTopicsByCourseId(viewModel.CourseId) : 
+                            repository.GetAllTopics();
+            var courses = repository.GetAllCourses();
+
             viewModel.Topics = topics.Select(i => new TopicVM()
             {
                 Id = i.Id,
@@ -839,6 +856,16 @@ namespace FanurApp.Controllers
                 UpdatedDate = i.UpdatedDate,
                 CourseId = i.CourseId,
                 CourseName = i.Course.Name
+            }).ToList();
+
+            viewModel.Courses = courses.Select(i => new CourseVM()
+            {
+                Id = i.Id,
+                Name = i.Name,
+                Author = i.Author,
+                Description = i.Description,
+                CreatedDate = i.CreatedDate,
+                UpdatedDate = i.UpdatedDate
             }).ToList();
 
             if (ModelState.IsValid)
@@ -1206,8 +1233,7 @@ namespace FanurApp.Controllers
                 });
             }
         }
-        #endregion
-        
+        #endregion        
 
         #region Quizzess
         [HttpGet]
