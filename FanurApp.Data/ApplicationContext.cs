@@ -5,6 +5,7 @@ namespace FanurApp.Data;
 
 public class ApplicationContext : DbContext
 {
+    public DbSet<Models.File> Files { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<Role> Roles { get; set; }
     public DbSet<Video> Videos { get; set; }

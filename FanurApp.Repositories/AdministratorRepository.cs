@@ -6,6 +6,15 @@ using System.Data;
 namespace FanurApp.Repositories;
 public interface IAdministratorRepository
 {
+
+    #region Files
+    List<Models.File> GetAllFiles();
+    Models.File GetFileById(int id);
+    bool AddFile(Models.File file);
+    bool UpdateFile(int fileId, Models.File newFile);
+    bool DeleteFile(int fileId);
+    #endregion
+
     #region Users
     List<User> GetAllUsers();
     User GetUserById(int id);
@@ -82,6 +91,83 @@ public class AdministratorRepository : IAdministratorRepository
     {
         context = _context;
     }
+
+    #region Files
+    public List<Models.File> GetAllFiles()
+    {
+        return context.Files.Include(i => i.Topic).ToList();
+    }
+
+    public Models.File GetFileById(int id)
+    {
+        var file = context.Files.Include(i => i.Topic).FirstOrDefault(i => i.Id == id);
+        return file;
+    }
+
+    public bool AddFile(Models.File file)
+    {
+        if (IsDublicateFile(file))
+        {
+            return false;
+        }
+        file.CreatedDate = DateTime.Now;
+
+        context.Files.Add(file);
+        context.SaveChanges();
+        return true;
+    }
+
+    public bool UpdateFile(int fileId, Models.File newFile)
+    {
+        if (!IsExistFile(fileId))
+        {
+            return false;
+        }
+        if (IsDublicateFile(newFile))
+        {
+            return false;
+        }
+
+        var file = context.Files.Include(i => i.Topic).FirstOrDefault(c => c.Id == fileId);
+        if (file != null)
+        {
+            file.TopicId = newFile.TopicId;
+            file.Path = newFile.Path;
+            file.Name = newFile.Name;
+            file.FileTypeId = newFile.FileTypeId;
+        }
+        context.SaveChanges();
+        return true;
+    }
+
+    public bool DeleteFile(int fileId)
+    {
+        if (!IsExistFile(fileId))
+        {
+            return false;
+        }
+        var file = context.Files.Include(i => i.Topic).FirstOrDefault(c => c.Id == fileId);
+        if (file != null)
+        {
+            context.Files.Remove(file);
+        }
+        context.SaveChanges();
+        return true;
+    }
+    private bool IsExistFile(int fileId)
+    {
+        return context.Files.Where(i => i.Id == fileId).Any();
+    }
+    private bool IsDublicateFile(Models.File file)
+    {
+        return context.Files
+            .Where(i => i.TopicId == file.TopicId)
+            .Where(i => i.Name == file.Name)
+            .Where(i => i.Path == file.Path)
+            .Where(i => i.FileTypeId == file.FileTypeId)
+            .Any();
+    }
+    #endregion
 
     #region Users
     public List<User> GetAllUsers()
