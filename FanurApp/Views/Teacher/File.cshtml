@@ -2,7 +2,7 @@
     var topics = ViewBag.Topics;
 }
 
-<form class="space-y-5" method="post" asp-controller="Administrator"
+<form class="space-y-5" method="post" asp-controller="Teacher"
       asp-action="File" enctype="multipart/form-data">
     <div class="mb-3">
         <input class="form-input" name="id" type="hidden">
@@ -26,6 +26,6 @@
     </div>
     <div class="mb-5 flex items-center gap-2">
         <button class="btn btn-primary gap-2" type="submit">@Localizer["save"]</button>
-        <a class="btn btn-success gap-2" asp-controller="Administrator" asp-action="FileIndex">@Localizer["go_to_main_page"]</a>
+        <a class="btn btn-success gap-2" asp-controller="Teacher" asp-action="FileIndex">@Localizer["go_to_main_page"]</a>
     </div>
 </form>

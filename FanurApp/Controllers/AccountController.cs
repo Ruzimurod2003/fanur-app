@@ -62,7 +62,7 @@ namespace FanurApp.Controllers
                     if (result.RoleId == (int)RolesEnum.Administrator)
                         return RedirectToAction("Index", "Administrator", null);
                     else if (result.RoleId == (int)RolesEnum.Teacher)
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Teacher");
                     else
                         return RedirectToAction("Index", "Home");
                 }

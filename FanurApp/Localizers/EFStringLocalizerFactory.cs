@@ -32,6 +32,41 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                  {
                         new Resource
                         {
+                           Key = "upload_file_field",
+                           Value = "Please upload file",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_description_of_file",
+                           Value = "Enter description of file",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "create_new_file",
+                           Value = "Create new file",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "files_created_unsuccessfully",
+                           Value = "Files created unsuccessfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "files_created_successfully",
+                           Value = "Files created successfully",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
                            Key = "enter_one_of_the_answers_A_B_C_D_for_the_system",
                            Value = "Enter one of the answers A,B,C,D for the system",
                            CreatedDate = DateTime.Now,
@@ -823,6 +858,41 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                  {
                         new Resource
                         {
+                           Key = "upload_file_field",
+                           Value = "Пожалуйста, загрузите файл",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_description_of_file",
+                           Value = "Введите описание файла",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "create_new_file",
+                           Value = "Создать новый файл",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "files_created_unsuccessfully",
+                           Value = "Файлы созданы неудачно",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "files_created_successfully",
+                           Value = "Файлы успешно созданы",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
                            Key = "enter_one_of_the_answers_A_B_C_D_for_the_system",
                            Value = "Введите один из ответов A,B,C,D для системы.",
                            CreatedDate = DateTime.Now,
@@ -1612,6 +1682,41 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                 Name = "uz",
                 Resources = new List<Resource>()
                  {
+                        new Resource
+                        {
+                           Key = "upload_file_field",
+                           Value = "Iltimos, faylni yuklang",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "enter_description_of_file",
+                           Value = "Fayl tavsifini kiriting",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "create_new_file",
+                           Value = "Yangi fayl yarating",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "files_created_unsuccessfully",
+                           Value = "Fayllar muvaffaqiyatsiz yaratildi",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "files_created_successfully",
+                           Value = "Fayllar muvaffaqiyatli yaratildi",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
                         new Resource
                         {
                            Key = "enter_one_of_the_answers_A_B_C_D_for_the_system",

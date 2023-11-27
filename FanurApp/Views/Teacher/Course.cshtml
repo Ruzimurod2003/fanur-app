@@ -1,0 +1,27 @@
+﻿@model CourseVM
+
+<form class="space-y-5" method="post" asp-controller="Teacher" asp-action="Course">
+    <partial name="~/Views/PartialComponents/_AlertMessage.cshtml" model="Model.ErrorMessage" />
+    <div class="mb-3">
+        <input class="form-input" asp-for="Id" type="hidden">
+    </div>
+    <div class="mb-3">
+        <label class="mb-2 text-muted" asp-for="Name">@Localizer["enter_name_of_course"]</label>
+        <input class="form-input" asp-for="Name" type="text">
+        <span class="text-danger" asp-validation-for="Name"></span>
+    </div>
+    <div class="mb-3">
+        <label class="mb-2 text-muted" asp-for="Author">@Localizer["enter_author_of_course"]</label>
+        <input class="form-input" asp-for="Author" type="text">
+        <span class="text-danger" asp-validation-for="Author"></span>
+    </div>
+    <div class="mb-3">
+        <label class="mb-2 text-muted" asp-for="Description">@Localizer["enter_description_of_course"]</label>
+        <input class="form-input" asp-for="Description" type="text">
+        <span class="text-danger" asp-validation-for="Description"></span>
+    </div>
+    <div class="mb-5 flex items-center gap-2">
+        <button class="btn btn-primary gap-2" type="submit">@Localizer["save"]</button>
+        <a class="btn btn-success gap-2" asp-controller="Teacher" asp-action="CourseIndex">@Localizer["go_to_main_page"]</a>
+    </div>
+</form>

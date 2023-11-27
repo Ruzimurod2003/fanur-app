@@ -1,0 +1,42 @@
+﻿@model VideoVM
+
+<form class="space-y-5" method="post" asp-controller="Teacher" asp-action="Video">
+    <partial name="~/Views/PartialComponents/_AlertMessage.cshtml" model="Model.ErrorMessage" />
+    <div class="mb-3">
+        <input class="form-input" asp-for="Id" type="hidden">
+    </div>
+    <div class="mb-3">
+        <label class="mb-2 text-muted" asp-for="CourseId">@Localizer["enter_name_of_course"]</label>
+        <select class="form-select" asp-for="CourseId"
+                asp-items="Model.Courses.Select(i=>new SelectListItem(){Value = i.Id.ToString(), Text = i.Name})"
+                onchange="this.form.submit();">
+        </select>
+        <span class="text-danger" asp-validation-for="CourseId"></span>
+    </div>
+    <div class="mb-3">
+        <label class="mb-2 text-muted" asp-for="TopicId">@Localizer["enter_name_of_topic"]</label>
+        <select class="form-select" asp-for="TopicId"
+                asp-items="Model.Topics.Select(i=>new SelectListItem(){Value = i.Id.ToString(), Text = i.Name})">
+        </select>
+        <span class="text-danger" asp-validation-for="TopicId"></span>
+    </div>
+    <div class="mb-3">
+        <label class="mb-2 text-muted" asp-for="URLName">@Localizer["enter_url_name_of_video"]</label>
+        <input class="form-input" asp-for="URLName" type="text">
+        <span class="text-danger" asp-validation-for="URLName"></span>
+    </div>
+    <div class="mb-3">
+        <label class="mb-2 text-muted" asp-for="Author">@Localizer["enter_author_of_video"]</label>
+        <input class="form-input" asp-for="Author" type="text">
+        <span class="text-danger" asp-validation-for="Author"></span>
+    </div>
+    <div class="mb-3">
+        <label class="mb-2 text-muted" asp-for="Caption">@Localizer["enter_caption_of_video"]</label>
+        <input class="form-input" asp-for="Caption" type="text">
+        <span class="text-danger" asp-validation-for="Caption"></span>
+    </div>
+    <div class="mb-5 flex items-center gap-2">
+        <button class="btn btn-primary gap-2" type="submit">@Localizer["save"]</button>
+        <a class="btn btn-success gap-2" asp-controller="Teacher" asp-action="VideoIndex">@Localizer["go_to_main_page"]</a>
+    </div>
+</form>
