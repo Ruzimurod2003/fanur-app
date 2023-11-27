@@ -10,5 +10,6 @@ public class File
     [ForeignKey(nameof(TopicId))]
     public Topic Topic { get; set; }
     public int FileTypeId { get; set; }
+    public string Description { get; set; }
     public DateTime CreatedDate { get; set; }
 }

@@ -47,7 +47,8 @@ namespace FanurApp.Controllers
                     CreatedDate = i.CreatedDate,
                     Path = i.Path,
                     TopicId = i.TopicId,
-                    TopicName = i.Topic.Name
+                    TopicName = i.Topic.Name,
+                    Description = i.Description
                 }).ToList()
             };
             if (message != null)
@@ -94,6 +95,7 @@ namespace FanurApp.Controllers
                 {
                     file.FileTypeId = (int)FileTypesEnum.Image;
                 }
+                file.Description = description;
                 bool result = repository.AddFile(file);
                 if (result)
                 {

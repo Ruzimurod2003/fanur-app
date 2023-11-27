@@ -10,5 +10,6 @@ public class FileVM
     public DateTime CreatedDate { get; set; }
     public int TopicId { get; set; }
     public string TopicName { get; set; }
+    public string Description { get; set; }
     public MessageVM ErrorMessage { get; set; }
 }

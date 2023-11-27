@@ -21,11 +21,13 @@
                 <div class="border border-black dark:border-[#1b2e4b] text-center rounded group hover:border-primary">
                     <div class="py-7 px-6">
                         <h4 class="text-[#3b3f5c] text-xl font-semibold mb-4 dark:text-white-light">@file.TopicName</h4>
-                        
-                        <br />
                         <audio controls>
                             <source src="~/files/@string.Format("{0}",file.Name)">
                         </audio>
+                        <br />
+                        <div>
+                            @Html.Raw(file.Description)
+                        </div>
                         <div class="mb-5 flex items-center gap-2">
                             <form method="post" asp-controller="Administrator" asp-action="DeleteFile"
                                   asp-route-id="@file.Id">
