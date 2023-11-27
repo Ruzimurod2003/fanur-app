@@ -5,7 +5,6 @@ using FanurApp.ViewModels;
 using FanurApp.ViewModels.Administrator;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Localization;
 
 namespace FanurApp.Controllers
@@ -15,11 +14,16 @@ namespace FanurApp.Controllers
     {
         private readonly IAdministratorRepository repository;
         private readonly IStringLocalizer localizer;
+        private readonly IWebHostEnvironment appEnvironment;
 
-        public AdministratorController(IAdministratorRepository _repository, IStringLocalizer _localizer)
+        public AdministratorController(
+            IAdministratorRepository _repository,
+            IStringLocalizer _localizer,
+            IWebHostEnvironment _appEnvironment)
         {
             repository = _repository;
             localizer = _localizer;
+            appEnvironment = _appEnvironment;
         }
 
         [HttpGet]
@@ -27,7 +31,114 @@ namespace FanurApp.Controllers
         {
             return View();
         }
-        
+
+        #region Files
+        [HttpGet]
+        public IActionResult FileIndex(MessageVM message)
+        {
+            var files = repository.GetAllFiles();
+            var viewModel = new FileIndexVM()
+            {
+                Files = files.Select(i => new FileVM()
+                {
+                    Id = i.Id,
+                    Name = i.Name,
+                    FileTypeId = i.FileTypeId,
+                    CreatedDate = i.CreatedDate,
+                    Path = i.Path,
+                    TopicId = i.TopicId,
+                    TopicName = i.Topic.Name
+                }).ToList()
+            };
+            if (message != null)
+            {
+                viewModel.Message = message;
+            }
+
+            return View(viewModel);
+        }
+        [HttpGet]
+        public IActionResult File(int? id)
+        {
+            ViewBag.Topics = repository.GetAllTopics().Select(i => new TopicVM()
+            {
+                Id = i.Id,
+                Name = i.Name
+            });
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> File(IFormFile uploadedFile, int topicId, string description)
+        {
+            if (uploadedFile != null)
+            {
+                // путь к папке Files
+                string fileName = uploadedFile.FileName;
+                var path = Path.Combine(appEnvironment.WebRootPath, "files");
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+                // сохраняем файл в папку Files в каталоге wwwroot
+                using (var fileStream = new FileStream(Path.Combine(path, fileName), FileMode.Create))
+                {
+                    await uploadedFile.CopyToAsync(fileStream);
+                }
+                Models.File file = new Models.File { Name = uploadedFile.FileName, Path = path, TopicId = topicId };
+                if (uploadedFile.ContentType == "audio/x-m4a")
+                {
+                    file.FileTypeId = (int)FileTypesEnum.Audio;
+                }
+                else if (uploadedFile.ContentType == "image/jpeg")
+                {
+                    file.FileTypeId = (int)FileTypesEnum.Image;
+                }
+                bool result = repository.AddFile(file);
+                if (result)
+                {
+                    return RedirectToAction("FileIndex", "Administrator", new MessageVM()
+                    {
+                        MessageType = (int)MessageTypesEnum.Success,
+                        MessageText = localizer["files_created_successfully"]
+                    });
+                }
+                else
+                {
+                    return RedirectToAction("FileIndex", "Administrator", new MessageVM()
+                    {
+                        MessageType = (int)MessageTypesEnum.Danger,
+                        MessageText = localizer["files_created_unsuccessfully"]
+                    });
+                }
+            }
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult DeleteFile(int id)
+        {
+            var result = repository.DeleteFile(id);
+            if (result)
+            {
+                return RedirectToAction("FileIndex", "Administrator", new MessageVM()
+                {
+                    MessageType = (int)MessageTypesEnum.Success,
+                    MessageText = localizer["files_deleted_successfully"]
+                });
+            }
+            else
+            {
+
+                return RedirectToAction("FileIndex", "Administrator", new MessageVM()
+                {
+                    MessageType = (int)MessageTypesEnum.Danger,
+                    MessageText = localizer["files_deleted_unsuccessfully"]
+                });
+            }
+        }
+        #endregion
 
         #region Users
         [HttpGet]
@@ -572,10 +683,10 @@ namespace FanurApp.Controllers
         {
             var viewModel = new VideoVM();
 
-            var topics = (viewModel.CourseId != 0) ? 
-                            repository.GetAllTopicsByCourseId(viewModel.CourseId) : 
+            var topics = (viewModel.CourseId != 0) ?
+                            repository.GetAllTopicsByCourseId(viewModel.CourseId) :
                             repository.GetAllTopics();
-                            
+
             var courses = repository.GetAllCourses();
 
             if (id != 0 && id.HasValue)
@@ -626,8 +737,8 @@ namespace FanurApp.Controllers
         [HttpPost]
         public IActionResult Video(VideoVM viewModel)
         {
-            var topics = (viewModel.CourseId != 0) ? 
-                            repository.GetAllTopicsByCourseId(viewModel.CourseId) : 
+            var topics = (viewModel.CourseId != 0) ?
+                            repository.GetAllTopicsByCourseId(viewModel.CourseId) :
                             repository.GetAllTopics();
 
             viewModel.Topics = topics.Select(i => new TopicVM()
@@ -789,8 +900,8 @@ namespace FanurApp.Controllers
         public IActionResult Definition(int? id)
         {
             var viewModel = new DefinitionVM();
-            var topics = (viewModel.CourseId != 0) ? 
-                            repository.GetAllTopicsByCourseId(viewModel.CourseId) : 
+            var topics = (viewModel.CourseId != 0) ?
+                            repository.GetAllTopicsByCourseId(viewModel.CourseId) :
                             repository.GetAllTopics();
             var courses = repository.GetAllCourses();
 
@@ -841,8 +952,8 @@ namespace FanurApp.Controllers
         [HttpPost]
         public IActionResult Definition(DefinitionVM viewModel)
         {
-            var topics = (viewModel.CourseId != 0) ? 
-                            repository.GetAllTopicsByCourseId(viewModel.CourseId) : 
+            var topics = (viewModel.CourseId != 0) ?
+                            repository.GetAllTopicsByCourseId(viewModel.CourseId) :
                             repository.GetAllTopics();
             var courses = repository.GetAllCourses();
 
@@ -1281,8 +1392,8 @@ namespace FanurApp.Controllers
         public IActionResult Quiz(int? id)
         {
             var viewModel = new QuizVM();
-            var topics = (viewModel.CourseId != 0) ? 
-                            repository.GetAllTopicsByCourseId(viewModel.CourseId) : 
+            var topics = (viewModel.CourseId != 0) ?
+                            repository.GetAllTopicsByCourseId(viewModel.CourseId) :
                             repository.GetAllTopics();
             var courses = repository.GetAllCourses();
 
@@ -1337,8 +1448,8 @@ namespace FanurApp.Controllers
         [HttpPost]
         public IActionResult Quiz(QuizVM viewModel)
         {
-            var topics = (viewModel.CourseId != 0) ? 
-                            repository.GetAllTopicsByCourseId(viewModel.CourseId) : 
+            var topics = (viewModel.CourseId != 0) ?
+                            repository.GetAllTopicsByCourseId(viewModel.CourseId) :
                             repository.GetAllTopics();
             var courses = repository.GetAllCourses();
 
@@ -1353,7 +1464,7 @@ namespace FanurApp.Controllers
                 Description = i.Description,
                 CourseName = i.Course.Name
             }).ToList();
-            
+
             viewModel.Courses = courses.Select(i => new CourseVM()
             {
                 Id = i.Id,

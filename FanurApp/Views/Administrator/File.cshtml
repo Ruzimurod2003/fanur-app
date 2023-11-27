@@ -1,0 +1,31 @@
+﻿@{
+    var topics = ViewBag.Topics;
+}
+
+<form class="space-y-5" method="post" asp-controller="Administrator"
+      asp-action="File" enctype="multipart/form-data">
+    <div class="mb-3">
+        <input class="form-input" name="id" type="hidden">
+    </div>
+    <div class="mb-3">
+        <label class="mb-2 text-muted" for="topicId">@Localizer["enter_name_of_topic"]</label>
+        <select class="form-select" name="topicId">
+            @foreach (var topic in topics)
+            {
+                <option value="@topic.Id">@topic.Name</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label class="mb-2 text-muted" for="uploadedFile">@Localizer["enter_caption_of_video"]</label>
+        <input class="form-input" name="uploadedFile" type="file">
+    </div>
+    <div class="mb-3">
+        <label class="mb-2 text-muted" for="description">@Localizer["enter_description_of_file"]</label>
+        <input class="form-input" name="description" type="text">
+    </div>
+    <div class="mb-5 flex items-center gap-2">
+        <button class="btn btn-primary gap-2" type="submit">@Localizer["save"]</button>
+        <a class="btn btn-success gap-2" asp-controller="Administrator" asp-action="FileIndex">@Localizer["go_to_main_page"]</a>
+    </div>
+</form>
