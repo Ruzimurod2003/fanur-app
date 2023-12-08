@@ -194,7 +194,8 @@ namespace FanurApp.Controllers
                     CreatedDate = user.CreatedDate,
                     UpdatedDate = user.UpdatedDate,
                     RoleId = user.Role.Id,
-                    RoleName = user.Role.Name
+                    RoleName = user.Role.Name,
+                    IsAccepted = user.IsAccepted
                 };
             }
 
@@ -233,6 +234,7 @@ namespace FanurApp.Controllers
                         Email = viewModel.Email,
                         Password = viewModel.Password,
                         RoleId = viewModel.RoleId,
+                        IsAccepted = viewModel.IsAccepted,
                         CreatedDate = viewModel.CreatedDate,
                         UpdatedDate = viewModel.UpdatedDate
                     };
@@ -264,6 +266,7 @@ namespace FanurApp.Controllers
                         Email = viewModel.Email,
                         Password = viewModel.Password,
                         RoleId = viewModel.RoleId,
+                        IsAccepted = viewModel.IsAccepted,
                         CreatedDate = viewModel.CreatedDate,
                         UpdatedDate = viewModel.UpdatedDate
                     };

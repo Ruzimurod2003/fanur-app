@@ -27,6 +27,11 @@
         </select>
         <span class="text-danger" asp-validation-for="RoleId"></span>
     </div>
+    <div class="mb-3">
+        <label class="mb-2 text-muted" asp-for="IsAccepted">@Localizer["user_approval_by_admin"]</label>
+        <input class="form-checkbox" asp-for="IsAccepted" type="checkbox">
+        <span class="text-danger" asp-validation-for="IsAccepted"></span>
+    </div>
     <div class="mb-5 flex items-center gap-2">
         <button class="btn btn-primary gap-2" type="submit">@Localizer["save"]</button>
         <a class="btn btn-success gap-2" asp-controller="Administrator" asp-action="UserIndex">@Localizer["go_to_main_page"]</a>

@@ -213,6 +213,7 @@ public class AdministratorRepository : IAdministratorRepository
             user.Email = newUser.Email;
             user.Password = newUser.Password;
             user.RoleId = newUser.RoleId;
+            user.IsAccepted = newUser.IsAccepted;
             user.UpdatedDate = DateTime.Now;
         }
         context.SaveChanges();
@@ -237,12 +238,13 @@ public class AdministratorRepository : IAdministratorRepository
     {
         return context.Users.Where(i => i.Id == userId).Any();
     }
-    private bool IsDublicateUser(User User)
+    private bool IsDublicateUser(User user)
     {
         return context.Users
-            .Where(i => i.Email.ToLower() == User.Email.ToLower())
-            .Where(i => i.Password.ToLower() == User.Password.ToLower())
-            .Where(i => i.RoleId == User.RoleId)
+            .Where(i => i.Email.ToLower() == user.Email.ToLower())
+            .Where(i => i.Password.ToLower() == user.Password.ToLower())
+            .Where(i => i.RoleId == user.RoleId)
+            .Where(i => i.IsAccepted == user.IsAccepted)
             .Any();
     }
     #endregion

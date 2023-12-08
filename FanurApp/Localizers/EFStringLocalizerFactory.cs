@@ -32,6 +32,20 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                  {
                         new Resource
                         {
+                           Key = "user_approval_by_admin",
+                           Value = "Authorization by the administrator",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "files",
+                           Value = "Files",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
                            Key = "upload_file_field",
                            Value = "Please upload file",
                            CreatedDate = DateTime.Now,
@@ -858,6 +872,20 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                  {
                         new Resource
                         {
+                           Key = "user_approval_by_admin",
+                           Value = "Одобрение пользователя администратором",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "files",
+                           Value = "Файлы",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
                            Key = "upload_file_field",
                            Value = "Пожалуйста, загрузите файл",
                            CreatedDate = DateTime.Now,
@@ -1682,6 +1710,20 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                 Name = "uz",
                 Resources = new List<Resource>()
                  {
+                        new Resource
+                        {
+                           Key = "user_approval_by_admin",
+                           Value = "Userni Admin tomonidan tasdiqlash",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "files",
+                           Value = "Fayllar",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
                         new Resource
                         {
                            Key = "upload_file_field",

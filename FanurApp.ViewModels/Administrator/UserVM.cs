@@ -16,5 +16,6 @@ public class UserVM
     public List<RoleVM> Roles { get; set; }
     public DateTime CreatedDate { get; set; }
     public DateTime UpdatedDate { get; set; }
+    public bool IsAccepted { get; set; }
     public MessageVM ErrorMessage { get; set; }
 }
