@@ -21,9 +21,16 @@
                 <div class="border border-black dark:border-[#1b2e4b] text-center rounded group hover:border-primary">
                     <div class="py-7 px-6">
                         <h4 class="text-[#3b3f5c] text-xl font-semibold mb-4 dark:text-white-light">@file.TopicName</h4>
-                        <audio controls>
-                            <source src="~/files/@string.Format("{0}",file.Name)">
-                        </audio>
+                        @if (file.FileTypeId == (int)FanurApp.Commons.Enums.FileTypesEnum.Audio)
+                        {
+                            <audio controls>
+                                <source src="~/files/@string.Format("{0}",file.Name)">
+                            </audio>
+                        }
+                        else if (file.FileTypeId == (int)FanurApp.Commons.Enums.FileTypesEnum.Image)
+                        {
+                            <img width="100px" src="~/files/@string.Format("{0}",file.Name)">
+                        }
                         <br />
                         <div>
                             @Html.Raw(file.Description)
