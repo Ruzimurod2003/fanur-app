@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FanurApp", "FanurApp.csproj", "{DBAFB134-122D-4636-85C6-046977FF04C0}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FanurApp.Commons", "..\FanurApp.Commons\FanurApp.Commons.csproj", "{4DC44DA4-A848-4885-B327-E2AEF2E31CEC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{DBAFB134-122D-4636-85C6-046977FF04C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBAFB134-122D-4636-85C6-046977FF04C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBAFB134-122D-4636-85C6-046977FF04C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DC44DA4-A848-4885-B327-E2AEF2E31CEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DC44DA4-A848-4885-B327-E2AEF2E31CEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DC44DA4-A848-4885-B327-E2AEF2E31CEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DC44DA4-A848-4885-B327-E2AEF2E31CEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
