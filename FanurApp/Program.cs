@@ -32,6 +32,8 @@ builder.Services.AddScoped<IAdministratorRepository, AdministratorRepository>();
 
 builder.Services.AddScoped<ITeacherRepository, TeacherRepository>();
 
+builder.Services.AddScoped<IMainRepository, MainRepository>();
+
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
