@@ -31,12 +31,13 @@ namespace FanurApp.Controllers
                 string adminId = configuration.GetValue<string>("Telegram:AdminId");
 
                 var bot = new TelegramBotClient(token);
-                string message =    $"Ismi: <b>{viewModel.ContactName}</b> \n" +
+                string message = $"Ismi: <b>{viewModel.ContactName}</b> \n" +
                                     $"Telefon nomeri: <b>{viewModel.ContactPhone}</b> \n" +
                                     $"Yuboradigan mavzusi: <b>{viewModel.Subject}</b> \n" +
                                     $"Habar: <b>{viewModel.Message}</b>";
 
-                await bot.SendTextMessageAsync(adminId, message, parseMode:Telegram.Bot.Types.Enums.ParseMode.Html);
+                await bot.SendTextMessageAsync(adminId, message, parseMode: Telegram.Bot.Types.Enums.ParseMode.Html);
+                return RedirectToAction("Index", "Main", null);
             }
             return View(viewModel);
         }
