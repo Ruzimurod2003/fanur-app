@@ -21,5 +21,13 @@ namespace FanurApp.Controllers
             var data = repository.GetCourseById(id);
             return View(data);
         }
+        public IActionResult Beginner()
+        {
+            return View();
+        }
+        public IActionResult Elementary()
+        {
+            return View();
+        }
     }
 }

@@ -155,7 +155,7 @@
                     <div class="rbt-main-navigation d-none d-xl-block">
                         <nav class="mainmenu-nav">
                             <ul class="mainmenu">
-                                <li class="with-megamenu position-static">
+                                <li>
                                     <a asp-action="Index" asp-controller="Main">Bosh sahifa</a>
                                 </li>
 
@@ -168,8 +168,8 @@
                                                 <div class="col-lg-12 col-xl-6 col-xxl-6 single-mega-item">
                                                     <h3 class="rbt-short-title">Ingliz tili kurslari</h3>
                                                     <ul class="mega-menu-item">
-                                                        <li><a href="course-filter-one-toggle.html">Beginner kursi</a></li>
-                                                        <li><a href="course-filter-one-open.html">Elementary kursi</a></li>
+                                                        <li><a asp-action="Beginner" asp-controller="Main">Beginner kursi</a></li>
+                                                        <li><a asp-action="Elementary" asp-controller="Main">Elementary kursi</a></li>
                                                         <li><a href="course-filter-two-toggle.html">Pre inter kursi</a></li>
                                                     </ul>
                                                 </div>
@@ -179,19 +179,19 @@
                                     <!-- End Mega Menu  -->
                                 </li>
 
-                                <li class="has-dropdown">
+                                <li>
                                     <a asp-action="AboutUs" asp-controller="Student">Biz haqimizda</a>
                                 </li>
 
-                                <li class="with-megamenu position-static">
+                                <li>
                                     <a asp-action="ContactUs" asp-controller="Student">Bog'lanish</a>
                                 </li>
 
-                                <li class="with-megamenu position-static">
+                                <li>
                                     <a asp-action="PrivacyPolicy" asp-controller="Student">Mahfiylik politikasi</a>
                                 </li>
 
-                                <li class="with-megamenu position-static">
+                                <li>
                                     <a href="#">Yangiliklar</a>
                                 </li>
                             </ul>
@@ -460,7 +460,7 @@
 
             <nav class="mainmenu-nav">
                 <ul class="mainmenu">
-                    <li class="with-megamenu position-static">
+                    <li>
                         <a asp-action="Index" asp-controller="Main">Bosh sahifa</a>
                     </li>
 
@@ -473,8 +473,8 @@
                                     <div class="col-lg-12 col-xl-6 col-xxl-6 single-mega-item">
                                         <h3 class="rbt-short-title">Ingliz tili kurslari</h3>
                                         <ul class="mega-menu-item">
-                                            <li><a href="course-filter-one-toggle.html">Beginner kursi</a></li>
-                                            <li><a href="course-filter-one-open.html">Elementary kursi</a></li>
+                                            <li><a asp-action="Beginner" asp-controller="Main">Beginner kursi</a></li>
+                                            <li><a asp-action="Elementary" asp-controller="Main">Elementary kursi</a></li>
                                             <li><a href="course-filter-two-toggle.html">Pre inter kursi</a></li>
                                         </ul>
                                     </div>
@@ -484,19 +484,19 @@
                         <!-- End Mega Menu  -->
                     </li>
 
-                    <li class="with-megamenu position-static">
+                    <li>
                         <a asp-action="AboutUs" asp-controller="Student">Biz haqimizda</a>
                     </li>
 
-                    <li class="with-megamenu position-static">
+                    <li>
                         <a asp-action="ContactUs" asp-controller="Student">Bog'lanish</a>
                     </li>
 
-                    <li class="with-megamenu position-static">
+                    <li>
                         <a asp-action="PrivacyPolicy" asp-controller="Student">Mahfiylik politikasi</a>
                     </li>
 
-                    <li class="with-megamenu position-static">
+                    <li>
                         <a href="#">Yangiliklar</a>
                     </li>
                 </ul>
