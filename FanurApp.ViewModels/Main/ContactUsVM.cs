@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FanurApp.ViewModels.Student;
+namespace FanurApp.ViewModels.Main;
 
 public class ContactUsVM
 {
