@@ -156,7 +156,7 @@
                         <nav class="mainmenu-nav">
                             <ul class="mainmenu">
                                 <li class="with-megamenu position-static">
-                                    <a href="#">Bosh sahifa</a>
+                                    <a asp-action="Index" asp-controller="Main">Bosh sahifa</a>
                                 </li>
 
                                 <li class="with-megamenu has-menu-child-item">
@@ -180,9 +180,7 @@
                                 </li>
 
                                 <li class="has-dropdown">
-                                    <a href="#">
-                                        Biz haqimizda
-                                    </a>
+                                    <a asp-action="AboutUs" asp-controller="Student">Biz haqimizda</a>
                                 </li>
 
                                 <li class="with-megamenu position-static">
@@ -395,7 +393,7 @@
                         </ul>
 
                         <div class="rbt-btn-wrapper d-none d-xl-block">
-                            <a class="rbt-btn rbt-marquee-btn marquee-auto btn-border-gradient radius-round btn-sm hover-transform-none" href="#">
+                            <a class="rbt-btn rbt-marquee-btn marquee-auto btn-border-gradient radius-round btn-sm hover-transform-none" asp-action="Login" asp-controller="Account">
                                 <span data-text="Login sahifasiga...">Login sahifasiga...</span>
                             </a>
                         </div>
@@ -463,7 +461,7 @@
             <nav class="mainmenu-nav">
                 <ul class="mainmenu">
                     <li class="with-megamenu position-static">
-                        <a href="#">Bosh sahifa</a>
+                        <a asp-action="Index" asp-controller="Main">Bosh sahifa</a>
                     </li>
 
                     <li class="with-megamenu has-menu-child-item">
@@ -487,7 +485,7 @@
                     </li>
 
                     <li class="with-megamenu position-static">
-                        <a href="#">Biz haqimizda</a>
+                        <a asp-action="AboutUs" asp-controller="Student">Biz haqimizda</a>
                     </li>
 
                     <li class="with-megamenu position-static">
@@ -506,7 +504,7 @@
 
             <div class="mobile-menu-bottom">
                 <div class="rbt-btn-wrapper mb--20">
-                    <a class="rbt-btn btn-border-gradient radius-round btn-sm hover-transform-none w-100 justify-content-center text-center" href="#">
+                    <a class="rbt-btn btn-border-gradient radius-round btn-sm hover-transform-none w-100 justify-content-center text-center" asp-action="Login" asp-controller="Account">
                         <span>Login sahifasiga...</span>
                     </a>
                 </div>
@@ -603,7 +601,7 @@
                                     <a href="faqs.html">FAQ</a>
                                 </li>
                                 <li>
-                                    <a href="about-us-01.html">Biz haqimizda</a>
+                                    <a asp-action="AboutUs" asp-controller="Student">Biz haqimizda</a>
                                 </li>
                                 <li>
                                     <a asp-action="PrivacyPolicy" asp-controller="Student">Mahfiylik politikasi</a>
@@ -668,7 +666,6 @@
         <!-- End Copyright Area  -->
     </footer>
     <!-- End Footer aera -->
-
     <!-- JS
     ============================================ -->
     <!-- Modernizer JS -->
