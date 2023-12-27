@@ -12,5 +12,17 @@ namespace FanurApp.Controllers
         {
             return View();
         }
+        public IActionResult Video()
+        {
+            return View();
+        }
+        public IActionResult Quiz()
+        {
+            return View();
+        }
+        public IActionResult Introduction()
+        {
+            return View();
+        }
     }
 }
