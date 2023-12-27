@@ -8,5 +8,9 @@ namespace FanurApp.Controllers
         {
             return View();
         }
+        public IActionResult Listening()
+        {
+            return View();
+        }
     }
 }
