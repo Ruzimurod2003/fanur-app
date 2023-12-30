@@ -47,13 +47,13 @@
                                 <div class="header-info">
                                     <ul class="rbt-information-list">
                                         <li>
-                                            <a href="#"><i class="fab fa-instagram"></i>100k <span class="d-none d-xxl-block">Followers</span></a>
+                                            <a href="@ConfigurationConstant.InstagramLink"><i class="fab fa-instagram"></i>100k <span class="d-none d-xxl-block">Followers</span></a>
                                         </li>
                                         <li>
-                                            <a href="#"><i class="fab fa-telegram"></i>500k <span class="d-none d-xxl-block">Followers</span></a>
+                                            <a href="@ConfigurationConstant.TelegramLink"><i class="fab fa-telegram"></i>500k <span class="d-none d-xxl-block">Followers</span></a>
                                         </li>
                                         <li>
-                                            <a href="#"><i class="feather-phone"></i>+1-202-555-0174</a>
+                                            <a href="#"><i class="feather-phone"></i>@ConfigurationConstant.TelephoneNumber</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -77,10 +77,10 @@
                                 <div class="header-info d-none d-xl-block">
                                     <ul class="social-share-transparent">
                                         <li>
-                                            <a href="#"><i class="fab fa-instagram"></i></a>
+                                            <a href="@ConfigurationConstant.InstagramLink"><i class="fab fa-instagram"></i></a>
                                         </li>
                                         <li>
-                                            <a href="#"><i class="fab fa-telegram"></i></a>
+                                            <a href="@ConfigurationConstant.TelegramLink"><i class="fab fa-telegram"></i></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -90,22 +90,30 @@
                                 <div class="header-info">
                                     <ul class="rbt-dropdown-menu switcher-language">
                                         <li class="has-child-menu">
-                                            <a href="#">
-                                                <img class="left-image" src="~/lib/main_template/assets/images/icons/en-us.png" alt="Language Images">
-                                                <span class="menu-item">English</span>
+                                            <a>
+                                                <span class="menu-item">Tilni o'zgartirish</span>
                                                 <i class="right-icon feather-chevron-down"></i>
                                             </a>
                                             <ul class="sub-menu">
                                                 <li>
-                                                    <a href="#">
-                                                        <img class="left-image" src="~/lib/main_template/assets/images/icons/fr.png" alt="Language Images">
-                                                        <span class="menu-item">Français</span>
+                                                    <a asp-action="SetLanguage" asp-controller="Home"
+                                                       asp-route-returnurl="@Context.Request.Path" asp-route-culture="en">
+                                                        <img class="left-image" src="~/lib/main_template/assets/images/icons/en-us.png" alt="Language Images">
+                                                        <span class="menu-item">English</span>
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="#">
-                                                        <img class="left-image" src="~/lib/main_template/assets/images/icons/de.png" alt="Language Images">
-                                                        <span class="menu-item">Deutsch</span>
+                                                    <a asp-action="SetLanguage" asp-controller="Home"
+                                                       asp-route-returnurl="@Context.Request.Path" asp-route-culture="ru">
+                                                        <img class="left-image" src="~/lib/main_template/assets/images/icons/ru.png" alt="Language Images">
+                                                        <span class="menu-item">Русский</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a asp-action="SetLanguage" asp-controller="Home"
+                                                       asp-route-returnurl="@Context.Request.Path" asp-route-culture="uz">
+                                                        <img class="left-image" src="~/lib/main_template/assets/images/icons/uz.png" alt="Language Images">
+                                                        <span class="menu-item">O'zbekcha</span>
                                                     </a>
                                                 </li>
                                             </ul>
@@ -199,197 +207,204 @@
                                     <i class="feather-search"></i>
                                 </a>
                             </li>
-
-                            <li class="account-access rbt-user-wrapper d-none d-xl-block">
-                                <a href="#"><i class="feather-user"></i>Admin</a>
-                                <div class="rbt-user-menu-list-wrapper">
-                                    <div class="inner">
-                                        <div class="rbt-admin-profile">
-                                            <div class="admin-thumbnail">
-                                                <img src="~/lib/main_template/assets/images/team/avatar.jpg" alt="User Images">
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li class="account-access rbt-user-wrapper d-none d-xl-block">
+                                    <a href="#"><i class="feather-user"></i>Admin</a>
+                                    <div class="rbt-user-menu-list-wrapper">
+                                        <div class="inner">
+                                            <div class="rbt-admin-profile">
+                                                <div class="admin-thumbnail">
+                                                    <img src="~/lib/main_template/assets/images/team/avatar.jpg" alt="User Images">
+                                                </div>
+                                                <div class="admin-info">
+                                                    <span class="name">Nipa Bali</span>
+                                                    <a class="rbt-btn-link color-primary" href="profile.html">View Profile</a>
+                                                </div>
                                             </div>
-                                            <div class="admin-info">
-                                                <span class="name">Nipa Bali</span>
-                                                <a class="rbt-btn-link color-primary" href="profile.html">View Profile</a>
-                                            </div>
+                                            <ul class="user-list-wrapper">
+                                                <li>
+                                                    <a href="instructor-dashboard.html">
+                                                        <i class="feather-home"></i>
+                                                        <span>My Dashboard</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="feather-bookmark"></i>
+                                                        <span>Bookmark</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="instructor-enrolled-courses.html">
+                                                        <i class="feather-shopping-bag"></i>
+                                                        <span>Enrolled Courses</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="instructor-wishlist.html">
+                                                        <i class="feather-heart"></i>
+                                                        <span>Wishlist</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="instructor-reviews.html">
+                                                        <i class="feather-star"></i>
+                                                        <span>Reviews</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="instructor-my-quiz-attempts.html">
+                                                        <i class="feather-list"></i>
+                                                        <span>My Quiz Attempts</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="instructor-order-history.html">
+                                                        <i class="feather-clock"></i>
+                                                        <span>Order History</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="instructor-quiz-attempts.html">
+                                                        <i class="feather-message-square"></i>
+                                                        <span>Question & Answer</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <hr class="mt--10 mb--10">
+                                            <ul class="user-list-wrapper">
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="feather-book-open"></i>
+                                                        <span>Getting Started</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <hr class="mt--10 mb--10">
+                                            <ul class="user-list-wrapper">
+                                                <li>
+                                                    <a href="instructor-settings.html">
+                                                        <i class="feather-settings"></i>
+                                                        <span>Settings</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="index.html">
+                                                        <i class="feather-log-out"></i>
+                                                        <span>Logout</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
                                         </div>
-                                        <ul class="user-list-wrapper">
-                                            <li>
-                                                <a href="instructor-dashboard.html">
-                                                    <i class="feather-home"></i>
-                                                    <span>My Dashboard</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="feather-bookmark"></i>
-                                                    <span>Bookmark</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="instructor-enrolled-courses.html">
-                                                    <i class="feather-shopping-bag"></i>
-                                                    <span>Enrolled Courses</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="instructor-wishlist.html">
-                                                    <i class="feather-heart"></i>
-                                                    <span>Wishlist</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="instructor-reviews.html">
-                                                    <i class="feather-star"></i>
-                                                    <span>Reviews</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="instructor-my-quiz-attempts.html">
-                                                    <i class="feather-list"></i>
-                                                    <span>My Quiz Attempts</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="instructor-order-history.html">
-                                                    <i class="feather-clock"></i>
-                                                    <span>Order History</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="instructor-quiz-attempts.html">
-                                                    <i class="feather-message-square"></i>
-                                                    <span>Question & Answer</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <hr class="mt--10 mb--10">
-                                        <ul class="user-list-wrapper">
-                                            <li>
-                                                <a href="#">
-                                                    <i class="feather-book-open"></i>
-                                                    <span>Getting Started</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <hr class="mt--10 mb--10">
-                                        <ul class="user-list-wrapper">
-                                            <li>
-                                                <a href="instructor-settings.html">
-                                                    <i class="feather-settings"></i>
-                                                    <span>Settings</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="index.html">
-                                                    <i class="feather-log-out"></i>
-                                                    <span>Logout</span>
-                                                </a>
-                                            </li>
-                                        </ul>
                                     </div>
-                                </div>
-                            </li>
+                                </li>
 
-                            <li class="access-icon rbt-user-wrapper d-block d-xl-none">
-                                <a class="rbt-round-btn" href="#"><i class="feather-user"></i></a>
-                                <div class="rbt-user-menu-list-wrapper">
-                                    <div class="inner">
-                                        <div class="rbt-admin-profile">
-                                            <div class="admin-thumbnail">
-                                                <img src="~/lib/main_template/assets/images/team/avatar.jpg" alt="User Images">
+                                <li class="access-icon rbt-user-wrapper d-block d-xl-none">
+                                    <a class="rbt-round-btn" href="#"><i class="feather-user"></i></a>
+                                    <div class="rbt-user-menu-list-wrapper">
+                                        <div class="inner">
+                                            <div class="rbt-admin-profile">
+                                                <div class="admin-thumbnail">
+                                                    <img src="~/lib/main_template/assets/images/team/avatar.jpg" alt="User Images">
+                                                </div>
+                                                <div class="admin-info">
+                                                    <span class="name">Nipa Bali</span>
+                                                    <a class="rbt-btn-link color-primary" href="profile.html">View Profile</a>
+                                                </div>
                                             </div>
-                                            <div class="admin-info">
-                                                <span class="name">Nipa Bali</span>
-                                                <a class="rbt-btn-link color-primary" href="profile.html">View Profile</a>
-                                            </div>
+                                            <ul class="user-list-wrapper">
+                                                <li>
+                                                    <a href="instructor-dashboard.html">
+                                                        <i class="feather-home"></i>
+                                                        <span>My Dashboard</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="feather-bookmark"></i>
+                                                        <span>Bookmark</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="instructor-enrolled-courses.html">
+                                                        <i class="feather-shopping-bag"></i>
+                                                        <span>Enrolled Courses</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="instructor-wishlist.html">
+                                                        <i class="feather-heart"></i>
+                                                        <span>Wishlist</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="instructor-reviews.html">
+                                                        <i class="feather-star"></i>
+                                                        <span>Reviews</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="instructor-my-quiz-attempts.html">
+                                                        <i class="feather-list"></i>
+                                                        <span>My Quiz Attempts</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="instructor-order-history.html">
+                                                        <i class="feather-clock"></i>
+                                                        <span>Order History</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="instructor-quiz-attempts.html">
+                                                        <i class="feather-message-square"></i>
+                                                        <span>Question & Answer</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <hr class="mt--10 mb--10">
+                                            <ul class="user-list-wrapper">
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="feather-book-open"></i>
+                                                        <span>Getting Started</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <hr class="mt--10 mb--10">
+                                            <ul class="user-list-wrapper">
+                                                <li>
+                                                    <a href="instructor-settings.html">
+                                                        <i class="feather-settings"></i>
+                                                        <span>Settings</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="index.html">
+                                                        <i class="feather-log-out"></i>
+                                                        <span>Logout</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
                                         </div>
-                                        <ul class="user-list-wrapper">
-                                            <li>
-                                                <a href="instructor-dashboard.html">
-                                                    <i class="feather-home"></i>
-                                                    <span>My Dashboard</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="feather-bookmark"></i>
-                                                    <span>Bookmark</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="instructor-enrolled-courses.html">
-                                                    <i class="feather-shopping-bag"></i>
-                                                    <span>Enrolled Courses</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="instructor-wishlist.html">
-                                                    <i class="feather-heart"></i>
-                                                    <span>Wishlist</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="instructor-reviews.html">
-                                                    <i class="feather-star"></i>
-                                                    <span>Reviews</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="instructor-my-quiz-attempts.html">
-                                                    <i class="feather-list"></i>
-                                                    <span>My Quiz Attempts</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="instructor-order-history.html">
-                                                    <i class="feather-clock"></i>
-                                                    <span>Order History</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="instructor-quiz-attempts.html">
-                                                    <i class="feather-message-square"></i>
-                                                    <span>Question & Answer</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <hr class="mt--10 mb--10">
-                                        <ul class="user-list-wrapper">
-                                            <li>
-                                                <a href="#">
-                                                    <i class="feather-book-open"></i>
-                                                    <span>Getting Started</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <hr class="mt--10 mb--10">
-                                        <ul class="user-list-wrapper">
-                                            <li>
-                                                <a href="instructor-settings.html">
-                                                    <i class="feather-settings"></i>
-                                                    <span>Settings</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="index.html">
-                                                    <i class="feather-log-out"></i>
-                                                    <span>Logout</span>
-                                                </a>
-                                            </li>
-                                        </ul>
                                     </div>
-                                </div>
-                            </li>
+                                </li>
+                            }
 
                         </ul>
 
-                        <div class="rbt-btn-wrapper d-none d-xl-block">
-                            <a class="rbt-btn rbt-marquee-btn marquee-auto btn-border-gradient radius-round btn-sm hover-transform-none" asp-action="Login" asp-controller="Account">
-                                <span data-text="Login sahifasiga...">Login sahifasiga...</span>
-                            </a>
-                        </div>
-
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <div class="rbt-btn-wrapper d-none d-xl-block">
+                                <a class="rbt-btn radius-round btn-sm" asp-action="Login" asp-controller="Account">
+                                    <span data-text="Kirish">Kirish</span>
+                                </a>
+                                <a class="rbt-btn radius-round btn-sm" asp-action="Register" asp-controller="Account">
+                                    <span data-text="Registratsiya">Registratsiya</span>
+                                </a>
+                            </div>
+                        }
                         <!-- Start Mobile-Menu-Bar -->
                         <div class="mobile-menu-bar d-block d-xl-none">
                             <div class="hamberger">
@@ -505,23 +520,15 @@
                     <span class="rbt-short-title d-block">Bizning ijtimoiy tarmoqlarimiz</span>
                     <ul class="social-icon social-default transparent-with-border justify-content-start mt--20">
                         <li>
-                            <a href="https://www.facebook.com/">
-                                <i class="feather-facebook"></i>
+                            <a href="@ConfigurationConstant.TelegramLink">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 80 80">
+                                    <path d="M 70.511719 10.986328 C 69.833089 11.015588 69.157051 11.196735 68.537109 11.4375 L 68.535156 11.4375 C 67.931048 11.673297 64.049934 13.281226 58.392578 15.628906 C 52.735222 17.976586 45.3821 21.032905 38.091797 24.064453 C 23.51119 30.12755 9.1835937 36.091797 9.1835938 36.091797 L 9.2480469 36.068359 C 9.2480469 36.068359 8.4485192 36.330303 7.6484375 36.871094 C 7.2483967 37.141489 6.8283994 37.486951 6.4960938 37.966797 C 6.163788 38.446643 5.9299055 39.103809 6.0195312 39.808594 C 6.1812736 41.080477 7.0482024 41.912426 7.7636719 42.412109 C 8.4791414 42.911793 9.1660156 43.148437 9.1660156 43.148438 L 9.1738281 43.152344 L 23.1875 47.785156 C 23.418097 48.587707 27.163839 61.631062 28.046875 64.384766 C 28.50876 65.826709 28.935922 66.627156 29.335938 67.130859 C 29.535944 67.382711 29.733459 67.561543 29.931641 67.683594 C 30.016841 67.736064 30.101273 67.771554 30.183594 67.802734 C 30.197014 67.807834 30.211349 67.817736 30.224609 67.822266 C 30.252855 67.83191 30.267938 67.831811 30.302734 67.839844 C 31.62302 68.328201 32.738281 67.476563 32.738281 67.476562 L 32.769531 67.453125 L 42.376953 59 L 56.585938 70.394531 L 56.710938 70.449219 C 58.991132 71.431474 60.875783 70.891854 61.970703 70.027344 C 63.065623 69.162833 63.509766 68.03125 63.509766 68.03125 L 63.544922 67.943359 L 73.794922 16.097656 C 74.046117 14.98858 74.071392 14.057617 73.853516 13.257812 C 73.635643 12.458006 73.128863 11.807693 72.5 11.443359 C 71.871137 11.079025 71.190348 10.957066 70.511719 10.986328 z M 70.566406 13.021484 C 70.96444 13.004357 71.29991 13.059037 71.498047 13.173828 C 71.696183 13.288619 71.824951 13.420226 71.923828 13.783203 C 72.022708 14.14618 72.046557 14.758873 71.84375 15.654297 L 71.839844 15.667969 L 61.630859 67.3125 C 61.615849 67.34707 61.352842 67.965627 60.730469 68.457031 C 60.102941 68.952505 59.248838 69.318622 57.578125 68.626953 L 34.738281 50.310547 A 1.0001 1.0001 0 0 0 34 50 A 1.0001 1.0001 0 0 0 32.988281 50.974609 L 30.384766 64.923828 C 30.251656 64.61729 30.108215 64.257609 29.953125 63.773438 C 29.147161 61.260079 25.522903 48.675314 25.166016 47.435547 L 61.013672 24.226562 A 1.0001 1.0001 0 0 0 62 25 A 1.0001 1.0001 0 0 0 62.988281 23.783203 C 63.014848 23.477186 62.989225 23.17624 62.855469 22.876953 C 62.639651 22.394056 62.128723 22.100054 61.765625 22.03125 C 61.039429 21.893642 60.566406 22.158203 60.566406 22.158203 L 60.466797 22.195312 L 23.857422 45.900391 L 9.8261719 41.261719 L 9.8222656 41.259766 C 9.8185507 41.25848 9.3777555 41.099419 8.9082031 40.771484 C 8.4366726 40.442168 8.062164 40.014757 8.0039062 39.556641 C 7.9835322 39.396426 8.0143062 39.287873 8.140625 39.105469 C 8.2669443 38.923065 8.501119 38.707449 8.7675781 38.527344 C 9.3004964 38.167134 9.8886719 37.962891 9.8886719 37.962891 L 9.9199219 37.951172 L 9.953125 37.9375 C 9.953125 37.9375 24.279232 31.97306 38.859375 25.910156 C 46.149446 22.878704 53.503668 19.823883 59.160156 17.476562 C 64.816644 15.129243 68.856374 13.458984 69.261719 13.300781 C 69.707777 13.127547 70.168373 13.038612 70.566406 13.021484 z M 59.199219 25.699219 L 58.398438 26.101562 L 58.240234 26.984375 L 58.853516 27.638672 L 59.199219 27.699219 L 60 27.298828 L 60.158203 26.416016 L 59.546875 25.761719 L 59.199219 25.699219 z M 56.400391 28.400391 L 55.599609 28.800781 L 55.441406 29.683594 L 56.052734 30.337891 L 56.400391 30.400391 L 57.201172 29.998047 L 57.359375 29.117188 L 56.746094 28.462891 L 56.400391 28.400391 z M 53.599609 31.099609 L 52.798828 31.501953 L 52.640625 32.382812 L 53.251953 33.037109 L 53.599609 33.099609 L 54.400391 32.699219 L 54.558594 31.816406 L 53.947266 31.162109 L 53.599609 31.099609 z M 50.800781 33.800781 L 49.998047 34.201172 L 49.841797 35.083984 L 50.453125 35.738281 L 50.800781 35.800781 L 51.601562 35.398438 L 51.759766 34.517578 L 51.146484 33.861328 L 50.800781 33.800781 z M 48 36.5 L 47.199219 36.902344 L 47.041016 37.783203 L 47.652344 38.4375 L 48 38.5 L 48.800781 38.099609 L 48.958984 37.216797 L 48.347656 36.5625 L 48 36.5 z M 45.199219 39.199219 L 44.398438 39.601562 L 44.240234 40.484375 L 44.853516 41.138672 L 45.199219 41.199219 L 46.001953 40.798828 L 46.158203 39.916016 L 45.546875 39.261719 L 45.199219 39.199219 z M 42.400391 41.900391 L 41.599609 42.300781 L 41.441406 43.183594 L 42.052734 43.837891 L 42.400391 43.900391 L 43.201172 43.498047 L 43.359375 42.617188 L 42.746094 41.962891 L 42.400391 41.900391 z M 39.599609 44.599609 L 38.798828 45.001953 L 38.640625 45.882812 L 39.253906 46.537109 L 39.599609 46.599609 L 40.400391 46.199219 L 40.558594 45.316406 L 39.947266 44.662109 L 39.599609 44.599609 z M 36.800781 47.300781 L 35.998047 47.701172 L 35.841797 48.583984 L 36.453125 49.238281 L 36.800781 49.300781 L 37.601562 48.898438 L 37.759766 48.015625 L 37.146484 47.361328 L 36.800781 47.300781 z M 34.675781 52.824219 L 40.794922 57.730469 L 32.378906 65.132812 L 34.675781 52.824219 z"></path>
+                                </svg>
                             </a>
                         </li>
                         <li>
-                            <a href="https://www.twitter.com">
-                                <i class="feather-twitter"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.instagram.com/">
+                            <a href="@ConfigurationConstant.InstagramLink">
                                 <i class="feather-instagram"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.linkdin.com/">
-                                <i class="feather-linkedin"></i>
                             </a>
                         </li>
                     </ul>
@@ -552,23 +559,15 @@
 
                             <ul class="social-icon social-default justify-content-start">
                                 <li>
-                                    <a href="https://www.facebook.com/">
-                                        <i class="feather-facebook"></i>
+                                    <a href="@ConfigurationConstant.TelegramLink">
+                                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 80 80">
+                                            <path d="M 70.511719 10.986328 C 69.833089 11.015588 69.157051 11.196735 68.537109 11.4375 L 68.535156 11.4375 C 67.931048 11.673297 64.049934 13.281226 58.392578 15.628906 C 52.735222 17.976586 45.3821 21.032905 38.091797 24.064453 C 23.51119 30.12755 9.1835937 36.091797 9.1835938 36.091797 L 9.2480469 36.068359 C 9.2480469 36.068359 8.4485192 36.330303 7.6484375 36.871094 C 7.2483967 37.141489 6.8283994 37.486951 6.4960938 37.966797 C 6.163788 38.446643 5.9299055 39.103809 6.0195312 39.808594 C 6.1812736 41.080477 7.0482024 41.912426 7.7636719 42.412109 C 8.4791414 42.911793 9.1660156 43.148437 9.1660156 43.148438 L 9.1738281 43.152344 L 23.1875 47.785156 C 23.418097 48.587707 27.163839 61.631062 28.046875 64.384766 C 28.50876 65.826709 28.935922 66.627156 29.335938 67.130859 C 29.535944 67.382711 29.733459 67.561543 29.931641 67.683594 C 30.016841 67.736064 30.101273 67.771554 30.183594 67.802734 C 30.197014 67.807834 30.211349 67.817736 30.224609 67.822266 C 30.252855 67.83191 30.267938 67.831811 30.302734 67.839844 C 31.62302 68.328201 32.738281 67.476563 32.738281 67.476562 L 32.769531 67.453125 L 42.376953 59 L 56.585938 70.394531 L 56.710938 70.449219 C 58.991132 71.431474 60.875783 70.891854 61.970703 70.027344 C 63.065623 69.162833 63.509766 68.03125 63.509766 68.03125 L 63.544922 67.943359 L 73.794922 16.097656 C 74.046117 14.98858 74.071392 14.057617 73.853516 13.257812 C 73.635643 12.458006 73.128863 11.807693 72.5 11.443359 C 71.871137 11.079025 71.190348 10.957066 70.511719 10.986328 z M 70.566406 13.021484 C 70.96444 13.004357 71.29991 13.059037 71.498047 13.173828 C 71.696183 13.288619 71.824951 13.420226 71.923828 13.783203 C 72.022708 14.14618 72.046557 14.758873 71.84375 15.654297 L 71.839844 15.667969 L 61.630859 67.3125 C 61.615849 67.34707 61.352842 67.965627 60.730469 68.457031 C 60.102941 68.952505 59.248838 69.318622 57.578125 68.626953 L 34.738281 50.310547 A 1.0001 1.0001 0 0 0 34 50 A 1.0001 1.0001 0 0 0 32.988281 50.974609 L 30.384766 64.923828 C 30.251656 64.61729 30.108215 64.257609 29.953125 63.773438 C 29.147161 61.260079 25.522903 48.675314 25.166016 47.435547 L 61.013672 24.226562 A 1.0001 1.0001 0 0 0 62 25 A 1.0001 1.0001 0 0 0 62.988281 23.783203 C 63.014848 23.477186 62.989225 23.17624 62.855469 22.876953 C 62.639651 22.394056 62.128723 22.100054 61.765625 22.03125 C 61.039429 21.893642 60.566406 22.158203 60.566406 22.158203 L 60.466797 22.195312 L 23.857422 45.900391 L 9.8261719 41.261719 L 9.8222656 41.259766 C 9.8185507 41.25848 9.3777555 41.099419 8.9082031 40.771484 C 8.4366726 40.442168 8.062164 40.014757 8.0039062 39.556641 C 7.9835322 39.396426 8.0143062 39.287873 8.140625 39.105469 C 8.2669443 38.923065 8.501119 38.707449 8.7675781 38.527344 C 9.3004964 38.167134 9.8886719 37.962891 9.8886719 37.962891 L 9.9199219 37.951172 L 9.953125 37.9375 C 9.953125 37.9375 24.279232 31.97306 38.859375 25.910156 C 46.149446 22.878704 53.503668 19.823883 59.160156 17.476562 C 64.816644 15.129243 68.856374 13.458984 69.261719 13.300781 C 69.707777 13.127547 70.168373 13.038612 70.566406 13.021484 z M 59.199219 25.699219 L 58.398438 26.101562 L 58.240234 26.984375 L 58.853516 27.638672 L 59.199219 27.699219 L 60 27.298828 L 60.158203 26.416016 L 59.546875 25.761719 L 59.199219 25.699219 z M 56.400391 28.400391 L 55.599609 28.800781 L 55.441406 29.683594 L 56.052734 30.337891 L 56.400391 30.400391 L 57.201172 29.998047 L 57.359375 29.117188 L 56.746094 28.462891 L 56.400391 28.400391 z M 53.599609 31.099609 L 52.798828 31.501953 L 52.640625 32.382812 L 53.251953 33.037109 L 53.599609 33.099609 L 54.400391 32.699219 L 54.558594 31.816406 L 53.947266 31.162109 L 53.599609 31.099609 z M 50.800781 33.800781 L 49.998047 34.201172 L 49.841797 35.083984 L 50.453125 35.738281 L 50.800781 35.800781 L 51.601562 35.398438 L 51.759766 34.517578 L 51.146484 33.861328 L 50.800781 33.800781 z M 48 36.5 L 47.199219 36.902344 L 47.041016 37.783203 L 47.652344 38.4375 L 48 38.5 L 48.800781 38.099609 L 48.958984 37.216797 L 48.347656 36.5625 L 48 36.5 z M 45.199219 39.199219 L 44.398438 39.601562 L 44.240234 40.484375 L 44.853516 41.138672 L 45.199219 41.199219 L 46.001953 40.798828 L 46.158203 39.916016 L 45.546875 39.261719 L 45.199219 39.199219 z M 42.400391 41.900391 L 41.599609 42.300781 L 41.441406 43.183594 L 42.052734 43.837891 L 42.400391 43.900391 L 43.201172 43.498047 L 43.359375 42.617188 L 42.746094 41.962891 L 42.400391 41.900391 z M 39.599609 44.599609 L 38.798828 45.001953 L 38.640625 45.882812 L 39.253906 46.537109 L 39.599609 46.599609 L 40.400391 46.199219 L 40.558594 45.316406 L 39.947266 44.662109 L 39.599609 44.599609 z M 36.800781 47.300781 L 35.998047 47.701172 L 35.841797 48.583984 L 36.453125 49.238281 L 36.800781 49.300781 L 37.601562 48.898438 L 37.759766 48.015625 L 37.146484 47.361328 L 36.800781 47.300781 z M 34.675781 52.824219 L 40.794922 57.730469 L 32.378906 65.132812 L 34.675781 52.824219 z"></path>
+                                        </svg>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://www.twitter.com">
-                                        <i class="feather-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://www.instagram.com/">
+                                    <a href="@ConfigurationConstant.InstagramLink">
                                         <i class="feather-instagram"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://www.linkdin.com/">
-                                        <i class="feather-linkedin"></i>
                                     </a>
                                 </li>
                             </ul>
@@ -590,7 +589,7 @@
                             <h5 class="ft-title">Kerakli havolalar</h5>
                             <ul class="ft-link">
                                 <li>
-                                    <a href="faqs.html">FAQ</a>
+                                    <a asp-action="Faqs" asp-controller="Main">FAQ</a>
                                 </li>
                                 <li>
                                     <a asp-action="AboutUs" asp-controller="Main">Biz haqimizda</a>
@@ -613,7 +612,7 @@
                                     <a href="become-a-teacher.html">Yangliklar</a>
                                 </li>
                                 <li>
-                                    <a href="course-filter-one-toggle.html">Kurslarimiz</a>
+                                    <a asp-action="Index" asp-controller="Main">Kurslarimiz</a>
                                 </li>
                                 <li>
                                     <a asp-action="ContactUs" asp-controller="Main">Aloqa</a>
@@ -626,8 +625,8 @@
                         <div class="footer-widget">
                             <h5 class="ft-title">Aloqa uchun</h5>
                             <ul class="ft-link">
-                                <li><span>Telefon raqam:</span> <a href="#">(97) 537 84 72</a></li>
-                                <li><span>Elektron pochta:</span> <a href="mailto:mohichexra@gmail.com">mohichexra@example.com</a></li>
+                                <li><span>Telefon raqam:</span> <a href="#">@ConfigurationConstant.TelephoneNumber</a></li>
+                                <li><span>Elektron pochta:</span> <a href="mailto:mohichexra@gmail.com">@ConfigurationConstant.EmailAddres</a></li>
                             </ul>
                         </div>
                     </div>
@@ -650,6 +649,7 @@
                         <ul class="copyright-link rbt-link-hover justify-content-center justify-content-lg-end mt_sm--10 mt_md--10">
                             <li><a asp-action="PrivacyPolicy" asp-controller="Main">Mahfiylik politikasi</a></li>
                             <li><a asp-action="Login" asp-controller="Account">Login</a></li>
+                            <li><a asp-action="Register" asp-controller="Account">Register</a></li>
                         </ul>
                     </div>
                 </div>

@@ -7,6 +7,7 @@ public class ApplicationContext : DbContext
 {
     public DbSet<Models.File> Files { get; set; }
     public DbSet<User> Users { get; set; }
+    public DbSet<Position> Positions { get; set; }
     public DbSet<Role> Roles { get; set; }
     public DbSet<Video> Videos { get; set; }
     public DbSet<Course> Courses { get; set; }

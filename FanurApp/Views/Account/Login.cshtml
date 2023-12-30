@@ -19,12 +19,7 @@
         </div>
 
         <div class="mb-3">
-            <div class="mb-2 w-100">
-                <label class="text-muted" asp-for="Password">@Localizer["enter_your_password"]</label>
-                <a class="float-end" asp-controller="Account" asp-action="Forget">
-                    @Localizer["have_you_forgotten_your_password"]
-                </a>
-            </div>
+            <label class="text-muted" asp-for="Password">@Localizer["enter_your_password"]</label>
             <input class="form-control" asp-for="Password" type="password" required>
             <div class="invalid-feedback">
                 @Localizer["password_is_not_like_that"]

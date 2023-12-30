@@ -37,6 +37,10 @@ namespace FanurApp.Controllers
         {
             return View();
         }
+        public IActionResult Faqs()
+        {
+            return View();
+        }
         [HttpPost]
         public async Task<IActionResult> ContactUsAsync(ContactUsVM viewModel)
         {
