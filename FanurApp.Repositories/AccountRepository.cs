@@ -63,6 +63,8 @@ public class AccountRepository : IAccountRepository
         context.Users.Add(user);
         context.SaveChanges();
 
+        user.Role = context.Roles.FirstOrDefault(i => i.Id == user.RoleId);
+
         return user;
     }
 

@@ -28,14 +28,21 @@ namespace FanurApp.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Register(RegisterVM viewModel)
+        public async Task<IActionResult> RegisterAsync(RegisterVM viewModel)
         {
             if (ModelState.IsValid)
             {
                 var result = repository.RegisterUser(viewModel);
                 if (result != null)
                 {
-                    return RedirectToAction("Index", "Home", null);
+                    await Authenticate(result);
+
+                    if (result.RoleId == (int)RolesEnum.Administrator)
+                        return RedirectToAction("Index", "Administrator", null);
+                    else if (result.RoleId == (int)RolesEnum.Teacher)
+                        return RedirectToAction("Index", "Teacher");
+                    else
+                        return RedirectToAction("Index", "Student");
                 }
                 viewModel.ErrorMessage = localizer["this_user_is_already_registered"];
             }
@@ -64,7 +71,7 @@ namespace FanurApp.Controllers
                     else if (result.RoleId == (int)RolesEnum.Teacher)
                         return RedirectToAction("Index", "Teacher");
                     else
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Student");
                 }
                 viewModel.ErrorMessage = localizer["you_entered_the_wrong_password_or_email"];
             }

@@ -70,6 +70,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Student}/{action=Video}/{id?}");
+    pattern: "{controller=Profile}/{action=Index}/{id?}");
 
 app.Run();

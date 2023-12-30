@@ -215,10 +215,12 @@
                                         <div class="inner">
                                             <div class="rbt-admin-profile">
                                                 <div class="admin-thumbnail">
-                                                    <img src="~/lib/main_template/assets/images/team/avatar.jpg" alt="User Images">
+                                                    <img src="~/lib/main_template/assets/images/fanur/girl_1.png" alt="User Images">
                                                 </div>
                                                 <div class="admin-info">
-                                                    <span class="name">Nipa Bali</span>
+                                                    <span class="name">
+                                                        @User.Claims.FirstOrDefault(j => j.Type == "Full_Name").Value
+                                                    </span>
                                                     <a class="rbt-btn-link color-primary" href="profile.html">View Profile</a>
                                                 </div>
                                             </div>
@@ -306,10 +308,12 @@
                                         <div class="inner">
                                             <div class="rbt-admin-profile">
                                                 <div class="admin-thumbnail">
-                                                    <img src="~/lib/main_template/assets/images/team/avatar.jpg" alt="User Images">
+                                                    <img src="~/lib/main_template/assets/images/fanur/click.png" alt="User Images">
                                                 </div>
                                                 <div class="admin-info">
-                                                    <span class="name">Nipa Bali</span>
+                                                    <span class="name">
+                                                        @User.Claims.FirstOrDefault(j => j.Type == "Full_Name").Value
+                                                    </span>
                                                     <a class="rbt-btn-link color-primary" href="profile.html">View Profile</a>
                                                 </div>
                                             </div>
