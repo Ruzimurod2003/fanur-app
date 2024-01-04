@@ -862,6 +862,125 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                             Value = "Go to home",
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "home_page",
+                            Value = "Home page",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "our_team",
+                            Value = "Our team",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "contact_with_us",
+                            Value = "Contact with us",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "news",
+                            Value = "News",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "projects",
+                            Value = "Projects",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "login",
+                            Value = "Login",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "change_the_language",
+                            Value = "Change the language",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "enter_what_you_are_looking_for",
+                            Value = "Enter what you are looking for...",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "search",
+                            Value = "Search",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "faq",
+                            Value = "FAQ",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "privacy_policy",
+                            Value = "Privacy policy",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "register",
+                            Value = "Register",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "our_company",
+                            Value = "Our company",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "required_links",
+                            Value = "Required links",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "for_contact",
+                            Value = "For contact",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "phone_number",
+                            Value = "Phone number",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "email",
+                            Value = "Email",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
                         }
                  }
              },
@@ -1702,6 +1821,132 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                             Value = "Иди домой",
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "home_page",
+                            Value = "Главная страница",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "our_team",
+                            Value = "Наша команда",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "contact_with_us",
+                            Value = "Связаться с нами",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "news",
+                            Value = "Новости",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "projects",
+                            Value = "Проекты",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "login",
+                            Value = "Войти",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "change_the_language",
+                            Value = "Изменить язык",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "enter_what_you_are_looking_for",
+                            Value = "Введите то, что вы ищете...",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "search",
+                            Value = "Поиск",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "faq",
+                            Value = "Часто задаваемые вопросы",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "privacy_policy",
+                            Value = "Политика конфиденциальности",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "register",
+                            Value = "Регистрация",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "our_company",
+                            Value = "Наша компания",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "required_links",
+                            Value = "Обязательные ссылки",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "for_contact",
+                            Value = "Для связи",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "phone_number",
+                            Value = "Номер телефона",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "email",
+                            Value = "Электронная почта",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "footer_text",
+                            Value = "Электронная почта",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
                         }
                  }
              },
@@ -2540,6 +2785,125 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                         {
                             Key = "go_to_home",
                             Value = "Bosh sahifaga qaytish",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "home_page",
+                            Value = "Bosh sahifa",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "our_team",
+                            Value = "Bizning jamoa",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "contact_with_us",
+                            Value = "Biz bilan aloqa",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "news",
+                            Value = "Yangiliklar",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "projects",
+                            Value = "Loyihalar",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "login",
+                            Value = "Kirish",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "change_the_language",
+                            Value = "Tilni o'zgartirish",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "enter_what_you_are_looking_for",
+                            Value = "Nimani qidirayotganingizni kiriting...",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "search",
+                            Value = "Qidirish",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "faq",
+                            Value = "Ko'p so'raladigan savollar",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "privacy_policy",
+                            Value = "Mahfiylik politikasi",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "register",
+                            Value = "Registrtatsiya",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "our_company",
+                            Value = "Bizning kompaniya",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "required_links",
+                            Value = "Обязательные ссылки",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "for_contact",
+                            Value = "Aloqa uchun",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "phone_number",
+                            Value = "Telefon raqam",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "email",
+                            Value = "Elektron pochta",
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         }
