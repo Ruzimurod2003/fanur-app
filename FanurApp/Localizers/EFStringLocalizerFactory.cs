@@ -981,6 +981,34 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                             Value = "Email",
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "footer_text",
+                            Value = "Copyright © 2023 \"Fanur Group\" product, all rights reserved",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "footer_description",
+                            Value = "We wish you the best always",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "our_social_networks",
+                            Value = "Our social networks",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "mobile_description",
+                            Value = "Always study and you can do it",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
                         }
                  }
              },
@@ -1944,7 +1972,28 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                         new Resource
                         {
                             Key = "footer_text",
-                            Value = "Электронная почта",
+                            Value = "Авторские права © 2023 Продукт \"Fanur Group\", все права защищены.",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "footer_description",
+                            Value = "Мы всегда желаем вам всего наилучшего",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "our_social_networks",
+                            Value = "Наши социальные сети",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "mobile_description",
+                            Value = "Всегда учитесь и у вас все получится",
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         }
@@ -2904,6 +2953,34 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                         {
                             Key = "email",
                             Value = "Elektron pochta",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "footer_text",
+                            Value = "Mualliflik huquqi © 2023 \"Fanur Group\" mahsuloti, hamma huquqlar himoyalangan.",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "footer_description",
+                            Value = "Biz doimo sizga eng yaxshisini tilaymiz",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "our_social_networks",
+                            Value = "Bizning ijtimoiy tarmoqlarimiz",
+                            CreatedDate = DateTime.Now,
+                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                            Key = "mobile_description",
+                            Value = "Doimo o'qish kerak va buni qila olasiz",
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         }

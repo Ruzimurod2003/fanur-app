@@ -55,7 +55,7 @@ var supportedCultures = new[]
 };
 app.UseRequestLocalization(new RequestLocalizationOptions
 {
-    DefaultRequestCulture = new RequestCulture("ru"),
+    DefaultRequestCulture = new RequestCulture("uz"),
     SupportedCultures = supportedCultures,
     SupportedUICultures = supportedCultures
 });
