@@ -2931,7 +2931,7 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                         new Resource
                         {
                             Key = "required_links",
-                            Value = "Обязательные ссылки",
+                            Value = "Majburiy havolalar",
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
                         },

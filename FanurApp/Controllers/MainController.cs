@@ -29,7 +29,15 @@ namespace FanurApp.Controllers
         {
             return View();
         }
+        public IActionResult Project()
+        {
+            return View();
+        }
         public IActionResult Elementary()
+        {
+            return View();
+        }
+        public IActionResult PreIntermediate()
         {
             return View();
         }

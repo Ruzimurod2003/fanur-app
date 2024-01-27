@@ -4,13 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>404 Page - Online Courses & Education Bootstrap5 Template</title>
+    <title>@ConfigurationConstant.ProjectTitle</title>
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="~/lib/main_template/assets/images/favicon.png">
 
     <!-- CSS
     ============================================ -->
@@ -145,8 +142,9 @@
                     <div class="header-left rbt-header-content">
                         <div class="header-info">
                             <div class="logo">
-                                <a asp-action="Index" asp-controller="Main">
-                                    <img src="~/lib/main_template/assets/images/logo/logo.png" width="200px" alt="Education Logo Images">
+                                <a asp-action="Index" asp-controller="Main" class="\!text-center">
+                                    <img src="~/lib/main_template/assets/images/logo/logo.png" alt="Education Logo Images">
+                                    Fanur Group
                                 </a>
                             </div>
                         </div>
@@ -170,7 +168,7 @@
                                                     <ul class="mega-menu-item">
                                                         <li><a asp-action="Beginner" asp-controller="Main">Beginner kursi</a></li>
                                                         <li><a asp-action="Elementary" asp-controller="Main">Elementary kursi</a></li>
-                                                        <li><a href="course-filter-two-toggle.html">Pre inter kursi</a></li>
+                                                        <li><a asp-action="PreIntermediate" asp-controller="Main">Pre inter kursi</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -180,7 +178,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="#">@Localizer["projects"]</a>
+                                    <a asp-action="Project" asp-controller="Main">@Localizer["projects"]</a>
                                 </li>
 
                                 <li>
@@ -450,8 +448,9 @@
             <div class="inner-top">
                 <div class="content">
                     <div class="logo">
-                        <a asp-action="Index" asp-controller="Main">
-                            <img src="~/lib/main_template/assets/images/logo/logo.png" width="200px" alt="Education Logo Images">
+                        <a asp-action="Index" asp-controller="Main" class="\!text-center">
+                            <img src="~/lib/main_template/assets/images/logo/logo.png" alt="Education Logo Images">
+                            Fanur Group
                         </a>
                     </div>
                     <div class="rbt-btn-close">
@@ -486,7 +485,7 @@
                                         <ul class="mega-menu-item">
                                             <li><a asp-action="Beginner" asp-controller="Main">Beginner kursi</a></li>
                                             <li><a asp-action="Elementary" asp-controller="Main">Elementary kursi</a></li>
-                                            <li><a href="course-filter-two-toggle.html">Pre inter kursi</a></li>
+                                            <li><a asp-action="PreIntermediate" asp-controller="Main">Pre inter kursi</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -496,7 +495,7 @@
                     </li>
 
                     <li>
-                        <a href="#">@Localizer["projects"]</a>
+                        <a asp-action="Project" asp-controller="Main">@Localizer["projects"]</a>
                     </li>
 
                     <li>
@@ -552,8 +551,9 @@
                     <div class="col-lg-4 col-md-6 col-sm-6 col-12">
                         <div class="footer-widget">
                             <div class="logo">
-                                <a asp-action="Index" asp-controller="Main">
-                                    <img src="~/lib/main_template/assets/images/logo/logo.png" width="200px" alt="Edu-cause">
+                                <a asp-action="Index" asp-controller="Main" class="\!text-center">
+                                    <img src="~/lib/main_template/assets/images/logo/logo.png" alt="Edu-cause">
+                                    Fanur Group
                                 </a>
                             </div>
 

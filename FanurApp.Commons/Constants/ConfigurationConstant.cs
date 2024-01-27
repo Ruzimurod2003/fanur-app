@@ -6,4 +6,5 @@ public static class ConfigurationConstant
     public static string TelephoneNumber = "+998 97 537 84 72";
     public static string EmailAddres = "moxichehra_xalimboyeva@gmail.com";
     public static string LocationAddres = "Toshkent shahri, Olmazor tumani, Talabalar shaharchasi, INnotechnopark binosi, Postcode: 100073";
+    public static string ProjectTitle = "Fanur o'quv markazi";
 }
