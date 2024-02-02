@@ -1107,6 +1107,27 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                            Value = "There is description of Mirjalol aka",
                            CreatedDate = DateTime.Now,
                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "feedback",
+                           Value = "Feedback",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "feedback_description",
+                           Value = "Feedback description",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "our_partners",
+                           Value = "Our partners",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
                         }
                  }
              },
@@ -2192,6 +2213,27 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                            Value = "Вот описание Mirjalol aka",
                            CreatedDate = DateTime.Now,
                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "feedback",
+                           Value = "Oтзыв",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "feedback_description",
+                           Value = "Oписание отзыва",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "our_partners",
+                           Value = "Наши партнеры",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
                         }
                  }
              },
@@ -3275,6 +3317,27 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                         {
                            Key = "mirjalol_aka_description_main_index",
                            Value = "Bu yerda Mirjalol aka bilan bo'gliq so'z bo'ladi",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "feedback",
+                           Value = "Kamentariyalari",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "feedback_description",
+                           Value = "Studentlarimizdan kevotgan kamentla",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "our_partners",
+                           Value = "Bizani hamkorlarimiza",
                            CreatedDate = DateTime.Now,
                            UpdatedDate = DateTime.Now
                         }

@@ -13,13 +13,15 @@
             <div class="row justify-content-sm-center h-100">
                 <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
                     <div class="text-center my-5">
-                        <img src="~/lib/main_template/assets/images/favicon.png" alt="logo" width="250">
+                        <a asp-action="Index" asp-controller="Main">
+                            <img src="~/lib/main_template/assets/images/favicon.png" alt="logo" width="250">
+                        </a>
                     </div>
                     <div class="card shadow-lg">
                         @RenderBody()
                     </div>
                     <div class="text-center mt-5 text-muted">
-                        Loyiha muallifi Ruzimurod, va bu loyiha Fanur uchun qilinvotti
+                        @Localizer["footer_text"]
                     </div>
                 </div>
             </div>
