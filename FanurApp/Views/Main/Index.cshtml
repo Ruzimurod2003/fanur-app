@@ -6,15 +6,10 @@
                 <div class="col-lg-12 col-xl-6 order-2 order-xl-1">
                     <div class="inner">
                         <h1 class="title" style="font-size: 50px;">
-                            Biz sizga ingliz tilida  ishonchli muloqot qilishingizga yordam beradigan eng muhum vositalarni taqdim
-                            <span class="cd-headline slide">
-                                <span class="cd-words-wrapper">
-                                    <b class="is-visible theme-gradient">etamiz.</b>
-                                </span>
-                            </span>
+                            @Localizer["the_word_next_to_the_video_is_main_index"]
                         </h1>
                         <p class="description">
-                            Karochisi doimo oldinga bosish kere endi
+                            @Localizer["the_word_next_to_the_video_is_main_index_detail"]
                         </p>
                     </div>
                 </div>
@@ -63,9 +58,9 @@
                                             <img src="~/lib/main_template/assets/images/icons/icons-01.png" alt="Icon Images">
                                         </div>
                                         <div class="content">
-                                            <h4 class="title">Cho'tki kurslar</h4>
+                                            <h4 class="title">@Localizer["brush_courses_title"]</h4>
                                             <p>
-                                                Bu kurlarni obezatelno olish kere
+                                                @Localizer["brush_courses_description"]
                                             </p>
                                         </div>
                                     </div>
@@ -77,9 +72,9 @@
                                             <img src="~/lib/main_template/assets/images/icons/icons-02.png" alt="Icon Images">
                                         </div>
                                         <div class="content">
-                                            <h4 class="title">Kompyuterlardayam</h4>
+                                            <h4 class="title">@Localizer["on_computers"]</h4>
                                             <p>
-                                                Bemalol kompyuterdan ham bajara olasiz
+                                                @Localizer["on_computers_description"]
                                             </p>
                                         </div>
                                     </div>
@@ -91,9 +86,9 @@
                                             <img src="~/lib/main_template/assets/images/icons/icons-03.png" alt="Icon Images">
                                         </div>
                                         <div class="content">
-                                            <h4 class="title">o'qituvchilar bilan aloqa ham</h4>
+                                            <h4 class="title">@Localizer["communication_with_teachers_as_well"]</h4>
                                             <p>
-                                                24/7 ishlaymiza problema bo'lsa etuvrasiz :)
+                                                @Localizer["communication_with_teachers_as_well_description"]
                                             </p>
                                         </div>
                                     </div>
@@ -105,9 +100,9 @@
                                             <img src="~/lib/main_template/assets/images/icons/icons-04.png" alt="Icon Images">
                                         </div>
                                         <div class="content">
-                                            <h4 class="title">hammasi oson</h4>
+                                            <h4 class="title">@Localizer["everything_is_easy"]</h4>
                                             <p>
-                                                prosta tak hammasi oson
+                                                @Localizer["everything_is_easy_description"]
                                             </p>
                                         </div>
                                     </div>
@@ -140,7 +135,7 @@
             <div class="row mb--60">
                 <div class="col-lg-12">
                     <div class="section-title text-center">
-                        <h2 class="title">Bizada manabunaqa kurslar bor o'zi</h2>
+                        <h2 class="title">@Localizer["we_have_such_courses"]</h2>
                     </div>
                 </div>
             </div>
@@ -150,20 +145,14 @@
                     <div class="top-features-box h-100 text-center" style="background:#142e51">
                         <a asp-action="Beginner" asp-controller="Main">
                             <div class="inner">
-                                <div class="content">
-                                    <span class="pre-title text-uppercase">lyuboy odam uchun</span>
-                                    <h4 class="title">Begginer kursi</h4>
-                                </div>
                                 <div class="thumbnail">
                                     <img src="~/lib/main_template/assets/images/fanur/markus.png" alt="Image">
                                 </div>
-                                <div class="rbt-badge-group">
-                                    <span class="rbt-badge">kurlar cho'tki</span>
-                                    <span class="rbt-badge">savollar toje</span>
-                                    <span class="rbt-badge">arzon</span>
-                                    <span class="rbt-badge">olish kere</span>
-                                    <span class="rbt-badge">yaxshisi shu</span>
-                                    <span class="rbt-badge">yana bor..</span>
+                                <div class="content">
+                                    <h4 class="title">Mirjalol aka</h4>
+                                    <h6 class="title">
+                                        @Localizer["mirjalol_aka_description_main_index"]
+                                    </h6>
                                 </div>
                             </div>
                             <div class="shape-image">
@@ -178,20 +167,14 @@
                     <div class="top-features-box h-100 text-center" style="background:#142e51">
                         <a asp-action="Elementary" asp-controller="Main">
                             <div class="inner">
-                                <div class="content">
-                                    <span class="pre-title text-uppercase">tolka nimanidir biladiganlar uchun</span>
-                                    <h4 class="title">Elementary kursi</h4>
-                                </div>
-
                                 <div class="thumbnail">
                                     <img src="~/lib/main_template/assets/images/fanur/kamola.png" alt="Image">
                                 </div>
-                                <div class="rbt-badge-group">
-                                    <span class="rbt-badge">nimadirni bilsa</span>
-                                    <span class="rbt-badge">yaxshi bo'laid</span>
-                                    <span class="rbt-badge">bog'chadaym</span>
-                                    <span class="rbt-badge">makdabdayam</span>
-                                    <span class="rbt-badge">yana qatladadir</span>
+                                <div class="content">
+                                    <h4 class="title">Kamola opa</h4>
+                                    <h6 class="title">
+                                        @Localizer["kamola_opa_description_main_index"]
+                                    </h6>
                                 </div>
                             </div>
                             <div class="shape-image">
@@ -206,21 +189,16 @@
                     <div class="top-features-box h-100 text-center" style="background:#142e51">
                         <a asp-action="PreIntermediate" asp-controller="Main">
                             <div class="inner">
-                                <div class="content">
-                                    <span class="pre-title text-uppercase">Zo'r biladiganlar uchun</span>
-                                    <h4 class="title">Pre intemident kursi</h4>
-                                </div>
 
                                 <div class="thumbnail">
                                     <img src="~/lib/main_template/assets/images/fanur/nurullo.png" alt="Image">
                                 </div>
 
-                                <div class="rbt-badge-group">
-                                    <span class="rbt-badge">akademikla</span>
-                                    <span class="rbt-badge">yaxshi biladiganla</span>
-                                    <span class="rbt-badge">mutahasislar</span>
-                                    <span class="rbt-badge">testovoy</span>
-                                    <span class="rbt-badge">pluslari</span>
+                                <div class="content">
+                                    <h4 class="title">Nurulllo aka</h4>
+                                    <h6 class="title">
+                                        @Localizer["nurullo_aka_description_main_index"]
+                                    </h6>
                                 </div>
 
                             </div>

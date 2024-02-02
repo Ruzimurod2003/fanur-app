@@ -1009,6 +1009,104 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                             Value = "Always study and you can do it",
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "the_word_next_to_the_video_is_main_index",
+                           Value = "We provide the most important tools to help you communicate confidently in English.",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "the_word_next_to_the_video_is_main_index_detail",
+                           Value = "Karochi is always pressing forward",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "brush_courses_title",
+                           Value = "Brush courses",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "brush_courses_description",
+                           Value = "These courses are definitely worth taking",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "on_computers",
+                           Value = "On computers",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "on_computers_description",
+                           Value = "You can easily do it from a computer",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "communication_with_teachers_as_well",
+                           Value = "Communication with teachers as well",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "communication_with_teachers_as_well_description",
+                           Value = "We work 24/7, please let us know if there is a problem :)",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "everything_is_easy",
+                           Value = "Everything is easy",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "everything_is_easy_description",
+                           Value = "It's so simple it's so simple",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "we_have_such_courses",
+                           Value = "We have such courses",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "nurullo_aka_description_main_index",
+                           Value = "There is description of Nurullo aka",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "kamola_opa_description_main_index",
+                           Value = "There is description of Kamola opa",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "mirjalol_aka_description_main_index",
+                           Value = "There is description of Mirjalol aka",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
                         }
                  }
              },
@@ -1996,6 +2094,104 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                             Value = "Всегда учитесь и у вас все получится",
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "the_word_next_to_the_video_is_main_index",
+                           Value = "Мы предоставляем самые важные инструменты, которые помогут вам уверенно общаться на английском языке.",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "the_word_next_to_the_video_is_main_index_detail",
+                           Value = "Карочи всегда стремится вперед",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "brush_courses_title",
+                           Value = "Курсы кисти",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "brush_courses_description",
+                           Value = "Эти курсы определенно стоит пройти",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "on_computers",
+                           Value = "На компьютерах",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "on_computers_description",
+                           Value = "Вы можете легко сделать это с компьютера",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "communication_with_teachers_as_well",
+                           Value = "Oбщение с преподавателями так же",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "communication_with_teachers_as_well_description",
+                           Value = "Мы работаем 24/7, если возникнут проблемы, сообщите нам :)",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "everything_is_easy",
+                           Value = "Все легко",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "everything_is_easy_description",
+                           Value = "Проста так все просто",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "we_have_such_courses",
+                           Value = "У нас есть такие курсы",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "nurullo_aka_description_main_index",
+                           Value = "Вот описание Nurullo brat",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "kamola_opa_description_main_index",
+                           Value = "Вот описание Kamola opa",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "mirjalol_aka_description_main_index",
+                           Value = "Вот описание Mirjalol aka",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
                         }
                  }
              },
@@ -2983,6 +3179,104 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                             Value = "Doimo o'qish kerak va buni qila olasiz",
                             CreatedDate = DateTime.Now,
                             UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "the_word_next_to_the_video_is_main_index",
+                           Value = "Biz sizga ingliz tilida ishonchli muloqot qilishingizga yordam beradigan eng muhum vositalarni taqdim etamiz.",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "the_word_next_to_the_video_is_main_index_detail",
+                           Value = "Karochisi doimo oldinga bosish kere endi",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "brush_courses_title",
+                           Value = "Chot'tki kurslar",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "brush_courses_description",
+                           Value = "Bu kurslarni aniq olish kerak",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "on_computers",
+                           Value = "Kompyuterlardayam",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "on_computers_description",
+                           Value = "Bemalol kompyuterdan ham bajara olasiz",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "communication_with_teachers_as_well",
+                           Value = "O'qituvchilar bilan aloqa ham",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "communication_with_teachers_as_well_description",
+                           Value = "24/7 ishlaymiza problema bo'lsa etuvrasiz :)",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "everything_is_easy",
+                           Value = "Hammasi oson",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "everything_is_easy_description",
+                           Value = "Hammasi oson",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "we_have_such_courses",
+                           Value = "Bizda manashunaqa kurslar bor o'zi :(",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "nurullo_aka_description_main_index",
+                           Value = "Bu yerda Nurullo aka bilan bog'liq description turadi",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "kamola_opa_description_main_index",
+                           Value = "Bu yerda Kamola opa bilan bog'liq description turadi",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "mirjalol_aka_description_main_index",
+                           Value = "Bu yerda Mirjalol aka bilan bo'gliq so'z bo'ladi",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
                         }
                  }
              }

@@ -60,6 +60,16 @@ public class ApplicationContext : DbContext
                     RoleId = 2,
                     CreatedDate = DateTime.Now,
                     UpdatedDate = DateTime.Now
+                },
+                new User
+                {
+                    Id = 3,
+                    Email = "farrukhkarshibayev@gmail.com",
+                    Name = "Farrukh",
+                    Password = "20.08.2001",
+                    RoleId = 1,
+                    CreatedDate = DateTime.Now,
+                    UpdatedDate = DateTime.Now
                 }
             }
         );
