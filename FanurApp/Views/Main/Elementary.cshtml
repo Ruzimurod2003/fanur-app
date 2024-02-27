@@ -1,9 +1,6 @@
 ﻿<a class="close_side_menu" href="javascript:void(0);"></a>
 
 <div class="rbt-page-banner-wrapper">
-    <!-- Start Banner BG Image  -->
-    <div class="rbt-banner-image"></div>
-    <!-- End Banner BG Image  -->
     <div class="rbt-banner-content">
         <!-- Start Banner Content Top  -->
         <div class="rbt-banner-content-top rbt-breadcrumb-style-3">
@@ -11,24 +8,7 @@
                 <div class="row">
                     <div class="col-lg-8 offset-lg-2">
                         <div class="content text-center">
-
-                            <h2 class="title theme-gradient">Elementary kursi</h2>
-
-                            <div class="rbt-author-meta mb--20 justify-content-center">
-                                <div class="rbt-avater">
-                                    <a href="#">
-                                        <img src="~/lib/main_template/assets/images/fanur/kamola.png" alt="Sophia Jaymes">
-                                    </a>
-                                </div>
-                                <div class="rbt-author-info">
-                                    By Ruzimurod Abdunazarov
-                                </div>
-                            </div>
-
-                            <ul class="rbt-meta">
-                                <li><i class="feather-calendar"></i>2023-11-11</li>
-                                <li><i class="feather-globe"></i>English</li>
-                            </ul>
+                            <h2 class="title theme-gradient">@Localizer["course_elementary"]</h2>
                         </div>
                     </div>
                 </div>
@@ -42,42 +22,49 @@
     <div class="inner">
         <div class="container">
             <div class="col-lg-12">
-                <!-- Start Viedo Wrapper  -->
-                <a class="video-popup-with-text video-popup-wrapper text-center popup-video mb--15" href="https://www.youtube.com/watch?v=QGJuMBdaqIw">
-                    <div class="video-content">
-                        <img class="w-100 rbt-radius" src="~/lib/main_template/assets/images/fanur/kamola.png" alt="Video Images">
-                        <div class="position-to-top">
-                            <span class="rbt-btn rounded-player-2 with-animation">
-                                <span class="play-icon"></span>
-                            </span>
-                        </div>
-                        <span class="play-view-text d-block color-white"><i class="feather-eye"></i> Kursni videosini ko'rish</span>
-                    </div>
-                </a>
-                <!-- End Viedo Wrapper  -->
-
                 <div class="row row--30 gy-5 pt--60">
-
                     <div class="col-lg-4">
+                        <div class="course-sidebar sticky-top rbt-shadow-box rbt-gradient-border">
+                            <div class="inner">
+                                <div class="content-item-content">
+                                    <!-- Start Viedo Wrapper  -->
+                                    <a class="video-popup-with-text video-popup-wrapper text-center popup-video mb--15" href="https://www.youtube.com/watch?v=QGJuMBdaqIw">
+                                        <div class="video-content">
+                                            <img class="w-50 rbt-radius" src="~/lib/main_template/assets/images/fanur/kamola.png" alt="Video Images">
+                                            <div class="position-to-top">
+                                                <span class="rbt-btn rounded-player-2 with-animation">
+                                                    <span class="play-icon"></span>
+                                                </span>
+                                            </div>
+                                            <span class="play-view-text d-block color-white">
+                                                <i class="feather-eye"></i>
+                                                @Localizer["watch_the_video_of_the_course"]
+                                            </span>
+                                        </div>
+                                    </a>
+                                    <!-- End Viedo Wrapper  -->
+                                </div>
+                            </div>
+                        </div>
                         <div class="course-sidebar sticky-top rbt-shadow-box rbt-gradient-border">
                             <div class="inner">
                                 <div class="content-item-content">
                                     <div class="rbt-price-wrapper d-flex flex-wrap align-items-center justify-content-between">
                                         <div class="rbt-price">
-                                            <span class="current-price">800 ming so'm</span>
+                                            <span class="current-price">@Localizer["elementary_course_price"]</span>
                                         </div>
                                     </div>
 
                                     <div class="add-to-card-button mt--15">
                                         <a class="rbt-btn btn-gradient icon-hover w-100 d-block text-center" asp-action="Video" asp-controller="Student">
-                                            <span class="btn-text">Kursni ko'rish</span>
+                                            <span class="btn-text">@Localizer["view_the_course"]</span>
                                             <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                                         </a>
                                     </div>
 
                                     <div class="buy-now-btn mt--15">
                                         <a class="rbt-btn btn-border icon-hover w-100 d-block text-center" asp-action="Payment" asp-controller="Student">
-                                            <span class="btn-text">Srazi sotib olish</span>
+                                            <span class="btn-text">@Localizer["purchase_the_course"]</span>
                                             <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                                         </a>
                                     </div>
@@ -85,45 +72,14 @@
                                     <div class="rbt-widget-details has-show-more">
                                         <ul class="has-show-more-inner-content rbt-course-details-list-wrapper">
                                             <li>
-                                                <span>Kursni hajmi</span><span class="rbt-feature-value rbt-badge-5">5 Hrs 20 Min</span>
+                                                <span>@Localizer["size_course_elementary"]</span>
+                                                <span class="rbt-feature-value rbt-badge-5">@Localizer["value_size_course_elementary"]</span>
                                             </li>
-                                            <li><span>Vazifalari</span><span class="rbt-feature-value rbt-badge-5">50</span></li>
-                                            <li><span>Darajasi</span><span class="rbt-feature-value rbt-badge-5">Basic</span></li>
-                                            <li><span>Qaysi tilda?</span><span class="rbt-feature-value rbt-badge-5">English</span></li>
-                                            <li><span>Testlari</span><span class="rbt-feature-value rbt-badge-5">10</span></li>
+                                            <li><span>@Localizer["task_course_elementary"]</span><span class="rbt-feature-value rbt-badge-5">@Localizer["value_task_course_elementary"]</span></li>
+                                            <li><span>@Localizer["degree_course_elementary"]</span><span class="rbt-feature-value rbt-badge-5">@Localizer["value_degree_course_elementary"]</span></li>
+                                            <li><span>@Localizer["language_course_elementary"]</span><span class="rbt-feature-value rbt-badge-5">@Localizer["value_language_course_elementary"]</span></li>
+                                            <li><span>@Localizer["tests_course_elementary"]</span><span class="rbt-feature-value rbt-badge-5">@Localizer["value_tests_course_elementary"]</span></li>
                                         </ul>
-                                    </div>
-
-                                    <div class="social-share-wrapper mt--30 text-center">
-                                        <div class="rbt-post-share d-flex align-items-center justify-content-center">
-                                            <ul class="social-icon social-default transparent-with-border justify-content-center">
-                                                <li>
-                                                    <a href="https://www.facebook.com/">
-                                                        <i class="feather-facebook"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="https://www.twitter.com">
-                                                        <i class="feather-twitter"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="https://www.instagram.com/">
-                                                        <i class="feather-instagram"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="https://www.linkdin.com/">
-                                                        <i class="feather-linkedin"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <hr class="mt--20">
-                                        <div class="contact-with-us text-center">
-                                            <p>Hohlasez telefon qilishiz ham mumkin</p>
-                                            <p class="rbt-badge-2 mt--10 justify-content-center w-100"><i class="feather-phone mr--5"></i> Bizaga telefon qiling: <a href="#"><strong>+444 555 666 777</strong></a></p>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -137,19 +93,19 @@
                                 <nav class="mainmenu-nav onepagenav">
                                     <ul class="mainmenu">
                                         <li class="current">
-                                            <a href="#overview">Polniy hammasi</a>
+                                            <a href="#overview">@Localizer["all_introduction_elementary"]</a>
                                         </li>
                                         <li>
-                                            <a href="#coursecontent">Kurssi kantenti</a>
+                                            <a href="#coursecontent">@Localizer["content_of_course_elementary"]</a>
                                         </li>
                                         <li>
-                                            <a href="#details">Detalniy</a>
+                                            <a href="#details">@Localizer["details_course_elementary"]</a>
                                         </li>
                                         <li>
-                                            <a href="#intructor">O'qituvchisi</a>
+                                            <a href="#intructor">@Localizer["teacher_course_elementary"]</a>
                                         </li>
                                         <li>
-                                            <a href="#review">Rezultati</a>
+                                            <a href="#review">@Localizer["result_teacher_course_elementary"]</a>
                                         </li>
                                     </ul>
                                 </nav>
@@ -159,14 +115,10 @@
                             <div class="rbt-course-feature-box overview-wrapper rbt-shadow-box mt--30 has-show-more" id="overview">
                                 <div class="rbt-course-feature-inner has-show-more-inner-content">
                                     <div class="section-title">
-                                        <h4 class="rbt-title-style-3">O'zi nimani o'rgana olasan?</h4>
+                                        <h4 class="rbt-title-style-3">@Localizer["title_first_course_elementary"]</h4>
                                     </div>
                                     <p>
-                                        Are you new to PHP or need a refresher? Then this course will help you get
-                                        all the fundamentals of Procedural PHP, Object Oriented PHP, MYSQLi and
-                                        ending the course by building a CMS system similar to WordPress, Joomla or
-                                        Drupal. Knowing PHP has allowed me to make enough money to stay home and
-                                        make courses like this one for students all over the world.
+                                        @Localizer["description_first_course_elementary"]
                                     </p>
 
                                     <div class="row g-5 mb--30">
@@ -174,24 +126,16 @@
                                         <div class="col-lg-6">
                                             <ul class="rbt-list-style-1">
                                                 <li>
-                                                    <i class="feather-check"></i>Become an advanced, confident, and
-                                                    modern
-                                                    JavaScript developer from scratch.
+                                                    @Localizer["advantages_course_elementary_first"]
                                                 </li>
                                                 <li>
-                                                    <i class="feather-check"></i>Have an intermediate skill level of
-                                                    Python
-                                                    programming.
+                                                    @Localizer["advantages_course_elementary_second"]
                                                 </li>
                                                 <li>
-                                                    <i class="feather-check"></i>Have a portfolio of various data
-                                                    analysis
-                                                    projects.
+                                                    @Localizer["advantages_course_elementary_third"]
                                                 </li>
                                                 <li>
-                                                    <i class="feather-check"></i>Use the numpy library to create and
-                                                    manipulate
-                                                    arrays.
+                                                    @Localizer["advantages_course_elementary_fourth"]
                                                 </li>
                                             </ul>
                                         </div>
@@ -200,51 +144,33 @@
                                         <div class="col-lg-6">
                                             <ul class="rbt-list-style-1">
                                                 <li>
-                                                    <i class="feather-check"></i>Use the Jupyter Notebook
-                                                    Environment.
-                                                    JavaScript developer from scratch.
+                                                    @Localizer["advantages_course_elementary_fife"]
                                                 </li>
                                                 <li>
-                                                    <i class="feather-check"></i>Use the pandas module with Python
-                                                    to create and
-                                                    structure data.
+                                                    @Localizer["advantages_course_elementary_six"]
                                                 </li>
                                                 <li>
-                                                    <i class="feather-check"></i>Have a portfolio of various data
-                                                    analysis
-                                                    projects.
+                                                    @Localizer["advantages_course_elementary_seven"]
                                                 </li>
                                                 <li>
-                                                    <i class="feather-check"></i>Create data visualizations using
-                                                    matplotlib and
-                                                    the seaborn.
+                                                    @Localizer["advantages_course_elementary_eight"]
                                                 </li>
                                             </ul>
                                         </div>
                                         <!-- End Feture Box  -->
                                     </div>
                                     <p>
-                                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis, aliquam
-                                        voluptas laudantium incidunt architecto nam excepturi provident rem laborum
-                                        repellendus placeat neque aut doloremque ut ullam, veritatis nesciunt iusto
-                                        officia alias, non est vitae. Eius repudiandae optio quam alias aperiam nemo
-                                        nam tempora, dignissimos dicta excepturi ea quo ipsum omnis maiores
-                                        perferendis commodi voluptatum facere vel vero. Praesentium quisquam iure
-                                        veritatis, perferendis adipisci sequi blanditiis quidem porro eligendi
-                                        fugiat facilis inventore amet delectus expedita deserunt ut molestiae modi
-                                        laudantium, quia tenetur animi natus ea. Molestiae molestias ducimus
-                                        pariatur et consectetur. Error vero, eum soluta delectus necessitatibus
-                                        eligendi numquam hic at?
+                                        @Localizer["description_second_course_elementary"]
                                     </p>
                                 </div>
-                                <div class="rbt-show-more-btn">Show More</div>
+                                <div class="rbt-show-more-btn">@Localizer["show_more"]</div>
                             </div>
                             <!-- End Course Feature Box  -->
                             <!-- Start Course Content  -->
                             <div class="course-content rbt-shadow-box coursecontent-wrapper mt--30" id="coursecontent">
                                 <div class="rbt-course-feature-inner">
                                     <div class="section-title">
-                                        <h4 class="rbt-title-style-3">Mavzulari</h4>
+                                        <h4 class="rbt-title-style-3">@Localizer["themes_elementary"]</h4>
                                     </div>
                                     <div class="rbt-accordion-style rbt-accordion-02 accordion">
                                         <div class="accordion" id="accordionExampleb2">
@@ -330,14 +256,14 @@
                                     <!-- Start Feture Box  -->
                                     <div class="col-lg-6">
                                         <div class="section-title">
-                                            <h4 class="rbt-title-style-3 mb--20">Qanaqadir description</h4>
+                                            <h4 class="rbt-title-style-3 mb--20">@Localizer["description_details_course_elementary"]</h4>
                                         </div>
                                         <ul class="rbt-list-style-1">
                                             <li>
-                                                <i class="feather-check"></i>Hammasi cho'tki, o'zinga ishon
+                                                <i class="feather-check"></i>@Localizer["description_details_course_elementary_first"]
                                             </li>
                                             <li>
-                                                <i class="feather-check"></i>Hammasini eplisan
+                                                <i class="feather-check"></i>@Localizer["description_details_course_elementary_second"]
                                             </li>
                                         </ul>
                                     </div>
@@ -349,7 +275,7 @@
                             <div class="rbt-instructor rbt-shadow-box intructor-wrapper mt--30" id="intructor">
                                 <div class="about-author border-0 pb--0 pt--0">
                                     <div class="section-title mb--30">
-                                        <h4 class="rbt-title-style-3">O'qituvchi</h4>
+                                        <h4 class="rbt-title-style-3">@Localizer["teacher_elementary"]</h4>
                                     </div>
                                     <div class="media align-items-center">
                                         <div class="thumbnail">
@@ -360,38 +286,14 @@
                                         <div class="media-body">
                                             <div class="author-info">
                                                 <h5 class="title">
-                                                    <a class="hover-flip-item-wrapper" href="author.html">Test name</a>
+                                                    <a class="hover-flip-item-wrapper" href="author.html">@Localizer["teacher_name_elementary"]</a>
                                                 </h5>
-                                                <span class="b3 subtitle">Cho'tki ustoz</span>
+                                                <span class="b3 subtitle">@Localizer["teacher_title_elementary"]</span>
                                             </div>
                                             <div class="content">
                                                 <p class="description">
-                                                    Hayot senga bermasa ta'lim, senga o'rgata olmas, n ta muallim :)
+                                                    @Localizer["teacher_description_elementary"]
                                                 </p>
-
-                                                <ul class="social-icon social-default icon-naked justify-content-start">
-                                                    <li>
-                                                        <a href="https://www.facebook.com/">
-                                                            <i class="feather-facebook"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="https://www.twitter.com">
-                                                            <i class="feather-twitter"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="https://www.instagram.com/">
-                                                            <i class="feather-instagram"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="https://www.linkdin.com/">
-                                                            <i class="feather-linkedin"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-
                                             </div>
 
                                         </div>
@@ -403,7 +305,7 @@
                             <div class="rbt-review-wrapper rbt-shadow-box review-wrapper mt--30" id="review">
                                 <div class="course-content">
                                     <div class="section-title">
-                                        <h4 class="rbt-title-style-3">Rezultalarimiza</h4>
+                                        <h4 class="rbt-title-style-3">@Localizer["result_of_elementary_course"]</h4>
                                     </div>
                                     <div class="row g-5 align-items-center">
                                         <div class="col-lg-3">
@@ -426,7 +328,7 @@
                                                         <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
                                                     </svg>
                                                 </div>
-                                                <span class="sub-title">O'qituvchini IELTS ini qiymati</span>
+                                                <span class="sub-title">@Localizer["aour_teacher_result"]</span>
                                             </div>
                                         </div>
                                     </div>

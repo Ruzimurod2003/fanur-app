@@ -1,0 +1,8 @@
+Parameters: 2 vCPU, 2 GB RAM, 40 GB Disk
+Domain: vps02304.eskiz.uz
+IP-address: 5.182.26.61
+ОS: Windows 10 RUS
+Use the following credentials to access your virtual machine:
+
+Login: admin
+Password: oQ9rR1uG3bcO

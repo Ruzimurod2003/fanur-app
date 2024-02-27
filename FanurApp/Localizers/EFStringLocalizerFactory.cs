@@ -1128,6 +1128,34 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                            Value = "Our partners",
                            CreatedDate = DateTime.Now,
                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "course_beginner",
+                           Value = "Course of Beginner",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "previous",
+                           Value = "Previous",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "next",
+                           Value = "Next",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "student_video_description",
+                           Value = "Our topic is different from everyone else's, that's for sure",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
                         }
                  }
              },
@@ -2234,6 +2262,34 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                            Value = "Наши партнеры",
                            CreatedDate = DateTime.Now,
                            UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "course_beginner",
+                           Value = "Курс для Бегиннер",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "previous",
+                           Value = "Предыдущий",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "next",
+                           Value = "Следующий",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "student_video_description",
+                           Value = "Наша тема отличается от всех остальных, это точно",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
                         }
                  }
              },
@@ -3338,6 +3394,34 @@ public class EFStringLocalizerFactory : IStringLocalizerFactory
                         {
                            Key = "our_partners",
                            Value = "Bizani hamkorlarimiza",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "course_beginner",
+                           Value = "Beginner kursi",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "previous",
+                           Value = "Oldingi",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "next",
+                           Value = "Keyingi",
+                           CreatedDate = DateTime.Now,
+                           UpdatedDate = DateTime.Now
+                        },
+                        new Resource
+                        {
+                           Key = "student_video_description",
+                           Value = "Bizani mavzu hammanikidan boshqacha, bilvol shuni",
                            CreatedDate = DateTime.Now,
                            UpdatedDate = DateTime.Now
                         }

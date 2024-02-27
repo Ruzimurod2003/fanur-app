@@ -1,13 +1,13 @@
-﻿<div class="inner">
+﻿@model VideoVM;
+<div class="inner">
     <div class="plyr__video-embed rbtplayer">
-        <iframe src="https://www.youtube.com/embed/qKzhrXqT6oE" allowfullscreen allow="autoplay"></iframe>
+        <iframe src="@Model.VideoURL" allowfullscreen allow="autoplay"></iframe>
     </div>
     <div class="content">
         <div class="section-title">
-            <h4>About Lesson</h4>
+            <h4>@Model.TopicName</h4>
             <p>
-                Let us analyze the greatest hits of the past and learn what makes these tracks so
-                special.
+                @Localizer["student_video_description"]
             </p>
         </div>
     </div>
@@ -15,16 +15,21 @@
 
 <div class="bg-color-extra2 ptb--15 overflow-hidden">
     <div class="rbt-button-group">
-
-        <a class="rbt-btn icon-hover icon-hover-left btn-md bg-primary-opacity" href="#">
-            <span class="btn-icon"><i class="feather-arrow-left"></i></span>
-            <span class="btn-text">Previous</span>
-        </a>
-
-        <a class="rbt-btn icon-hover btn-md" href="#">
-            <span class="btn-text">Next</span>
-            <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-        </a>
-
+        @if (Model.PreviousTopicId.HasValue)
+        {
+            <a class="rbt-btn icon-hover icon-hover-left btn-md bg-primary-opacity"
+               asp-action="Video" asp-controller="Student" asp-route-topicId="@Model.PreviousTopicId">
+                <span class="btn-icon"><i class="feather-arrow-left"></i></span>
+                <span class="btn-text">@Localizer["previous"]</span>
+            </a>
+        }
+        @if (Model.NextTopicId.HasValue)
+        {
+            <a class="rbt-btn icon-hover btn-md"
+               asp-action="Video" asp-controller="Student" asp-route-topicId="@Model.NextTopicId">
+                <span class="btn-text">@Localizer["next"]</span>
+                <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+            </a>
+        }
     </div>
 </div>
