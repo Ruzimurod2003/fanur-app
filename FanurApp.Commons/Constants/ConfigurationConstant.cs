@@ -1,10 +1,10 @@
 ﻿namespace FanurApp.Commons.Constants;
 public static class ConfigurationConstant
 {
-    public static string TelegramLink = "https://t.me/nuu_uz";
-    public static string InstagramLink = "https://www.instagram.com/kamelyamelnicofficial";
-    public static string TelephoneNumber = "+998 97 537 84 72";
-    public static string EmailAddres = "moxichehra_xalimboyeva@gmail.com";
-    public static string LocationAddres = "Toshkent shahri, Olmazor tumani, Talabalar shaharchasi, INnotechnopark binosi, Postcode: 100073";
+    public static string TelegramLink = "https://t.me/fanureducation";
+    public static string InstagramLink = "https://www.instagram.com/the_fanur_group";
+    public static string TelephoneNumber = "+998 93 322 56 89";
+    public static string EmailAddres = "info@fanur.uz";
+    public static string LocationAddres = "Toshkent shahri, Olmazor tumani, Talabalar shaharchasi, Inno Technopark, Postcode: 100073";
     public static string ProjectTitle = "Fanur o'quv markazi";
 }
