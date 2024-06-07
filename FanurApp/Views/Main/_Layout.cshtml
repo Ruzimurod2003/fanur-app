@@ -44,10 +44,10 @@
                                 <div class="header-info">
                                     <ul class="rbt-information-list">
                                         <li>
-                                            <a href="@ConfigurationConstant.InstagramLink"><i class="fab fa-instagram"></i>100k <span class="d-none d-xxl-block">Followers</span></a>
+                                            <a href="@ConfigurationConstant.InstagramLink"><i class="fab fa-instagram"></i>Instagram</a>
                                         </li>
                                         <li>
-                                            <a href="@ConfigurationConstant.TelegramLink"><i class="fab fa-telegram"></i>500k <span class="d-none d-xxl-block">Followers</span></a>
+                                            <a href="@ConfigurationConstant.TelegramLink"><i class="fab fa-telegram"></i>Telegram</a>
                                         </li>
                                         <li>
                                             <a href="#"><i class="feather-phone"></i>@ConfigurationConstant.TelephoneNumber</a>
@@ -177,8 +177,27 @@
                                     <!-- End Mega Menu  -->
                                 </li>
 
-                                <li>
-                                    <a asp-action="Project" asp-controller="Main">@Localizer["projects"]</a>
+                                <li class="with-megamenu has-menu-child-item">
+                                    <a href="#">@Localizer["projects"]<i class="feather-chevron-down"></i></a>
+                                    <!-- Start Mega Menu  -->
+                                    <div class="rbt-megamenu grid-item-2">
+                                        <div class="wrapper">
+                                            <div class="row row--15">
+                                                <div class="col-lg-12 col-xl-6 col-xxl-6 single-mega-item">
+                                                    <h3 class="rbt-short-title">@Localizer["projects"]</h3>
+                                                    <ul class="mega-menu-item">
+                                                        <li><a asp-action="Project" asp-controller="Main" asp-route-id="0">@Localizer["projects_first"]</a></li>
+                                                        <li><a asp-action="Project" asp-controller="Main" asp-route-id="1">@Localizer["projects_second"]</a></li>
+                                                        <li><a asp-action="Project" asp-controller="Main" asp-route-id="2">@Localizer["projects_third"]</a></li>
+                                                        <li><a asp-action="Project" asp-controller="Main" asp-route-id="3">@Localizer["projects_fourth"]</a></li>
+                                                        <li><a asp-action="Project" asp-controller="Main" asp-route-id="4">@Localizer["projects_fife"]</a></li>
+                                                        <li><a asp-action="Project" asp-controller="Main" asp-route-id="5">@Localizer["projects_six"]</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Mega Menu  -->
                                 </li>
 
                                 <li>

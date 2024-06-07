@@ -29,9 +29,14 @@ namespace FanurApp.Controllers
         {
             return View();
         }
-        public IActionResult Project()
+        [HttpGet]
+        public IActionResult Project(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                id = 0;
+            }
+            return View(id);
         }
         public IActionResult Elementary()
         {

@@ -1,4 +1,4 @@
-﻿
+﻿@model int;
 <a class="close_side_menu" href="javascript:void(0);"></a>
 
 <!-- Start breadcrumb Area -->
@@ -20,58 +20,137 @@
         <div class="row g-5 align-items-center">
             <div class="col-lg-5">
                 <div class="content">
-                    <img class="w-100 radius-10" src="~/lib/main_template/assets/images/fanur/girl_1.png" alt="About Images">
+                    @if (Model == 0)
+                    {
+                        <iframe class="w-100 radius-10" width="1008" height="567"
+                            src="https://www.youtube.com/embed/WcIcVapfqXw?list=RDWcIcVapfqXw"
+                            title="Rema, Selena Gomez - Calm Down (Official Music Video)" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    }else if(Model == 1){
+                        <iframe class="w-100 radius-10" width="1008" height="567"
+                        src="https://www.youtube.com/embed/DlheYwc0TbU?list=RDDlheYwc0TbU" 
+                        title="Будь моим нарядом, сладким шоколадом. ПРЕМЬЕРА ТРЕКА" frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    }else if(Model == 2){
+                        <iframe class="w-100 radius-10" width="1008" height="567" 
+                        src="https://www.youtube.com/embed/uVCDKfV69wA?list=RDMMuVCDKfV69wA" 
+                        title="G&#39;aybulla Tursunov - Janona (Premyera)" frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    }else if(Model == 3){
+                        <iframe class="w-100 radius-10" width="1008" height="567" 
+                        src="https://www.youtube.com/embed/6O34VWIIWe0?list=RD6O34VWIIWe0" 
+                        title="VARSAL  ◣ Признание в любви ◥ChristoforosOrfanidis" frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    }else if(Model == 4){
+                        <iframe class="w-100 radius-10" width="1008" height="567" 
+                        src="https://www.youtube.com/embed/W64yrqCehuc?list=RD6O34VWIIWe0" 
+                        title="Javid - Ты моя Дунья (Official Video)" frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" 
+                        allowfullscreen></iframe>
+                    }else if(Model == 5){
+                        <iframe class="w-100 radius-10" width="1008" height="567" 
+                        src="https://www.youtube.com/embed/WVl6g5hvcDA?list=RD6O34VWIIWe0" 
+                        title="Doston Ergashev - Ko&#39;zmunchog&#39;im | Достон Эргашев - Кузмунчогим" frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    }
                 </div>
             </div>
             <div class="col-lg-7">
                 <div class="inner pl--50 pl_sm--0 pl_md--0 pl_lg--0">
                     <div class="section-title text-start">
-                        <h2 class="title">@Localizer["complete_projects"]</h2>
-                        <p class="description mt--20"><strong>@Localizer["complete_projects_description"]</strong></p>
-
-                        <h5 class="mb--20">@Localizer["complete_projects_title"]</h5>
+                        <h2 class="title">
+                            @if (Model == 0)
+                            {
+                                @Localizer["complete_projects"]
+                            }
+                            else
+                            {                                
+                                @Localizer[$"{Model}_complete_projects"]
+                            }
+                        </h2>
+                        <p class="description mt--20">
+                            <strong>
+                            @if (Model == 0)
+                            {
+                                @Localizer["complete_projects_description"]
+                            }
+                            else
+                            {                                
+                                @Localizer[$"{Model}_complete_projects_description"]
+                            }
+                            </strong>
+                        </p>
+                        <h5 class="mb--20">
+                            @if (Model == 0)
+                            {
+                                @Localizer["complete_projects_title"]
+                            }
+                            else
+                            {                                
+                                @Localizer[$"{Model}_complete_projects_title"]
+                            }
+                        </h5>
                         <div class="plan-offer-list-wrapper">
                             <ul class="plan-offer-list">
-                                <li><i class="feather-check"></i> @Localizer["complete_projects_first"]</li>
-                                <li><i class="feather-check"></i> @Localizer["complete_projects_second"]</li>
-                                <li><i class="feather-check"></i> @Localizer["complete_projects_third"]</li>
-                                <li><i class="feather-check"></i> @Localizer["complete_projects_fourth"]</li>
-                                <li><i class="feather-check"></i> @Localizer["complete_projects_fife"]</li>
+                                <li><i class="feather-check"></i>
+                                    @if (Model == 0)
+                                    {
+                                        @Localizer["complete_projects_first"]
+                                    }
+                                    else
+                                    {                                
+                                        @Localizer[$"{Model}_complete_projects_first"]
+                                    }
+                                </li>
+                                <li><i class="feather-check"></i>
+                                    @if (Model == 0)
+                                    {
+                                        @Localizer["complete_projects_second"]
+                                    }
+                                    else
+                                    {                                
+                                        @Localizer[$"{Model}_complete_projects_second"]
+                                    }
+                                </li>
+                                <li><i class="feather-check"></i>
+                                    @if (Model == 0)
+                                    {
+                                        @Localizer["complete_projects_third"]
+                                    }
+                                    else
+                                    {                                
+                                        @Localizer[$"{Model}_complete_projects_third"]
+                                    }                                
+                                </li>
+                                <li><i class="feather-check"></i>
+                                    @if (Model == 0)
+                                    {
+                                        @Localizer["complete_projects_fourth"]
+                                    }
+                                    else
+                                    {                                
+                                        @Localizer[$"{Model}_complete_projects_fourth"]
+                                    }                                
+                                </li>
+                                <li><i class="feather-check"></i>
+                                    @if (Model == 0)
+                                    {
+                                        @Localizer["complete_projects_fife"]
+                                    }
+                                    else
+                                    {                                
+                                        @Localizer[$"{Model}_complete_projects_fife"]
+                                    }                                
+                                </li>
                             </ul>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="rbt-about-area about-style-1 bg-color-white rbt-section-gapBottom">
-    <div class="container">
-        <div class="row g-5 align-items-center">
-            <div class="col-lg-7 order-2 order-lg-1">
-                <div class="inner pl--50 pl_sm--0 pl_md--0 pl_lg--0">
-                    <div class="section-title text-start">
-                        <h2 class="title">@Localizer["waiting_projects"]</h2>
-                        <p class="description mt--20"><strong>@Localizer["waiting_projects_description"]</strong></p>
-
-                        <h5 class="mb--20">@Localizer["waiting_projects_tile"]</h5>
-                        <div class="plan-offer-list-wrapper">
-                            <ul class="plan-offer-list">
-                                <li><i class="feather-check"></i> @Localizer["waiting_projects_first"]</li>
-                                <li><i class="feather-check"></i> @Localizer["waiting_projects_second"]</li>
-                                <li><i class="feather-check"></i> @Localizer["waiting_projects_third"]</li>
-                                <li><i class="feather-check"></i> @Localizer["waiting_projects_fourth"]</li>
-                                <li><i class="feather-check"></i> @Localizer["waiting_projects_fife"]</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-5 order-1 order-lg-2">
-                <div class="content">
-                    <img class="w-100 radius-10" src="~/lib/main_template/assets/images/fanur/girl_2.png" alt="About Images">
                 </div>
             </div>
         </div>
