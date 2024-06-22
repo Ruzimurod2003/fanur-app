@@ -6,5 +6,5 @@ public static class ConfigurationConstant
     public static string TelephoneNumber = "+998 93 322 56 89";
     public static string EmailAddres = "info@fanur.uz";
     public static string LocationAddres = "Toshkent shahri, Olmazor tumani, Talabalar shaharchasi, Inno Technopark, Postcode: 100073";
-    public static string ProjectTitle = "Fanur o'quv markazi";
+    public static string ProjectTitle = "Fanur Group";
 }
